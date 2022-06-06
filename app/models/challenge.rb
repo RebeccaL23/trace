@@ -1,4 +1,4 @@
 class Challenge < ApplicationRecord
   belongs_to :game
-  has_many :stages
+  has_many :completions
 end
