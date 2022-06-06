@@ -10,9 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_06_144725) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_06_152441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "question"
+    t.string "answer_1"
+    t.string "answer_2"
+    t.string "answer_3"
+    t.string "correct_answer"
+    t.integer "points"
+    t.string "location"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_challenges_on_game_id"
+  end
+
+  create_table "completions", force: :cascade do |t|
+    t.boolean "completed"
+    t.bigint "team_id", null: false
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_completions_on_challenge_id"
+    t.index ["team_id"], name: "index_completions_on_team_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.datetime "start"
+    t.datetime "end"
+    t.bigint "user_id", null: false
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "score"
+    t.string "photo"
+    t.datetime "finish"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_teams_on_game_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_144725) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "challenges", "games"
+  add_foreign_key "completions", "challenges"
+  add_foreign_key "completions", "teams"
+  add_foreign_key "games", "users"
+  add_foreign_key "teams", "games"
 end
