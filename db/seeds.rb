@@ -53,8 +53,8 @@ puts "Creating 9 games..."
   Game.create(
     name: "Jurassic Park",
     city: "London",
-    start: "14-06-2022 10:00",
-    end: "14-06-2022 13:00",
+    start: "01-06-2022 10:00",
+    end: "01-06-2022 13:00",
     photo: 'placeholder.png',
     user: user1
   )
