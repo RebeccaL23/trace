@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[show edit update destroy confirmation]
+  before_action :set_game, only: %i[show edit update destroy]
 
   def show
   end
@@ -37,6 +37,7 @@ class GamesController < ApplicationController
 
   # not checked!
   def confirmation
+    @game = Game.find(params[:game_id])
     # @games = Game.all
     # if @game.id < 6 chars
     #   while @game.id matches ids in @games
