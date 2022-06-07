@@ -1,0 +1,20 @@
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 20px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
