@@ -1,0 +1,25 @@
+.progress-bottom{
+  height: 1.5vh;
+  top: 98.5vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+
+  .step-one{
+    height: 100%;
+    width: 33%;
+    background-color: #B2FDB7;
+  }
+
+  .step-two{
+    height: 100%;
+    width: 66%;
+    background-color: #B2FDB7;
+  }
+
+  .step-three{
+    height: 100%;
+    width: 100%;
+    background-color: #B2FDB7;
+  }
+}

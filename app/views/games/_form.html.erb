@@ -1,9 +1,8 @@
 <%= simple_form_for @game do |f| %>
-  <%= f.input :name, as: :date %>
-  <%= f.input :city, as: :date %>
-  <%= f.input :start, as: :date %>
-  <%= f.input :end, as: :date %>
-  <%= f.input :city, as: :date %>
-
+  <%= f.input :name, as: :string %>
+  <%= f.input :city, as: :string %>
+  <%= f.input :start, as: :date, html5: true%>
+  <%= f.input :end, as: :date, html5: true %>
+  <%= f.input :photo, as: :string %>
   <%= f.button :submit %>
 <% end %>
