@@ -1,2 +1,39 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="hero-banner">
+  <div class="container">
+    <%= image_tag "Logo.png" %>
+    <h1>Merging the digital and real-world experience through scavenger hunt games.</h1>
+    <div>
+      <%= link_to "Create a game", new_user_session_path, class: "button beige" %>
+      <%= link_to "Join a game", new_user_session_path, class: "button green" %>
+    </div>
+  </div>
+</div>
+<div class="description-banner">
+  <div class="container">
+    <p>Planning a bachelorette night for your girlfriends?
+    Looking for an engaging and interactive school field trip activity? How about a team-building activity for work?
+    Tour of the town? Manage it all on <strong>trace</strong>.</p>
+  </div>
+</div>
+<div class="bottom-banner">
+  <div class="container d-flex">
+      <%= image_tag "placeholder.png" %>
+      <div class="bottom-banner guide">
+        <h2>How it works</h2>
+        <ul>
+          <li><i class="fa-solid fa-circle-notch"></i> Create a game</li>
+          <li><i class="fa-solid fa-circle-notch"></i> Plot out different challenges and locations</li>
+          <li><i class="fa-solid fa-circle-notch"></i> Players join a game with a unique game code</li>
+          <li><i class="fa-solid fa-circle-notch"></i>
+            Players complete challenges by answering questions, submitting photos and QR codes</li>
+          <li><i class="fa-solid fa-circle-notch"></i> Best time wins</li>
+        </ul>
+      </div>
+  </div>
+
+    <div class="newsletter">
+      <div class="container w-50">
+
+      </div>
+    </div>
+</div>
