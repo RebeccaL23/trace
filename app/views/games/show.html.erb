@@ -19,13 +19,24 @@
             <div class="challenge-number"></div>
             <div class="challenge-card">
               <h2><%= challenge.question %></h2>
-              <p><%= link_to "View details", "#" %>
+
+              <div class="div" data-controller="challenge" data-challenge-id="<%= challenge.id %>">
+                <p><%= link_to "View details", "#" %>
+              </div>
+
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
+  </div>
 
+  <div class="challenge-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            This is a modal
+        </div>
+    </div>
   </div>
 
   <div id="map">
