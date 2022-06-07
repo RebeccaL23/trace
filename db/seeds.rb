@@ -13,15 +13,16 @@ Team.destroy_all
 Game.destroy_all
 Challenge.destroy_all
 
+puts "Destroyed users, teams, games and challenges"
+
 challenges = Challenge.all
 teams = Team.all
 games = Game.all
 
-
 puts "Creating users..."
 
 user1 = User.create(
-  email: "Rebecca@gmail.com",
+  email: "rebecca@gmail.com",
   password: "123456"
 )
 
