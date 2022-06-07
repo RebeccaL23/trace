@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
   root to: "pages#home"
 
@@ -8,9 +9,11 @@ Rails.application.routes.draw do
   # games
   resources :games, only: %i[show new create edit update] do
       get "confirmation", to: "games#confirmation", as: :confirmation
+  end
 end
 
 # Rails.application.routes.draw do
+  get 'users/show'
 #   devise_for :users
 #   root to: "pages#home"
 
