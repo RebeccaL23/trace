@@ -3,7 +3,13 @@
     <div class="col-md-5">
       <div class="form">
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control form-input" placeholder="Search games...">
+          <%= form_tag games_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control form-input",
+              placeholder: "Search games..."
+            %>
+          <% end  %>
       </div>
     </div>
   </div>
