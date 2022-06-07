@@ -1,10 +1,17 @@
 <div class="container page-container">
   <div class="half-block left">
+    <h1>Create a new game</h1>
     <%= render "form", game: @game %>
   </div>
 
-  <div class="half-block right" style="background-image: url('<%= asset_path 'map.jpeg' %>')">
+  <%# <div class="half-block right" style="background-image: url('<%= asset_path 'map.jpeg' %>
+  <div id="map">
+    <div class='half-block right'
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
+  <%# </div> %>
 </div>
 
 <div class="progress-bottom">
