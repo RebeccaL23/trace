@@ -1,0 +1,11 @@
+<div class="col-4 card-div">
+  <div class="card">
+    <%= image_tag game.photo, class: "card-img-top " %>
+    <div class="card-body">
+      <h3 class="card-title"> <%= game.name %> </h3>
+      <% time = game.start %>
+      <h6 class="card-time"> <%= game.start.strftime("%R %P") %> to <%= game.end.strftime("%R %P") %> </h6>
+      <h6 class="card-date"> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </h6>
+    </div>
+  </div>
+</div>
