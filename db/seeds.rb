@@ -38,33 +38,38 @@ user3 = User.create(
 
 puts "Created 3 users!"
 
-puts "Creating games..."
+puts "Creating 9 games..."
 
-Game.create(
-  name: "Jack the Ripper",
-  city: "London",
-  start: "12-06-2022 10:00",
-  end: "12-06-2022 13:00",
-  user: user1
-)
+3.times do
+  Game.create(
+    name: "Jack the Ripper",
+    city: "London",
+    start: "12-06-2022 10:00",
+    end: "12-06-2022 13:00",
+    photo: 'placeholder.png',
+    user: user1
+  )
 
-Game.create(
-  name: "Jurassic Park",
-  city: "London",
-  start: "14-06-2022 10:00",
-  end: "14-06-2022 13:00",
-  user: user1
-)
+  Game.create(
+    name: "Jurassic Park",
+    city: "London",
+    start: "14-06-2022 10:00",
+    end: "14-06-2022 13:00",
+    photo: 'placeholder.png',
+    user: user1
+  )
 
-Game.create(
-  name: "Ancient Aliens",
-  city: "London",
-  start: "14-06-2022 10:00",
-  end: "14-06-2022 13:00",
-  user: user1
-)
+  Game.create(
+    name: "Ancient Aliens",
+    city: "London",
+    start: "14-06-2022 10:00",
+    end: "14-06-2022 13:00",
+    photo: 'placeholder.png',
+    user: user1
+  )
+end
 
-puts "Created 3 games!"
+puts "Created #{Game.count} games!"
 
 puts "Creating teams..."
 
