@@ -3,7 +3,7 @@
     <div class="col-md-5">
       <div class="form">
         <i class="fa fa-search"></i>
-          <%= form_tag games_path, method: :get do %>
+          <%= form_tag user_path(@user), method: :get do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control form-input",
