@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "Destroying users, teams, games and challenges"
+
 User.destroy_all
 Team.destroy_all
 Game.destroy_all
@@ -14,6 +16,9 @@ Challenge.destroy_all
 challenges = Challenge.all
 teams = Team.all
 games = Game.all
+
+
+puts "Creating users..."
 
 user1 = User.create(
   email: "Rebecca@gmail.com",
@@ -31,6 +36,8 @@ user3 = User.create(
 )
 
 puts "Created 3 users!"
+
+puts "Creating games..."
 
 Game.create(
   name: "Jack the Ripper",
@@ -57,6 +64,8 @@ Game.create(
 )
 
 puts "Created 3 games!"
+
+puts "Creating teams..."
 
 team1 = Team.new(
   name: "Firestarters",
@@ -94,6 +103,8 @@ team2 = Team.new(
 team2.save!
 
 puts "Created 2 teams per game!"
+
+puts "Creating challenges..."
 
 16.times do
   Challenge.create(
