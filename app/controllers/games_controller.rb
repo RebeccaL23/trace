@@ -47,7 +47,6 @@ class GamesController < ApplicationController
       @game.code = code
       @game.save
     end
-    raise
   end
 
   private
