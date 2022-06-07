@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_action :set_game, only: %i[create]
+  before_action :set_game, only: %i[create edit update destroy]
   # skip_before_action :verify_authenticity_token, only: %i[] # not sure if needed
 
   def new
@@ -17,11 +17,16 @@ class ChallengesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
+    @challenge.update(challenge_params)
+    redirect_to game_path(@game)
+  end
 
+  def destroy
+    @challenge.destroy
+    redirect_to game_path(@game), status: :see_other
   end
 
   private
