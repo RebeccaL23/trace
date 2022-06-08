@@ -1,3 +1,4 @@
+# required for qrcode
 require "rqrcode"
 require "rmagick"
 
@@ -52,22 +53,23 @@ class GamesController < ApplicationController
       @game.save
     end
 
-    qrcode = RQRCode::QRCode.new("http://github.com/")
-    svg = qrcode.as_svg(
-      color: "000",
-      shape_rendering: "crispEdges",
-      module_size: 11,
-      standalone: true,
-      use_path: true
+  qrcode = RQRCode::QRCode.new("http://github.com/")
 
-    )
+  png = qrcode.as_png(
+    bit_depth: 1,
+    border_modules: 1,
+    color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+    color: "black",
+    file: nil,
+    fill: "white",
+    module_px_size: 10,
+    resize_exactly_to: false,
+    resize_gte_to: false,
+    size: 250
+  )
 
-    img = Magick::Image.from_blob(svg) {
-      self.format = 'SVG'
-      self.background_color = 'white'
-    }
+  IO.binwrite("./app/assets/images/qr_code#{@game.code}.png", png.to_s)
 
-    img[0].write("./app/assets/images/qr_code#{@game.code}.png")
   end
 
   private

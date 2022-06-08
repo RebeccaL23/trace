@@ -6,9 +6,9 @@ ruby "3.0.3"
 # for search bar
 gem "pg_search"
 
-# confirmation page
+# confirmation page for qrcode
 gem 'rqrcode'
-gem 'rmagick'
+gem 'chunky_png'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
