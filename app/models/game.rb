@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   # search on a user's index page
   include PgSearch::Model
   pg_search_scope :search_by_name,
-                  against: [:name],
+                  against: %i[name city],
                   using: {
                     tsearch: { prefix: true }
                   }
