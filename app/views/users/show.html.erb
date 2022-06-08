@@ -1,24 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
 
-<div class="container">
-  <%= render "shared/search" %>
-</div>
 
-<div class="container">
-  <div class="row">
-  <h1>upcoming</h1>
-  <% time = Time.now %>
+  <div class="container">
+    <div class="row">
+    <div class="d-inline">
+    <h1>Dashboard</h1>
+      <%= render "shared/search" %>
+    </div>
+    <% time = Time.now %>
 
-  <% upcoming = @games.where('start >= ?', time) %>
-  <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
-    <%= render "shared/games_card", { game: game } %>
-  <% end %>
-  <h1>completed</h1>
-  <% time = Time.now %>
-  <% completed = @games.where('start < ?', time) %>
-  <% completed.sort_by { |el| el[:start] }.each do |game| %>
-    <%= render "shared/games_card", { game: game } %>
-  <% end %>
+    <% upcoming = @games.where('start >= ?', time) %>
+    <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
+      <%= render "shared/games_card", { game: game } %>
+    <% end %>
+    <% time = Time.now %>
+    <% completed = @games.where('start < ?', time) %>
+    <% completed.sort_by { |el| el[:start] }.each do |game| %>
+      <%= render "shared/games_card", { game: game } %>
+    <% end %>
+    </div>
   </div>
-</div>
