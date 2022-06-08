@@ -23,12 +23,12 @@
     font-size: 24px;
     font-weight: 400;
     margin: auto;
-    padding: 48px 384px 48px 48px;
+    padding: 48px 320px 48px 48px;
   }
 }
 
 .bottom-banner{
-  height: 800px;
+  // height: 800px;
   background: $beige;
   img{
     width: 548px;
@@ -57,10 +57,115 @@
       margin-right: 8px;
     }
   }
+
+  a{
+    margin: 72px 24px;
+    text-align: center;
+  }
+  .newsletter{
+    background: $charcoal;
+    height: 385px;
+    border-radius: 10px;
+    justify-content: center;
+    &.content{
+      display: flex;
+    }
+    .subscribe{
+      // width: 50%;
+      display: flex;
+      padding: 30px 42px;
+      justify-content: center;
+      align-items: center;
+      &.form{
+        background-color: $beige;
+        border-radius: 5px;
+        width: 371px;
+        height: 153px;
+        display: inline;
+        h3{
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+  }
+    }
+    .info{
+      color: $off-white;
+      // width: 50%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      h2{
+        font-weight: 700;
+        font-size: 38px;
+      }
+      p{
+        font-size: 16px;
+      }
+    }
 }
 
-.newsletter{
-  background: $charcoal;
-  height: 400px;
-  border-radius: 5px;
+.footer {
+  background: $off-white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius:5px;
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  color: rgba(0, 0, 0, 0.3);
+  // padding-top: 80px !important;
+  // padding-bottom: 120px !important;
+  padding: 50px;
+  margin-top:50px;
+  vertical-align: top;
+  img{
+    height: 60px;
+    width: auto;
+  }
+}
+.footer-copyright{
+  width: 320px;
+  color: #fff;
+  p {
+    opacity: 0.6;
+  }
+}
+
+.footer-items{
+  ul{
+    display: flex;
+    margin:auto
+  }
+  li{
+    list-style: none;
+    text-decoration: none;
+    margin: 0px 8px;
+    a{
+      color: $charcoal;
+      margin: 0px 24px;
+    }
+  }
+}
+
+.footer-links {
+  display: flex;
+  margin-left: 138px;
+
+}
+
+.footer-links a {
+  color: $charcoal;
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer .fa-heart {
+  color: #D23333;
 }
