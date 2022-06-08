@@ -30,10 +30,10 @@
         </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-4">
+    <div class="row justify-content-center" data-controller="clipboard">
+      <div class="col-12 col-sm-5">
         <div class="code display-inline">
-          <h3> <%=@game.code%> <i class="fas fa-copy"></i> </h3>
+          <h3> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i> </h3>
         </div>
       </div>
     </div>
