@@ -1,3 +1,7 @@
+# required for qrcode
+require "rqrcode"
+require "chunky_png"
+
 class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
 
@@ -48,6 +52,24 @@ class GamesController < ApplicationController
       @game.code = code
       @game.save
     end
+
+  qrcode = RQRCode::QRCode.new("#{request.original_url}")
+
+  png = qrcode.as_png(
+    bit_depth: 1,
+    border_modules: 1,
+    color_mode: ChunkyPNG::COLOR_GRAYSCALE,
+    color: "black",
+    file: nil,
+    fill: "white",
+    module_px_size: 10,
+    resize_exactly_to: false,
+    resize_gte_to: false,
+    size: 250
+  )
+
+  IO.binwrite("./app/assets/images/qr_code#{@game.code}.png", png.to_s)
+
   end
 
   private
