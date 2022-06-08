@@ -31,9 +31,15 @@
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-10">
-        <div class="code">
-          <h3> <%=@game.code %></h3>
+      <div class="col-12 col-sm-4">
+        <div class="code display-inline">
+          <h3> <%=@game.code%> <i class="fas fa-copy"></i> </h3>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6 col-sm-8">
+        <div class="qr-code">
           <%= image_tag "qr_code#{@game.code}.png" %>
         </div>
       </div>
