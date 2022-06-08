@@ -1,6 +1,6 @@
 # required for qrcode
 require "rqrcode"
-require "rmagick"
+require "chunky_png"
 
 class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
