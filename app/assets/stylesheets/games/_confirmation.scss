@@ -24,8 +24,8 @@
 .confirmation-box {
   background: linear-gradient(rgba(254, 254, 254, 0.7), rgba(254, 254, 254, 0.7));
   padding: 20px 20px;
-  margin-top: 25vh;
-  height: 50vh;
+  margin-top: 10vh;
+  height: 77vh;
   width: 50vh;
   border-radius: 10px;
 }
@@ -39,5 +39,22 @@
 }
 
 .location {
+  margin-bottom: 1vh;
+}
+
+.code {
+  margin-top: 3vh;
   margin-bottom: 2vh;
+}
+
+.copy:hover {
+  opacity: 70%;
+}
+
+.copy:active {
+  opacity: 100%;
+}
+
+.hidden {
+  display: none
 }
