@@ -15,13 +15,20 @@
       <% if @game.challenges.count == 0 %>
         <p>You have not added any challenges. <%= link_to "Add a challenge", "#" %></p>
       <% else %>
+      <%# Iterate through challenges coordinates and create markers %>
+        <% @markers = @game.challenges.geocoded.map do |challenge| %>
+          <% {
+              lat: challenge.latitude,
+              lng: challenge.longitude
+              # image_url: helpers.asset_url("app/assets/images/marker.png")
+              } %>
+        <% end %>
         <% @game.challenges.each do |challenge| %>
           <div class="challenge-list-item">
             <div class="challenge-number"></div>
             <div class="challenge-card">
               <h2><%= challenge.question %></h2>
-
-              <div class="div"  data-challenge-id="<%= challenge.id %>">
+              <div class="div" data-controller="challenge" data-challenge-id="<%= challenge.id %>">
                 <p data-action="click->challenge#showModal">Click me</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
                 <div class="challenge-modal" data-challenge-target="modal">
