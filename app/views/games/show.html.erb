@@ -3,14 +3,17 @@
   <div class="half-block left">
     <div class="game-details">
       <div class="left">
-        <p><%= @game.name %></p>
-        <p><%= @game.start %> – <%= @game.end %></p>
-        <a href=<% link_to %>>
+        <span><strong><%= @game.name %></strong></span><br>
+        <span><%= @game.city %></span><br>
+        <% time = @game.start %>
+        <span> <%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %> </span><br>
+        <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
       </div>
       <div class="right">
         <%= link_to "Add challenge", "#", class: "button beige" %>
         <%= link_to "Publish game", "#", class: "button green" %>
       </div>
+    </div>
 
       <% if @game.challenges.count == 0 %>
         <p>You have not added any challenges. <%= link_to "Add a challenge", "#" %></p>
@@ -23,26 +26,24 @@
               # image_url: helpers.asset_url("app/assets/images/marker.png")
               } %>
         <% end %>
-        <% @game.challenges.each do |challenge| %>
+        <% @game.challenges.each_with_index do |challenge,index| %>
           <div class="challenge-list-item">
-            <div class="challenge-number"></div>
+            <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
-              <h2><%= challenge.question %></h2>
-              <div class="div" data-controller="challenge" data-challenge-id="<%= challenge.id %>">
-                <p data-action="click->challenge#showModal">Click me</p>
+              <h3><%= challenge.question %></h3>
+              <div class="div" data-challenge-id="<%= challenge.id %>">
+                <p class='challenge-edit' data-action="click->challenge#showModal">View/edit details</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
                 <div class="challenge-modal" data-challenge-target="modal">
                   <%# <%= render "challenges/edit" %>
-
                   <div class="modal-container">
                     <div class="modal-details">
                       <div class="half-modal left">
                         <h1>Edit challenge</h1>
                         <%= render "form", locals: { game: @game, challenge: @challenge } %>
                       </div>
-
                       <div class="half-modal right">
-                        <a href='#' id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></a>
+                        <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
                         <div style="width: 84vw; height: 84vh; !important;"
                         data-controller="map-challenge"
                         data-map-challenge-markers-value="<%= @markers.to_json %>"
@@ -50,16 +51,13 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
-
             </div>
           </div>
+          <% end %>
         <% end %>
-      <% end %>
     </div>
-  </div>
 
   <div class="half-block right">
     <div style="width: 100%; height: 100vh;"
