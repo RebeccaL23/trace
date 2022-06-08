@@ -1,0 +1,52 @@
+<div class="container page-container">
+  <div class="half-block left">
+    <div class="game-details">
+      <div class="left">
+        <p><%= @game.name %></p>
+        <p><%= @game.start %> – <%= @game.end %></p>
+        <a href=<% link_to %>>
+      </div>
+      <div class="right">
+        <%= link_to "Add challenge", "#", class: "button beige" %>
+        <%= link_to "Publish game", "#", class: "button green" %>
+      </div>
+
+      <% if @game.challenges.count == 0 %>
+        <p>You have not added any challenges. <%= link_to "Add a challenge", "#" %></p>
+      <% else %>
+        <% @game.challenges.each do |challenge| %>
+          <div class="challenge-list-item">
+            <div class="challenge-number"></div>
+            <div class="challenge-card">
+              <h2><%= challenge.question %></h2>
+
+              <div class="div" data-controller="challenge" data-challenge-id="<%= challenge.id %>">
+                <p><%= link_to "View details", "#" %>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="challenge-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            This is a modal
+        </div>
+    </div>
+  </div>
+
+  <div id="map">
+    <div class='half-block right'
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
+</div>
+
+<div class="progress-bottom">
+  <div class='step-two'></div>
+</div>

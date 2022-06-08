@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
 
   def show
+
   end
 
   def new
@@ -13,7 +14,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.user = current_user
     if @game.save
-      redirect_to game_confirmation_path(@game.id), notice: 'you created a game!'
+      redirect_to game_path(@game), notice: 'you created a game!'
     else
       render :new, status: :unprocessable_entity
     end
