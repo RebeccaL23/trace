@@ -9,6 +9,7 @@
   <div class="row">
   <h1>upcoming</h1>
   <% time = Time.now %>
+
   <% upcoming = @games.where('start >= ?', time) %>
   <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
     <%= render "shared/games_card", { game: game } %>
