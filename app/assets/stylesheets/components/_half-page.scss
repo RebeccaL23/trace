@@ -18,3 +18,26 @@
     }
   }
 }
+
+.modal-container{
+  display: flex;
+  flex-direction: row;
+  width: 80vw;
+  height: 90vh;
+
+  .half-block{
+    width: 50%;
+    height: 100vh;
+
+    &.left{
+      padding: 140px 80px 0px 0px !important;
+    }
+
+    &.right{
+      background-size: cover;
+      position: fixed;
+      top: 0%;
+      left: 50%;
+    }
+  }
+}
