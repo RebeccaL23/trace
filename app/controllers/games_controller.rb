@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[show edit update destroy confirmation]
+  before_action :set_game, only: %i[show edit update destroy]
 
   def show
   end
@@ -37,13 +37,16 @@ class GamesController < ApplicationController
 
   # not checked!
   def confirmation
-    # @games = Game.all
-    # if @game.id < 6 chars
-    #   while @game.id matches ids in @games
-    #     new = generate 6 digits
-    #     @game.id = new
-    #   end
-    # end
+    @game = Game.find(params[:game_id])
+    games = Game.all
+    if @game.code.nil?
+      code = [*'A'..'Z', *0..9].sample(6).join
+      while games.where(code: code).count >= 1
+        code = [*'A'..'Z', *0..9].sample(6).join
+      end
+      @game.code = code
+      @game.save
+    end
   end
 
   private
@@ -53,6 +56,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:name, :city, :start, :end, :photo)
+    params.require(:game).permit(:name, :city, :start, :end, :photo, :code)
   end
 end
