@@ -1,3 +1,44 @@
+
+//
+.game-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+// challenge list item on game show page
+.challenge-list-item{
+  display: flex;
+  flex-direction: row;
+  background-color: $off-white;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.challenge-number{
+  background: $mint;
+  width: 40px;
+  position: relative;
+
+  h2{
+    position:absolute;
+    top: 33%;
+    left: 20%;
+    margin-bottom: 0px !important;
+  }
+}
+
+.challenge-card{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  .challenge-edit{
+    text-decoration: underline;
+  }
+}
+
 // challenge modal
 .challenge-modal{
   display: none;
@@ -16,10 +57,11 @@
 }
 
 .opacity{
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.666);
   width: 100vw;
   height: 100vh;
   position: fixed;
+  z-index: 1000;
   top: 0%;
   left: 0%;
 }
@@ -40,7 +82,7 @@
 
     &.left{
       padding: 30px 30px;
-      background: #fff;
+      background: $beige;
     }
 
     &.right{
