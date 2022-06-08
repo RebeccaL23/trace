@@ -30,10 +30,16 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center" data-controller="clipboard">
+      <div class="col-12 col-sm-5">
+        <div class="code display-inline">
+          <h3> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i> </h3>
+        </div>
+      </div>
+    </div>
     <div class="row justify-content-center">
-      <div class="col-10">
-        <div class="code">
-          <h3> <%=@game.code %></h3>
+      <div class="col-6 col-sm-8">
+        <div class="qr-code">
           <%= image_tag "qr_code#{@game.code}.png" %>
         </div>
       </div>

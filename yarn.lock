@@ -749,6 +749,11 @@ source-map@^0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+stimulus-clipboard@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-clipboard/-/stimulus-clipboard-3.1.0.tgz#4ca52cc02928c28c5166285fe3efdc47482dbc3e"
+  integrity sha512-YN1vZ05D3knmJZ2zXmkfX0qO2q9Ume8aV38X3akL8uaABho+sQOqWNygBLeGlhFML3JiNNKxeooIehfzKnnzNw==
+
 strip-final-newline@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strip-final-newline/-/strip-final-newline-2.0.0.tgz#89b852fb2fcbe936f6f4b3187afb0a12c1ab58ad"
