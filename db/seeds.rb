@@ -53,8 +53,8 @@ puts "Creating 9 games..."
   Game.create(
     name: "Jurassic Park",
     city: "London",
-    start: "14-06-2022 10:00",
-    end: "14-06-2022 13:00",
+    start: "01-06-2022 10:00",
+    end: "01-06-2022 13:00",
     photo: 'placeholder.png',
     user: user1
   )
@@ -71,44 +71,45 @@ end
 
 puts "Created #{Game.count} games!"
 
-puts "Creating teams..."
+# puts "Creating teams..."
 
-team1 = Team.new(
-  name: "Firestarters",
-  game: games[0]
-)
-team1.save!
+# team1 = Team.new(
+#   name: "Firestarters",
+#   game: games[0]
+# )
+# team1.save!
 
-team2 = Team.new(
-  name: "Spice Boyz",
-  game: games[0]
-)
-team2.save!
+# team2 = Team.new(
+#   name: "Spice Boyz",
+#   game: games[0]
+# )
+# team2.save!
 
-team1 = Team.new(
-  name: "Firestarters",
-  game: games[1]
-)
-team1.save!
+# team1 = Team.new(
+#   name: "Firestarters",
+#   game: games[1]
+# )
+# team1.save!
 
-team2 = Team.new(
-  name: "Spice Boyz",
-  game: games[1]
-)
-team2.save!
-team1 = Team.new(
-  name: "Firestarters",
-  game: games[2]
-)
-team1.save!
+# team2 = Team.new(
+#   name: "Spice Boyz",
+#   game: games[1]
+# )
+# team2.save!
 
-team2 = Team.new(
-  name: "Spice Boyz",
-  game: games[2]
-)
-team2.save!
+# team1 = Team.new(
+#   name: "Firestarters",
+#   game: games[2]
+# )
+# team1.save!
 
-puts "Created 2 teams per game!"
+# team2 = Team.new(
+#   name: "Spice Boyz",
+#   game: games[2]
+# )
+# team2.save!
+
+# puts "Created 2 teams per game!"
 
 puts "Creating challenges..."
 
@@ -126,7 +127,6 @@ puts "Creating challenges..."
 end
 
 puts "Created 16 challenges!"
-
 
 # 16.times do
 #   Completion.create(
