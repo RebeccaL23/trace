@@ -1,3 +1,6 @@
+require "rqrcode"
+require "rmagick"
+
 class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
 
@@ -48,6 +51,23 @@ class GamesController < ApplicationController
       @game.code = code
       @game.save
     end
+
+    qrcode = RQRCode::QRCode.new("http://github.com/")
+    svg = qrcode.as_svg(
+      color: "000",
+      shape_rendering: "crispEdges",
+      module_size: 11,
+      standalone: true,
+      use_path: true
+
+    )
+
+    img = Magick::Image.from_blob(svg) {
+      self.format = 'SVG'
+      self.background_color = 'white'
+    }
+
+    img[0].write("./app/assets/images/qr_code#{@game.code}.png")
   end
 
   private
