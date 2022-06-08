@@ -10,5 +10,8 @@ application.register("challenge", ChallengeController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import MapChallengeController from "./map_challenge_controller.js"
+application.register("map-challenge", MapChallengeController)
+
 import MapController from "./map_controller.js"
 application.register("map", MapController)
