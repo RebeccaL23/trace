@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_game, only: %i[create edit update destroy]
+  before_action :set_challenge, only: %i[create edit update destroy]
   # skip_before_action :verify_authenticity_token, only: %i[] # not sure if needed
 
   def new
@@ -33,6 +34,10 @@ class ChallengesController < ApplicationController
 
   def set_game
     @game = Game.find(params[:game_id])
+  end
+
+  def set_challenge
+    @challenge = Challenge.find(params[:id])
   end
 
   def challenge_params
