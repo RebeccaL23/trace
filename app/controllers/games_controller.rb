@@ -53,7 +53,7 @@ class GamesController < ApplicationController
       @game.save
     end
 
-  qrcode = RQRCode::QRCode.new("http://github.com/")
+  qrcode = RQRCode::QRCode.new("#{request.original_url}")
 
   png = qrcode.as_png(
     bit_depth: 1,
