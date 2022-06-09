@@ -67,12 +67,19 @@ a:hover{
 
 .game-code{
   background-color: black;
-  color: $off-white;
   text-align: center;
   margin-top: 14px;
   width: 228px;
   height: 36px;
   h4{
     padding-top: 5px;
+    color: $off-white;
   }
+}
+
+#publish{
+  padding-top: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-decoration: underline;
 }

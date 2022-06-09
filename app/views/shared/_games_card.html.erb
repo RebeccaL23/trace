@@ -21,12 +21,14 @@
         <h6 class="card-time"> <%= game.start.strftime("%R %P") %> to <%= game.end.strftime("%R %P") %> </h6>
         <h6 class="card-date"> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </h6>
         <% link_to game_path(game) %>
-        <% unless game.code.nil? %>
+        <% if game.code.nil? && game.start >= Time.now %>
+          <p id="publish">Publish game</p>
+        <% elsif game.code.present? %>
           <div class="game-code">
-            <h4>Game code <%= game.code %></h4>
+            <%= link_to game_confirmation_path(game) do %>
+              <h4>Game code <%= game.code %></h4>
+            <% end %>
           </div>
-        <% else %>
-          <p>Publish game</p>
         <% end %>
       </div>
     </div>
