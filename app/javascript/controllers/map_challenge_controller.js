@@ -1,13 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
-const lngLat = {}
 
 export default class extends Controller {
+  static targets = ["long"]
+
   static values = {
     apiKey: String,
     markers: Array
   }
 
   connect() {
+    // console.log(this.longTarget)
     mapboxgl.accessToken = this.apiKeyValue
     // console.log('map-challenge');
 
@@ -41,16 +43,12 @@ export default class extends Controller {
         .addTo(this.map)
 
         function onDragEnd() {
-          lngLat = newMarker.getLngLat();
-          console.log(lngLat)
-          console.log(longTarget)
-          // this.longTarget.value = lngLat.lng
-          // this.latTarget.textContent = lngLat.lat
+          const lngLat = newMarker.getLngLat();
+          // console.log(lngLat)
+          console.log(this.longTarget)
         }
 
         newMarker.on('dragend', onDragEnd);
     })
   }
 }
-
-export { lngLat }

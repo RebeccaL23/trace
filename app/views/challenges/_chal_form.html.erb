@@ -1,8 +1,8 @@
-<div data-controller="map-challenge">
-  <%= simple_form_for [ @game, @game.challenges.first ] do |f| %>
+<div data-controller="challenge">
+  <%= simple_form_for ([@game, @game.challenges.first])  do |f| %>
     <%= f.input :location, as: :string %>
     <%= f.input :latitude, as: :float %>
-    <%= f.input :longitude, as: :float, input_html: { :'data-map-challenge-target' => "long" } %>
+    <%= f.input :longitude, as: :float, input_html: { :'data-challenge-target' => "long" } %>
     <%= f.input :question, as: :string %>
     <%= f.input :correct_answer, as: :string %>
     <%= f.input :answer_1, as: :string %>

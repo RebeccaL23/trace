@@ -26,7 +26,7 @@
               # image_url: helpers.asset_url("app/assets/images/marker.png")
               } %>
         <% end %>
-        <% @game.challenges.each_with_index do |challenge,index| %>
+        <% @game.challenges.each_with_index do |challenge, index| %>
           <div class="challenge-list-item">
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
@@ -40,7 +40,9 @@
                     <div class="modal-details">
                       <div class="half-modal left">
                         <h1>Edit challenge</h1>
-                        <%= render "challenges/chal_form", locals: { game: @game, challenge: @game.challenges.first } %>
+                        <div data-controller="marker">
+                          <%= render "challenges/chal_form", locals: { game: @game, challenge: challenge.id } %>
+                        </div>
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %> </button>
