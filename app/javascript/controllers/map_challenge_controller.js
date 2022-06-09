@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+const lngLat = {}
 
 export default class extends Controller {
   static values = {
@@ -40,11 +41,16 @@ export default class extends Controller {
         .addTo(this.map)
 
         function onDragEnd() {
-          const lngLat = newMarker.getLngLat();
+          lngLat = newMarker.getLngLat();
           console.log(lngLat)
+          console.log(longTarget)
+          // this.longTarget.value = lngLat.lng
+          // this.latTarget.textContent = lngLat.lat
         }
 
         newMarker.on('dragend', onDragEnd);
     })
   }
 }
+
+export { lngLat }
