@@ -8,6 +8,11 @@
   left: 2vw;
   top: 1.5vh;
   border-radius: 10px;
+
+  &.items{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   ul{
     display: flex;
     margin:auto
@@ -21,3 +26,19 @@
     }
   }
 }
+
+// .navbar {
+//   background: $off-white;
+//   ul{
+//     display: flex;
+//     margin:auto
+//   }
+//   li{
+//     list-style: none;
+//     text-decoration: none;
+//     margin: 0px 8px;
+//     a{
+//       color: $charcoal;
+//     }
+//   }
+// }

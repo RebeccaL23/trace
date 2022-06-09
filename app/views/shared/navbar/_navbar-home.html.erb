@@ -1,10 +1,11 @@
 <div class="navbar">
   <div class="container d-flex justify-content-between">
+    <div class="navbar items" >
       <%= link_to root_path do %>
         <%= image_tag "Logo.png" %>
       <% end %>
-      <% unless user_signed_in? %>
-        <div class="navbar items" >
+      <% if !user_signed_in? %>
+        <div>
           <ul>
             <li>
               <%= link_to "How it works", "#"%>
@@ -14,15 +15,7 @@
             </li>
           </ul>
         </div>
-      <% end %>
-        <% if user_signed_in? %>
-          <ul>
-            <li>
-              <%= link_to "Back to dashboard", user_path(current_user),class: "dashboard button green"%>
-            </li>
-          </ul>
-        <% else %>
-        <div class="navbar items">
+        <div>
           <ul>
             <li>
               <%= link_to "Create a game", new_user_session_path, class: "button beige" %>
@@ -32,6 +25,15 @@
             </li>
           </ul>
         </div>
-        <% end %>
+      <% else %>
+        <div>
+          <ul>
+            <li>
+              <%= link_to "Back to dashboard", user_path(current_user),class: "dashboard button green"%>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
