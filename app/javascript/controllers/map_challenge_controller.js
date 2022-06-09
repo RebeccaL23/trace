@@ -9,9 +9,7 @@ export default class extends Controller {
   }
 
   connect() {
-    // console.log(this.longTarget)
     mapboxgl.accessToken = this.apiKeyValue
-    // console.log('map-challenge');
 
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -45,7 +43,6 @@ export default class extends Controller {
         function onDragEnd() {
           const lngLat = newMarker.getLngLat();
           console.log(lngLat)
-
         }
 
         newMarker.on('dragend', onDragEnd);
