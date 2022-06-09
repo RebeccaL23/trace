@@ -1,6 +1,6 @@
 // logged out
 
-.navbar-trace {
+.navbar {
   background: $off-white;
   position: fixed;
   z-index: 1000;
@@ -8,7 +8,6 @@
   left: 2vw;
   top: 1.5vh;
   border-radius: 10px;
-
   ul{
     display: flex;
     margin:auto
@@ -16,7 +15,7 @@
   li{
     list-style: none;
     text-decoration: none;
-    margin: 0px 8px;
+    margin: 20px 8px;
     a{
       color: $charcoal;
     }
