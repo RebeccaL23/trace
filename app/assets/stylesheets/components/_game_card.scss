@@ -1,11 +1,16 @@
+a{
+  color: $charcoal;
+
+}
+a:hover{
+  color: $charcoal;
+
+}
 .game-col  {
   margin-bottom: 12px;
   margin-top: 12px;
 }
 .card-body{
-  a{
-    color: $charcoal;
-  }
   h3{
     font-weight: 600;
   }
@@ -25,7 +30,10 @@
   width: 338px;
   height: 402px;
 }
-
+.completed{
+  opacity: 0.6;
+  background: rgba(210, 215, 211, 0.5);
+}
 
 .card img{
   position: relative;

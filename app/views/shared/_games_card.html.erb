@@ -1,13 +1,18 @@
 
-<div class="col-4 game-col">
+<div class="col-4 game-col d-flex justify-content-center">
   <%= link_to game_path(game) do %>
-    <div class="card">
+    <% time = Time.now %>
+    <% unless game.start < time %>
+      <div class="card">
+    <% else %>
+      <div class="card completed">
+    <% end %>
       <%= image_tag game.photo, class: "card-img-top " %>
       <div class="card-body">
-        <% time = Time.now %>
-
         <% if game.start.day == time.day %>
           <p class="status today">Today</p>
+        <% elsif game.start < time  %>
+          <p class="status upcoming">Completed</p>
         <% else %>
           <p class="status upcoming">Upcoming</p>
         <% end %>
@@ -15,7 +20,14 @@
         <% time = game.start %>
         <h6 class="card-time"> <%= game.start.strftime("%R %P") %> to <%= game.end.strftime("%R %P") %> </h6>
         <h6 class="card-date"> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </h6>
-        <%= link_to "game", game_path(game) %>
+        <% link_to game_path(game) %>
+        <% unless game.code.nil? %>
+          <div class="game-code">
+            <h4>Game code <%= game.code %></h4>
+          </div>
+        <% else %>
+          <p>Publish game</p>
+        <% end %>
       </div>
     </div>
   <% end %>
