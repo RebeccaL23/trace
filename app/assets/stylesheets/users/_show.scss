@@ -1,25 +1,14 @@
-body{
+.user-show{
   background-color: $beige;
   margin-bottom: 124px;
 }
-h1{
+#dashboard-header{
   font-weight: 700;
   font-size: 60px;
   padding-right: 400px;
 
 }
-h4{
-  padding-top: 5px;
-}
 .card-row{
   padding-left: 123px;
   padding-right: 123px;
-}
-.game-code{
-  background-color: black;
-  color: $off-white;
-  text-align: center;
-  margin-top: 14px;
-  width: 228px;
-  height: 36px;
 }
