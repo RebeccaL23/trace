@@ -6,6 +6,10 @@ export default class extends Controller {
     markers: Array
   }
 
+  // click() {
+  //   this.#getMarkerLatLong()
+  // }
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
     // console.log('map-challenge');
@@ -28,20 +32,38 @@ export default class extends Controller {
   #addMarkersToMap() {
     this.markersValue.find((marker) => {
       const customMarker = document.createElement("div")
+      // customMarker.setAttribute('draggable', "true");
+      customMarker.setAttribute('data-controller', "drag");
+      customMarker.setAttribute('data-drag-target', "marker");
+      customMarker.setAttribute('data-action', "click->drag#marker");
+      // console.log(customMarker.getAttribute('data-action'));
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
-      new mapboxgl.Marker(customMarker, {
+      const newMarker = new mapboxgl.Marker({
         draggable: true
       })
+
+      // new mapboxgl.Marker(customMarker, {
+      //   draggable: true
+      // })
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
 
-        marker.on('dragend', onDragEnd(marker))
+        function onDragEnd() {
+          const lngLat = newMarker.getLngLat();
+          console.log(lngLat)
+        }
+
+        newMarker.on('dragend', onDragEnd);
     })
 
-    function onDragEnd(marker) {
-      console.log(marker);
-    }
   }
+
+  // #getMarkerLatLong() {
+  //   this.markersValue.forEach((marker) => {
+  //   const lngLat = marker.getLngLat();
+  //   console.log(lngLat)
+  //   })
+  // }
 }
