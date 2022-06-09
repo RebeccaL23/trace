@@ -10,6 +10,9 @@ application.register("challenge", ChallengeController)
 import ClipboardController from "./clipboard_controller.js"
 application.register("clipboard", ClipboardController)
 
+import FormController from "./form_controller.js"
+application.register("form", FormController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

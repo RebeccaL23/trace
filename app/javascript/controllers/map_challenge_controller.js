@@ -44,8 +44,8 @@ export default class extends Controller {
 
         function onDragEnd() {
           const lngLat = newMarker.getLngLat();
-          // console.log(lngLat)
-          console.log(this.longTarget)
+          console.log(lngLat)
+
         }
 
         newMarker.on('dragend', onDragEnd);

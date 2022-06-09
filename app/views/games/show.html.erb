@@ -40,9 +40,7 @@
                     <div class="modal-details">
                       <div class="half-modal left">
                         <h1>Edit challenge</h1>
-                        <div data-controller="marker">
-                          <%= render "challenges/chal_form", locals: { game: @game, challenge: challenge.id } %>
-                        </div>
+                        <%= render "challenges/chal_form", locals: { game: @game, challenge: challenge.id } %>
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %> </button>
