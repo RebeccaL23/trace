@@ -64,17 +64,22 @@
   z-index: 1000;
   top: 0%;
   left: 0%;
+
 }
 
 .mapboxgl-canvas {
   height: 84vh;
   width: 42vw;
 }
-
+.fix-height {
+  height: 84vh !important;
+  width: 42vw !important;
+}
 
 .modal-container{
   width: 84vw;
   height: 84vh;
+
 
   .modal-details{
     display: inline-flex;
@@ -90,6 +95,7 @@
     &.left{
       padding: 30px 30px;
       background: $beige;
+      overflow-y:auto;
     }
 
     &.right{
