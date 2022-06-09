@@ -7,6 +7,9 @@ import { application } from "./application"
 import ChallengeController from "./challenge_controller.js"
 application.register("challenge", ChallengeController)
 
+import ClipboardController from "./clipboard_controller.js"
+application.register("clipboard", ClipboardController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

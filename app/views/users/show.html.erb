@@ -1,24 +1,23 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <div class="container user-show">
+      <div class="d-flex py-3">
+        <h1 id="dashboard-header">Dashboard</h1>
+          <%= render "shared/search" %>
+          <div class="d-flex text-center pt-2" >
+            <%= link_to "Create a game", new_game_path, class: "button beige" %>
+          </div>
+      </div>
+      <div class="row card-row">
 
-<div class="container">
-  <%= render "shared/search" %>
-</div>
+      <% time = Time.now %>
 
-<div class="container">
-  <div class="row">
-  <h1>upcoming</h1>
-  <% time = Time.now %>
-
-  <% upcoming = @games.where('start >= ?', time) %>
-  <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
-    <%= render "shared/games_card", { game: game } %>
-  <% end %>
-  <h1>completed</h1>
-  <% time = Time.now %>
-  <% completed = @games.where('start < ?', time) %>
-  <% completed.sort_by { |el| el[:start] }.each do |game| %>
-    <%= render "shared/games_card", { game: game } %>
-  <% end %>
+      <% upcoming = @games.where('start >= ?', time) %>
+      <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
+        <%= render "shared/games_card", { game: game } %>
+      <% end %>
+      <% time = Time.now %>
+      <% completed = @games.where('start < ?', time) %>
+      <% completed.sort_by { |el| el[:start] }.each do |game| %>
+        <%= render "shared/games_card", { game: game } %>
+      <% end %>
+    </div>
   </div>
-</div>
