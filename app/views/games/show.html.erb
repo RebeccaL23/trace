@@ -26,33 +26,43 @@
               # image_url: helpers.asset_url("app/assets/images/marker.png")
               } %>
         <% end %>
+
+
+
         <% @game.challenges.each_with_index do |challenge,index| %>
           <div class="challenge-list-item">
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
               <h3><%= challenge.question %></h3>
               <div class="div" data-challenge-id="<%= challenge.id %>">
+
+                <% @marker = [{ lat: challenge.geocode[0], lng: challenge.geocode[1] }] %>
+
                 <p class='challenge-edit' data-action="click->challenge#showModal" data-action="click->challenge#resizeOnLoad">View/edit details</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
-                <div class="challenge-modal" data-challenge-target="modal">
+
+
+                <div class="challenge-modal" data-challenge-target="modal" >
                   <%# <%= render "challenges/edit" %>
                   <div class="modal-container">
                     <div class="modal-details">
-                      <div class="half-modal left">
+                      <div class="half-modal left" >
                         <h1>Edit challenge</h1>
-                        <%= render "challenges/form", locals: { game: @game, challenge: @game.challenges.first } %>
+                        <%= render "challenges/form", locals: { game: @game, challenge: challenge } %>
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-                        <div style="width: 42vw; height: 84vh;"
+                        <div data-challenge-target="map" style="width: 42vw; height: 84vh;"
                         data-controller="map-challenge"
-                        data-map-challenge-markers-value="<%= @markers.to_json %>"
+                        data-map-challenge-marker-value="<%= @marker.to_json %>"
                         data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
                         ></div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
