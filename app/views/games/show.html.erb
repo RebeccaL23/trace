@@ -40,14 +40,16 @@
                     <div class="modal-details">
                       <div class="half-modal left">
                         <h1>Edit challenge</h1>
-                        <%= render "challenges/form", locals: { game: @game, challenge: @game.challenges.first } %>
+                        <%= render "challenges/chal_form", locals: { game: @game, challenge: @game.challenges.first } %>
                       </div>
                       <div class="half-modal right">
-                        <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-                        <div style="width: 84vw; height: 84vh; !important;"
+                        <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %> </button>
+                        <div style="height: 100%;"
                         data-controller="map-challenge"
+                        data-action="dragstart->drag-item#dragstart dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop dragend->drag-item#dragend"
                         data-map-challenge-markers-value="<%= @markers.to_json %>"
-                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                        </div>
                       </div>
                     </div>
                   </div>
