@@ -6,10 +6,6 @@ export default class extends Controller {
     markers: Array
   }
 
-  // click() {
-  //   this.#getMarkerLatLong()
-  // }
-
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
     // console.log('map-challenge');
@@ -33,10 +29,6 @@ export default class extends Controller {
     this.markersValue.find((marker) => {
       const customMarker = document.createElement("div")
       // customMarker.setAttribute('draggable', "true");
-      customMarker.setAttribute('data-controller', "drag");
-      customMarker.setAttribute('data-drag-target', "marker");
-      customMarker.setAttribute('data-action', "click->drag#marker");
-      // console.log(customMarker.getAttribute('data-action'));
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
@@ -44,9 +36,6 @@ export default class extends Controller {
         draggable: true
       })
 
-      // new mapboxgl.Marker(customMarker, {
-      //   draggable: true
-      // })
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
 
@@ -57,13 +46,5 @@ export default class extends Controller {
 
         newMarker.on('dragend', onDragEnd);
     })
-
   }
-
-  // #getMarkerLatLong() {
-  //   this.markersValue.forEach((marker) => {
-  //   const lngLat = marker.getLngLat();
-  //   console.log(lngLat)
-  //   })
-  // }
 }
