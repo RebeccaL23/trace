@@ -66,6 +66,12 @@
   left: 0%;
 }
 
+.mapboxgl-canvas {
+  height: 84vh;
+  width: 42vw;
+}
+
+
 .modal-container{
   width: 84vw;
   height: 84vh;
@@ -79,6 +85,7 @@
 
   .half-modal{
     width: 50% !important;
+
 
     &.left{
       padding: 30px 30px;

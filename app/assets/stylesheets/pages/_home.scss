@@ -1,12 +1,14 @@
 // Specific CSS for your home-page
 .hero-banner{
   background: $beige;
-  height: 450px;
+  height: 580px;
   padding-top: 32px;
   padding-left: 100px;
+  padding-top:180px;
   img{
     // padding: 28px;
     width: 300px;
+    display: none;
   }
   h1{
     width: 50%;
@@ -16,8 +18,9 @@
 }
 
 .description-banner{
-  height: auto;
+  height: 200px;
   padding: 16px 48px;
+  background-color: #fff;
 
   p{
     font-size: 24px;

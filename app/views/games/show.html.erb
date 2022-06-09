@@ -32,7 +32,7 @@
             <div class="challenge-card">
               <h3><%= challenge.question %></h3>
               <div class="div" data-challenge-id="<%= challenge.id %>">
-                <p class='challenge-edit' data-action="click->challenge#showModal">View/edit details</p>
+                <p class='challenge-edit' data-action="click->challenge#showModal" data-action="click->challenge#resizeOnLoad">View/edit details</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
                 <div class="challenge-modal" data-challenge-target="modal">
                   <%# <%= render "challenges/edit" %>
@@ -44,10 +44,11 @@
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-                        <div style="width: 84vw; height: 84vh; !important;"
+                        <div style="width: 42vw; height: 84vh;"
                         data-controller="map-challenge"
                         data-map-challenge-markers-value="<%= @markers.to_json %>"
-                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+                        ></div>
                       </div>
                     </div>
                   </div>

@@ -15,6 +15,10 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
+    document.querySelector('.mapboxgl-canvas').style.width = '42vw';
+    document.querySelector('.mapboxgl-canvas').style.height = '84vh';
+    this.map.resize();
+
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
@@ -24,6 +28,10 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
     })
-
   }
+
+  // resizeOnLoad() {
+
+  // }
+
 }
