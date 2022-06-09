@@ -10,14 +10,20 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     console.log('map-challenge');
 
+
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
+    // const canvas = document.querySelector('.mapboxgl-canvas');
+    // // canvas.width = '84vw';
+    // // canvas.height = '84vh';
+    // document.querySelector('.mapboxgl-canvas').classList.add('fix-height');
+
     // document.querySelector('.mapboxgl-canvas').style.width = '42vw';
     // document.querySelector('.mapboxgl-canvas').style.height = '84vh';
-    // this.map.resize();
+    // this.map.reload();
 
     const bounds = new mapboxgl.LngLatBounds()
     this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
