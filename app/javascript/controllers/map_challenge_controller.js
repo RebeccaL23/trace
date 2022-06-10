@@ -15,8 +15,6 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
 
     })
-    // console.log(this.map);
-    const mapo = this.map;
 
     function resizeMap() {
       // mapo.resize();
@@ -46,9 +44,4 @@ export default class extends Controller {
         .addTo(this.map)
     })
   }
-
-  // resizeOnLoad() {
-
-  // }
-
 }
