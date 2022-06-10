@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="challenge"
 export default class extends Controller {
-  static targets = [ "modal", "opacity", "close", "map" ]
+  static targets = [ "modal", "opacity", "close", "map", "new" ]
   static values = { number: Number, }
 
   showModal() {
@@ -13,11 +13,15 @@ export default class extends Controller {
     // console.log(this.element.dataset.challengeId);
     this.modalTarget.classList.add("show");
     this.opacityTarget.classList.add("opacity");
-    // this.mapTarget.resize();
   }
 
   closeModal() {
     this.modalTarget.classList.remove("show");
     this.opacityTarget.classList.remove("opacity");
+  }
+
+  addChallenge(){
+    this.newTarget.classList.add("show");
+    this.opacityTarget.classList.add("opacity");
   }
 }

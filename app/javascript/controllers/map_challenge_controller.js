@@ -8,21 +8,21 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    console.log('map-challenge');
 
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
-
     })
-    // console.log(this.map);
+
     const mapo = this.map;
 
+
     function resizeMap() {
-      // mapo.resize();
-      console.log("hi");
+      mapo.resize();
+      console.log("HEY")
     }
-    setInterval(resizeMap, 5000);
+
+    setInterval(resizeMap, 1);
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
@@ -45,10 +45,10 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
     })
+
+
+
   }
 
-  // resizeOnLoad() {
-
-  // }
 
 }
