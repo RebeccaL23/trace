@@ -1,4 +1,6 @@
-<%= render "shared/navbar" %>
+<%= render "shared/navbar/navbar-home" %>
+
+
 <div class="hero-banner">
   <div class="container">
     <%= image_tag "Logo.png" %>
@@ -59,30 +61,30 @@
     </div>
   </div>
 </div>
-  <div class="footer">
-    <div class="footer-copyright">
-      <%= link_to root_path do %>
-        <%= image_tag "Logo.png" %>
-      <% end %>
-    </div>
-    <div class="footer-items" >
-      <ul>
-        <li>
-          <%= link_to "Terms", "#"%>
-        </li>
-        <li>
-          <%= link_to "Privacy", "#"%>
-        </li>
-        <li>
-          <%= link_to "Cookies", "#"%>
-        </li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
+<div class="footer">
+  <div class="footer-copyright">
+    <%= link_to root_path do %>
+      <%= image_tag "Logo.png" %>
+    <% end %>
   </div>
+  <div class="footer-items" >
+    <ul>
+      <li>
+        <%= link_to "Terms", "#"%>
+      </li>
+      <li>
+        <%= link_to "Privacy", "#"%>
+      </li>
+      <li>
+        <%= link_to "Cookies", "#"%>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</div>
