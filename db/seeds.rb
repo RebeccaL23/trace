@@ -21,26 +21,24 @@ games = Game.all
 
 puts "Creating users..."
 
-user1 = User.create(
-  email: "rebecca@gmail.com",
-  password: "123456"
-)
-
-user2 = User.create(
-  email: "adrian@gmail.com",
-  password: "123456"
-)
-
-user3 = User.create(
-  email: "padre@gmail.com",
-  password: "123456"
-)
+user1 = User.create(email: "rebecca@gmail.com", password: "123456")
+user2 = User.create(email: "adrian@gmail.com", password: "123456")
+user3 = User.create(email: "padre@gmail.com", password: "123456")
 
 puts "Created 3 users!"
 
 puts "Creating 9 games..."
 
-3.times do
+
+Game.create(
+  name: "Rebecca's Tots",
+  city: "London",
+  start: "10-06-2022 21:00",
+  end: "10-06-2022 23:00",
+  photo: 'nkids.jpg',
+  user: user1
+)
+2.times do
   Game.create(
     name: "Jack the Ripper",
     city: "London",
@@ -111,9 +109,9 @@ puts "Created #{Game.count} games!"
 
 # puts "Created 2 teams per game!"
 
-puts "Creating challenges..."
+puts "Creating  6 challenges..."
 
-16.times do
+# 16.times do
   Challenge.create(
     question: "How many lions are there in trafalgar square?",
     answer_1: "3",
@@ -122,11 +120,53 @@ puts "Creating challenges..."
     correct_answer: "4",
     points: 10,
     location: "Trafalgar Square",
-    game: games.sample
+    game: Game.first
   )
-end
 
-puts "Created 16 challenges!"
+  Challenge.create(
+    question: "How many capsules does the London Eye have?",
+    answer_1: "18",
+    answer_2: "42",
+    answer_3: "69",
+    correct_answer: "32",
+    points: 10,
+    location: "London Eye",
+    game: Game.first
+  )
+
+  Challenge.create(
+    question: "What is the common name for The Royal Courts of Justice?",
+    answer_1: "Elizabeth's Naughty List",
+    answer_2: "The Loyal Courts of Justice",
+    answer_3: "The Loyal Courts of Justyce",
+    correct_answer: "The Law Courts",
+    points: 10,
+    location: "The Royal Courts of Justice",
+    game: Game.first
+  )
+  Challenge.create(
+    question: "How many rooms in the Buckingham Palace?",
+    answer_1: "Between 300 and 500",
+    answer_2: "Over 1000",
+    answer_3: "Less than 700",
+    correct_answer: "Over 700",
+    points: 10,
+    location: "Buckingham Palace",
+    game: Game.first
+  )
+  Challenge.create(
+    question: "Which river does the Palace of Westminster sit on?",
+    answer_1: "River Island",
+    answer_2: "Amazon River",
+    answer_3: "Lake Toba",
+    correct_answer: "River Thames",
+    points: 10,
+    location: "Palace of Westminster",
+    game: Game.first
+  )
+# end
+
+puts "Created 6 challenges!"
 
 # 16.times do
 #   Completion.create(
