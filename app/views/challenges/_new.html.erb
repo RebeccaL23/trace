@@ -1,0 +1,27 @@
+<div class="modal-container">
+  <div class="modal-details">
+  <div class="half-modal left">
+    <h1>New challenge</h1>
+    <%= simple_form_for @challenge  do |f| %>
+      <%= f.input :question, as: :string %>
+      <%= f.input :answer_1, as: :string %>
+      <%= f.input :answer_2, as: :string %>
+      <%= f.input :answer_3, as: :string %>
+      <%= f.input :correct_answer, as: :string %>
+      <%= f.input :points, as: :integer %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+  <div class="half-modal right">
+    <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
+    <div style="width: 42vw; height: 84vh;"
+    data-controller="map-challenge"
+    data-map-challenge-markers-value="<%= @markers.to_json %>"
+    data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    </div>
+  </div>
+</div>
+
+<div class="progress-bottom">
+  <div class='step-two'></div>
+</div>

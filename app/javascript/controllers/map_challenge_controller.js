@@ -14,15 +14,14 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
-
     })
 
-    const mapo = this.map
+    const mapo = this.map;
 
     function resizeMap() {
       mapo.resize();
-      // console.log("hi");
     }
+
     setInterval(resizeMap, 1);
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
