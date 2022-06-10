@@ -1,11 +1,11 @@
-<div data-controller="form">
+<div data-controller="form"
   <%= simple_form_for ([@game, @game.challenges.first])  do |f| %>
     <%= f.input :location, as: :string %>
-    <%= f.input :latitude, as: :float, input_html: { :'data-form-target' => "lat" } %>
-    <%= f.input :longitude, as: :float, input_html: { :'data-form-target' => "long" } %>
     <%= f.input :question, as: :string %>
     <%= f.input :correct_answer, as: :string %>
     <%= f.input :answer_1, as: :string %>
+    <%= f.input :latitude, as: :float, input_html: { :'data-form-target' => "lat" } %>
+    <%= f.input :longitude, as: :float, input_html: { :'data-form-target' => "long" } %>
     <%= f.input :answer_2, as: :string %>
     <%= f.input :answer_3, as: :string %>
     <%= f.input :points, as: :integer %>

@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["long"]
 
   static values = {
     apiKey: String,
@@ -9,6 +8,9 @@ export default class extends Controller {
   }
 
   connect() {
+    // console.log("hello from map challenge controller")
+    // console.log(this.longTarget.value)
+    // console.log(this.latTarget.value)
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -26,6 +28,7 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 3 })
   }
 
+  // issue: puts all markers on one challenge
   #addMarkersToMap() {
     this.markersValue.find((marker) => {
       const customMarker = document.createElement("div")
@@ -42,7 +45,8 @@ export default class extends Controller {
 
         function onDragEnd() {
           const lngLat = newMarker.getLngLat();
-          console.log(lngLat)
+          console.log(lngLat.lng)
+          console.log(lngLat.lat)
         }
 
         newMarker.on('dragend', onDragEnd);
