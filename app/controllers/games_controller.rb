@@ -10,6 +10,9 @@ class GamesController < ApplicationController
     @challenge = Challenge.new
   end
 
+  def join
+  end
+
   def new
     @game = Game.new
   end
