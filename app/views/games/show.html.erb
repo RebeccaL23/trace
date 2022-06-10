@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<div class="container page-container" data-controller="challenge" >
+<div class="container page-container"  >
   <div class="half-block left">
     <div class="game-details">
       <div class="left">
@@ -18,7 +18,8 @@
       <% if @game.challenges.count == 0 %>
         <p>You have not added any challenges. <%= link_to "Add a challenge", "#" %></p>
       <% else %>
-      <%# Iterate through challenges coordinates and create markers %>
+
+        <%# Iterate through challenges coordinates and create markers %>
         <% @markers = @game.challenges.geocoded.map do |challenge| %>
           <% {
               lat: challenge.latitude,
@@ -30,15 +31,16 @@
 
 
         <% @game.challenges.each_with_index do |challenge,index| %>
-          <div class="challenge-list-item">
+          <div class="challenge-list-item" data-controller="challenge" data-challenge-number-value="<%= challenge.id %>">
+            <div class="background-opacity" data-challenge-target="opacity"></div>
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
               <h3><%= challenge.question %></h3>
-              <div class="div" data-challenge-id="<%= challenge.id %>">
+              <div class="div" >
 
                 <% @marker = [{ lat: challenge.geocode[0], lng: challenge.geocode[1] }] %>
 
-                <p class='challenge-edit' data-action="click->challenge#showModal" data-action="click->challenge#resizeOnLoad">View/edit details</p>
+                <p class='challenge-edit'  data-action="click->challenge#showModal" >View/edit details</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
 
                 <div class="challenge-modal" data-challenge-target="modal" >
@@ -47,15 +49,15 @@
                     <div class="modal-details">
                       <div class="half-modal left" >
                         <h1>Edit challenge</h1>
-                        <%= render "challenges/form", locals: { game: @game, challenge: challenge } %>
+                        <%= @challenge = challenge %>
+                        <%= render "challenges/form", locals: { game: @game, challenge: @challenge } %>
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
                         <div data-challenge-target="map" style="width: 42vw; height: 84vh;"
                         data-controller="map-challenge"
                         data-map-challenge-marker-value="<%= @marker.to_json %>"
-                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-                        ></div>
+                        data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
                       </div>
                     </div>
                   </div>
@@ -66,7 +68,7 @@
             </div>
           </div>
           <% end %>
-        <% end %>
+      <% end %>
     </div>
 
   <div class="half-block right">
@@ -76,7 +78,6 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
 
-  <div class="background-opacity" data-challenge-target="opacity"></div>
 </div>
 
 <div class="progress-bottom">

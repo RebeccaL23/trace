@@ -1,4 +1,5 @@
-<%= simple_form_for [ @game, @game.challenges.first ] do |f| %>
+<%= simple_form_for [ @game, @challenge ] do |f| %>
+  <%# <% raise %>
   <%= f.input :location, as: :string %>
   <%= f.input :question, as: :string %>
   <%= f.input :correct_answer, as: :string %>

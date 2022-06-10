@@ -1,8 +1,6 @@
-
-
 <div class="container page-container">
   <div class="half-block left">
-    <%= simple_form_for [@game, @challenge] do |f| %>
+    <%= simple_form_for @game do |f| %>
       <%= f.input :question, as: :string %>
       <%= f.input :answer_1, as: :string %>
       <%= f.input :answer_2, as: :string %>
