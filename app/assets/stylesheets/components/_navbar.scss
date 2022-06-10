@@ -1,6 +1,10 @@
 // logged out
 
 .navbar {
+  .logo-nav{
+    width: 120px;
+  }
+
   background: $off-white;
   position: fixed;
   z-index: 1000;

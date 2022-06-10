@@ -10,7 +10,7 @@
         <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
       </div>
       <div class="right">
-        <button data-action="click->challenge#addChallenge">Add challenge
+        <button class='button beige' data-action="click->challenge#addChallenge">Add challenge
           <%#= link_to "Add challenge", new_game_challenge_path(@game), class: "button beige" %>
         </button>
 
@@ -47,7 +47,7 @@
     </div>
 
       <% if @game.challenges.count == 0 %>
-        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge">Add a challenge</p>
+        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge" >Add a challenge</p>
       <% else %>
 
         <!--------- Iterate through challenges coordinates and create markers ------->
@@ -83,7 +83,7 @@
                     <div class="modal-details">
                       <div class="half-modal left" >
                         <h1>Edit challenge</h1>
-                        <%= @challenge = challenge %>
+                        <% @challenge = challenge %>
                         <%= render "challenges/form", locals: { game: @game, challenge: @challenge } %>
                       </div>
                       <div class="half-modal right">
