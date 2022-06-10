@@ -8,10 +8,11 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    console.log('map-challenge');
+
+    const myMap = document.getElementById('modal-map')
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
 
     })
@@ -48,16 +49,14 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
 
-      function onDragEnd() {
-        const lngLat = customMarker.getLngLat();
-        // AJAX fetch > post call > append data to form
-        console.log(lngLat.lng)
-        console.log(lngLat.lat)
-      }
+      // function onDragEnd() {
+      //   const lngLat = customMarker.getLngLat();
+      //   // AJAX fetch > post call > append data to form
+      //   console.log(lngLat.lng)
+      //   console.log(lngLat.lat)
+      // }
 
-
-
-      customMarker.on('dragend', onDragEnd);
+      // customMarker.on('dragend', onDragEnd);
     })
   }
 }
