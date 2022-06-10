@@ -18,3 +18,6 @@ application.register("map-challenge", MapChallengeController)
 
 import MapController from "./map_controller.js"
 application.register("map", MapController)
+
+import NewChallengeController from "./new_challenge_controller.js"
+application.register("new-challenge", NewChallengeController)

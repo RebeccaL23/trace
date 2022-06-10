@@ -1,3 +1,4 @@
+<%= render "shared/navbar/navbar-home" %>
 <div class="container page-container">
   <div class="half-block left">
     <h1>Create a new game</h1>
@@ -11,7 +12,11 @@
       <%= f.button :submit, class: "button beige" %>
     <% end %>
   </div>
-    <p></p>
+  <% @markers = [{
+    lat: 51.53273,
+    lng: -0.07676
+  }] %>
+
   <%# <div class="half-block right" style="background-image: url('<%= asset_path 'map.jpeg' %>
   <div id="map">
     <div class='half-block right'

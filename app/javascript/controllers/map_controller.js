@@ -8,7 +8,6 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
@@ -29,6 +28,7 @@ export default class extends Controller {
         .setLngLat([marker.lng, marker.lat])
         // .setPopup(popup)
         .addTo(this.map)
+        console.log(marker)
     })
   }
 
