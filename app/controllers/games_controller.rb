@@ -10,6 +10,9 @@ class GamesController < ApplicationController
     @challenge = Challenge.new
   end
 
+  def join
+  end
+
   def new
     @game = Game.new
   end
@@ -55,7 +58,8 @@ class GamesController < ApplicationController
       @game.save
     end
 
-  qrcode = RQRCode::QRCode.new("#{request.original_url}")
+  # qrcode = RQRCode::QRCode.new("#{request.original_url}")
+  qrcode = RQRCode::QRCode.new("https://trace-game.herokuapp.com/join")
 
   png = qrcode.as_png(
     bit_depth: 1,
