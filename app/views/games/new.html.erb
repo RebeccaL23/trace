@@ -1,9 +1,17 @@
 <div class="container page-container">
   <div class="half-block left">
     <h1>Create a new game</h1>
-    <%= render "form", game: @game %>
+    <%#= render "form", game: @game %>
+    <%= simple_form_for @game do |f| %>
+      <%= f.input :name, as: :string %>
+      <%= f.input :city, as: :string %>
+      <%= f.input :start, as: :datetime, html5: true%>
+      <%= f.input :end, as: :datetime, html5: true %>
+      <%= f.input :cloud_photo, as: :file %>
+      <%= f.button :submit, class: "button beige" %>
+    <% end %>
   </div>
-
+    <p></p>
   <%# <div class="half-block right" style="background-image: url('<%= asset_path 'map.jpeg' %>
   <div id="map">
     <div class='half-block right'

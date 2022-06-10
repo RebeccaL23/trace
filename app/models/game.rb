@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   has_many :challenges, dependent: :destroy
   validates :name, :city, :start, :end, presence: true
   validates :id, uniqueness: true
+  has_one_attached :cloud_photo
+
 
   # search on a user's index page
   include PgSearch::Model
