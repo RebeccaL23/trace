@@ -7,6 +7,7 @@ class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[confirmation]
 
   def show
+    @challenge = Challenge.new
   end
 
   def new
@@ -15,6 +16,7 @@ class GamesController < ApplicationController
 
   # not checked!
   def create
+    raise
     @game = Game.new(game_params)
     @game.user = current_user
     if @game.save

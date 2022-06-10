@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   before_action :set_game, only: %i[create edit update destroy]
-  before_action :set_challenge, only: %i[create edit update destroy]
+  before_action :set_challenge, only: %i[ edit update destroy]
   # skip_before_action :verify_authenticity_token, only: %i[] # not sure if needed
 
   def new
@@ -11,7 +11,7 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.new(challenge_params)
     @challenge.game = @game
     if @challenge.save
-      redirect_to game_path(@game), notice: 'you just made a challenge'
+      redirect_to game_path(@game), notice: 'You have created a new challenge!'
     else
       render :new, status: :unprocessable_entity
     end

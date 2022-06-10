@@ -8,13 +8,22 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
-    console.log('map-challenge');
+
+    const myMap = document.getElementById('modal-map')
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
-
     })
+
+    const mapo = this.map;
+
+    function resizeMap() {
+      mapo.resize();
+    }
+
+    setInterval(resizeMap, 1);
+
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
@@ -28,19 +37,26 @@ export default class extends Controller {
     this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
 
+    // TODO: refactor without forEach
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(customMarker, {
+        draggable: true
+      })
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
+
+      // function onDragEnd() {
+      //   const lngLat = customMarker.getLngLat();
+      //   // AJAX fetch > post call > append data to form
+      //   console.log(lngLat.lng)
+      //   console.log(lngLat.lat)
+      // }
+
+      // customMarker.on('dragend', onDragEnd);
     })
   }
-
-  // resizeOnLoad() {
-
-  // }
-
 }
