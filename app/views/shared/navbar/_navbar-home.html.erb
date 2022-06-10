@@ -2,7 +2,7 @@
   <div class="container d-flex justify-content-between">
     <div class="navbar items" >
       <%= link_to root_path do %>
-        <%= image_tag "Logo.png" %>
+        <%= image_tag "Logo.png", class:"logo-nav" %>
       <% end %>
       <% if !user_signed_in? %>
         <div>
@@ -29,7 +29,7 @@
         <div>
           <ul>
             <li>
-              <%= link_to "Back to dashboard", user_path(current_user),class: "dashboard button green"%>
+              <%= link_to "Dashboard", user_path(current_user),class: "dashboard button green"%>
             </li>
           </ul>
         </div>
