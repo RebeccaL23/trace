@@ -10,12 +10,19 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     console.log('map-challenge');
 
-
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
-    })
 
+    })
+    // console.log(this.map);
+    const mapo = this.map;
+
+    function resizeMap() {
+      // mapo.resize();
+      console.log("hi");
+    }
+    setInterval(resizeMap, 5000);
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
@@ -30,6 +37,10 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
 
     this.markerValue.forEach((marker) => {
+      const customMarker = document.createElement("div")
+      customMarker.style.backgroundSize = "contain"
+      customMarker.classList.add("unfound-marker");
+
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
