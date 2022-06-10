@@ -23,6 +23,7 @@ export default class extends Controller {
     }
 
     setInterval(resizeMap, 1);
+
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
