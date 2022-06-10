@@ -16,11 +16,13 @@ export default class extends Controller {
 
     })
 
+    const mapo = this.map
+
     function resizeMap() {
-      // mapo.resize();
-      console.log("hi");
+      mapo.resize();
+      // console.log("hi");
     }
-    setInterval(resizeMap, 5000);
+    setInterval(resizeMap, 1);
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
@@ -39,9 +41,20 @@ export default class extends Controller {
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(customMarker, {
+        draggable: true
+      })
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
+
+      // function onDragEnd() {
+      //   const lngLat = customMarker.getLngLat();
+      //   // AJAX fetch > post call > append data to form
+      //   console.log(lngLat.lng)
+      //   console.log(lngLat.lat)
+      // }
+
+      // customMarker.on('dragend', onDragEnd);
     })
   }
 }
