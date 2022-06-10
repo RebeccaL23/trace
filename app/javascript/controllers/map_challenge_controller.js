@@ -15,14 +15,6 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
 
     })
-    // console.log(this.map);
-    const mapo = this.map;
-
-    function resizeMap() {
-      // mapo.resize();
-      console.log("hi");
-    }
-    setInterval(resizeMap, 5000);
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
     // // canvas.height = '84vh';
