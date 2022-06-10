@@ -22,6 +22,7 @@
             <div class="half-modal left">
               <h1>New challenge</h1>
               <%= simple_form_for [ @game, @challenge ] do |f| %>
+                <%= f.input :location, as: :string %>
                 <%= f.input :question, as: :string %>
                 <%= f.input :answer_1, as: :string %>
                 <%= f.input :answer_2, as: :string %>
@@ -66,7 +67,7 @@
             <div class="background-opacity" data-challenge-target="opacity"></div>
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
-              <h3><%= challenge.question %></h3>
+              <div class='question'><h3><%= challenge.question %></h3></div>
               <div class="div" >
 
                 <% if !challenge.location.nil? %>
