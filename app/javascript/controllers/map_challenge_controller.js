@@ -36,6 +36,7 @@ export default class extends Controller {
     this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
 
+    // TODO: refactor without forEach
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
@@ -47,14 +48,16 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(this.map)
 
-      // function onDragEnd() {
-      //   const lngLat = customMarker.getLngLat();
-      //   // AJAX fetch > post call > append data to form
-      //   console.log(lngLat.lng)
-      //   console.log(lngLat.lat)
-      // }
+      function onDragEnd() {
+        const lngLat = customMarker.getLngLat();
+        // AJAX fetch > post call > append data to form
+        console.log(lngLat.lng)
+        console.log(lngLat.lat)
+      }
 
-      // customMarker.on('dragend', onDragEnd);
+
+
+      customMarker.on('dragend', onDragEnd);
     })
   }
 }
