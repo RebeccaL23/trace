@@ -29,7 +29,7 @@
           <p id="publish">Publish game</p>
         <% elsif game.code.present? %>
           <div class="game-code">
-            <%= link_to game_confirmation_path(game) do %>
+            <%= link_to game_confirmation_path(game), target: "_blank" do %>
               <h4>Game code <%= game.code %></h4>
             <% end %>
           </div>
