@@ -52,20 +52,20 @@ export default class extends Controller {
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
-      new mapboxgl.Marker(customMarker, {
+      const dragMarker = new mapboxgl.Marker(customMarker, {
         draggable: true
       })
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
 
-      // function onDragEnd() {
-      //   const lngLat = customMarker.getLngLat();
-      //   // AJAX fetch > post call > append data to form
-      //   console.log(lngLat.lng)
-      //   console.log(lngLat.lat)
-      // }
+      function onDragEnd() {
+        const lngLat = dragMarker.getLngLat();
+        // AJAX fetch > post call > append data to form
+        console.log(lngLat.lng)
+        console.log(lngLat.lat)
+      }
 
-      // customMarker.on('dragend', onDragEnd);
+      dragMarker.on('dragend', onDragEnd);
     })
   }
 }
