@@ -9,17 +9,17 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    // const myMap = document.getElementById('modal-map')
-
-    // this.map = new mapboxgl.Map({
-    //   container: myMap,
-    //   style: "mapbox://styles/mapbox/streets-v10"
-    // })
+    const myMap = document.getElementById('modal-map')
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
     })
+
+    // this.map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/mapbox/streets-v10"
+    // })
 
     const mapo = this.map;
 
@@ -27,7 +27,7 @@ export default class extends Controller {
       mapo.resize();
     }
 
-    setInterval(resizeMap, 1);
+    setTimeout(resizeMap, 100);
 
     // const canvas = document.querySelector('.mapboxgl-canvas');
     // // canvas.width = '84vw';
