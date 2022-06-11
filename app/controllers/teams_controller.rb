@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  def new
+  end
 end
 
 # @completion = Completion.create(completed: false, team: @team, challenge: @challenge)
