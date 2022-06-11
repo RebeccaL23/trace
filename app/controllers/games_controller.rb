@@ -15,7 +15,7 @@ class GamesController < ApplicationController
     if params[:code].present?
       @game = @games.where(code: params[:code]).first
       if @game.valid?
-      redirect_to new_game_team_path(@game)
+      redirect_to game_status_path(@game)
       end
     end
   end
