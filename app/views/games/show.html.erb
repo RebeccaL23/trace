@@ -89,6 +89,8 @@
                         <h1>Edit challenge</h1>
                         <%= simple_form_for [ @game, challenge ] do |f| %>
                         <%= f.input :location, as: :string %>
+                        <%= f.input :latitude, as: :float, input_html: { :'data-map-challenge-target' => "lat" } %>
+                        <%= f.input :longitude, as: :float, input_html: { :'data-map-challenge-target' => "long" } %>
                         <%= f.input :question, as: :string %>
                         <%= f.input :correct_answer, as: :string %>
                         <%= f.input :answer_1, as: :string %>

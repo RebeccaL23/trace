@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["right"]
+  static targets = ["right", "long", "lat"]
 
   static values = {
     apiKey: String,
@@ -60,12 +60,13 @@ export default class extends Controller {
 
       function onDragEnd() {
         const lngLat = dragMarker.getLngLat();
-        // AJAX fetch > post call > append data to form
-        console.log(lngLat.lng)
-        console.log(lngLat.lat)
+        console.log(lngLat.lng);
+        // return lngLat.lng
       }
 
+      // AJAX fetch > post call > append data to form
       dragMarker.on('dragend', onDragEnd);
+
     })
   }
 }
