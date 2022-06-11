@@ -4,7 +4,7 @@ require "chunky_png"
 
 class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[confirmation join]
+  skip_before_action :authenticate_user!, only: %i[confirmation join start]
 
   def show
     @challenge = Challenge.new
@@ -15,6 +15,10 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+  end
+
+  def start
+    @game = Game.find(params[:game_id])
   end
 
   # not checked!
