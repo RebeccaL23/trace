@@ -11,6 +11,7 @@ class GamesController < ApplicationController
   end
 
   def join
+    @games = Game.all
   end
 
   def new
