@@ -62,7 +62,7 @@
 
 
         <!--------------- CHALLENGE LIST LOOP --------->
-        <% @game.challenges.each_with_index do |challenge,index| %>
+        <% @game.challenges.each_with_index do |challenge, index| %>
           <div class="challenge-list-item" data-controller="challenge" data-challenge-number-value="<%= challenge.id %>">
             <div class="background-opacity" data-challenge-target="opacity"></div>
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
@@ -81,14 +81,22 @@
                   <%# <%= render "challenges/edit" %>
                   <div class="modal-container">
                     <div class="modal-details">
-                      <div class="half-modal left" >
+                      <div class="half-modal left">
                         <h1>Edit challenge</h1>
-                        <% @challenge = challenge %>
-                        <%= render "challenges/form", locals: { game: @game, challenge: @challenge } %>
+                        <%= simple_form_for [ @game, challenge ] do |f| %>
+                        <%= f.input :location, as: :string %>
+                        <%= f.input :question, as: :string %>
+                        <%= f.input :correct_answer, as: :string %>
+                        <%= f.input :answer_1, as: :string %>
+                        <%= f.input :answer_2, as: :string %>
+                        <%= f.input :answer_3, as: :string %>
+                        <%= f.input :points, as: :integer %>
+                        <%= f.button :submit %>
+                      <% end %>
                       </div>
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-                        <div id='modal-map' data-challenge-target="map" style="width: 42vw; height: 84vh;"
+                        <div id="modal-map-<%= challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
                           data-controller="map-challenge"
                           data-map-challenge-marker-value="<%= @marker.to_json %>"
                           data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"

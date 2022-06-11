@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+
+  static targets = ["right"]
+
   static values = {
     apiKey: String,
     marker: Array
@@ -9,22 +12,23 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    // const myMap = document.getElementById('modal-map')
-
-    // this.map = new mapboxgl.Map({
-    //   container: myMap,
-    //   style: "mapbox://styles/mapbox/streets-v10"
-    // })
+    const id = this.rightTarget.id
+    const myMap = document.getElementById(id)
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
-    const mapo = this.map;
+    // this.map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/mapbox/streets-v10"
+    // })
+
+    const modalMap = this.map;
 
     function resizeMap() {
-      mapo.resize();
+      modalMap.resize();
     }
 
     setInterval(resizeMap, 1);
@@ -39,7 +43,7 @@ export default class extends Controller {
     // this.map.reload();
 
     const bounds = new mapboxgl.LngLatBounds()
-    this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markerValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
 
     // TODO: refactor without forEach
