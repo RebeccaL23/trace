@@ -1,14 +1,22 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
+let lng = 0
+let lat = 0
+
 export default class extends Controller {
 
   static targets = ["right", "long", "lat"]
 
-
   static values = {
     apiKey: String,
     marker: Array
+  }
+
+  hello(event) {
+    console.log(this.latTarget.value)
+    this.latTarget.value = lat
+    console.log(this.latTarget.value)
   }
 
   connect() {
@@ -62,6 +70,7 @@ export default class extends Controller {
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
+      customMarker.setAttribute("data-action", `click->map-challenge#hello`)
       customMarker.classList.add("unfound-marker");
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
@@ -72,12 +81,13 @@ export default class extends Controller {
 
       function onDragEnd() {
         const lngLat = dragMarker.getLngLat();
-        console.log(lngLat)
+        lng = lngLat.lng
+        lat = lngLat.lat
+        hello()
       }
 
       // AJAX fetch > post call > append data to form
       dragMarker.on('dragend', onDragEnd);
-
     })
 
     this.map.addControl(new MapboxGeocoder({
@@ -85,4 +95,5 @@ export default class extends Controller {
       mapboxgl: mapboxgl
     }))
   }
+
 }
