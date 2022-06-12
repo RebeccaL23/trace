@@ -7,6 +7,24 @@
   margin-bottom: 20px;
 }
 
+// game edit
+.edit-header{
+  display: inline-flex;
+}
+
+.edit{
+  display:none;
+
+  .edit-icon{
+    margin-left: 8px;
+
+    img{
+      height: 16px;
+      margin-top: 6px;
+    }
+  }
+}
+
 // challenge list item on game show page
 .challenge-list-item{
   display: flex;

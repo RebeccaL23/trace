@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="challenge"
 export default class extends Controller {
-  static targets = [ "modal", "opacity", "close", "new"]
+  static targets = [ "modal", "opacity", "close", "new", "edit"]
   static values = { number: Number, }
 
   showModal() {
@@ -23,5 +23,13 @@ export default class extends Controller {
   addChallenge(){
     this.newTarget.classList.add("show");
     this.opacityTarget.classList.add("opacity");
+  }
+
+  editHover(){
+    this.editTarget.classList.add("show");
+  }
+
+  editNone(){
+    this.editTarget.classList.remove("show");
   }
 }

@@ -3,11 +3,17 @@
   <div class="half-block left">
     <div class="game-details">
       <div class="left">
-        <span><strong><%= @game.name %></strong></span><br>
-        <span><%= @game.city %></span><br>
-        <% time = @game.start %>
-        <span> <%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %> </span><br>
-        <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
+        <div class="edit-game" data-action="mouseover->challenge#editHover mouseout->challenge#editNone">
+          <div class='edit-header'>
+            <h3><%= @game.name %></h3>
+            <span class='edit' data-challenge-target="edit"><%= link_to image_tag('edit.png'), edit_game_path(@game), class: "edit-icon" %></span>
+          </div>
+          <br>
+          <span><%= @game.city %></span><br>
+          <% time = @game.start %>
+          <span> <%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %> </span><br>
+          <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
+        </div>
       </div>
       <div class="right">
         <button class='button beige' data-action="click->challenge#addChallenge click->challenge#showModal">Add challenge
