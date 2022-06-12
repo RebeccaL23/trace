@@ -107,7 +107,9 @@
     position: relative;
     display: inline-block;
     // height: 420px;
-    margin-top: 80px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+
   }
 
   img{
@@ -154,7 +156,7 @@
   }
   .buttons{
     margin-left: 36%;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
 
   .newsletter{
@@ -207,6 +209,7 @@
 
 .footer{
   background: $off-white;
+  margin: 60px;
 }
 
 .footer .container{
