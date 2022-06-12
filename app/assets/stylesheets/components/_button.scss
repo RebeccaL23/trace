@@ -2,11 +2,11 @@
   padding: 8px 24px;
   width: 188px;
   height: 37px;
+  font-weight: 600;
   border-radius: 5px;
 
   &.beige{
     color: $charcoal;
-    font-weight: 600;
     background: $off-white;
     border: solid 1px $charcoal;
   }
@@ -14,5 +14,6 @@
   &.green{
     color: $charcoal;
     background: $mint;
+    border: solid 1px $mint;
   }
 }

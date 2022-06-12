@@ -1,10 +1,10 @@
-// Specific CSS for your home-page
+//hero banner
 .hero-banner{
-  background: $beige;
+  // background: $off-white;
   height: 430px;
-  padding-top: 32px;
-  padding-left: 100px;
+  padding-bottom: 60px;
   padding-top:180px;
+  margin-bottom: 40px;
   img{
     // padding: 28px;
     width: 300px;
@@ -17,28 +17,95 @@
   }
 }
 
-.description-banner{
-  height: 200px;
-  padding: 16px 48px;
-  background-color: #fff;
+// description banner
 
-  p{
-    font-size: 24px;
-    font-weight: 400;
-    margin: auto;
-    padding: 48px 320px 48px 48px;
+.description-banner{
+  height: 320px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  .container{
+    background-color: $off-white;
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 60px 40px 120px 40px;
+    // border-radius: 20px;
   }
+
+  .use-cases{
+    width: 22%;
+    height: 180px;
+    font-size: 18px;
+    // background-color: $beige;
+    border: $charcoal 1px solid;
+    // border-radius: 20px;
+    padding: 32px;
+    margin: 2px;
+    p{
+      padding-bottom: 6px;
+    }
+    hr{
+      width: 25%;
+      border: RGBA(110, 255, 161, 0.4) solid 6px;
+    }
+  }
+
+  // p{
+  //   font-size: 24px;
+  //   font-weight: 400;
+  //   margin: auto;
+  //   padding: 48px 320px 48px 48px;
+  // }
 }
 
+// how it works banner
+// numbering for how it works
+
+.bottom-banner {
+  li{
+    display: inline-flex;
+
+    span{
+      width: 90%;
+    }
+  }
+}
+.home-marker{
+  width: 41px !important;
+  height: 41px;
+  border: $charcoal 0.5px solid;
+  text-align: center;
+  box-shadow: $charcoal 2px 2px;
+  background-color: $mint;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+
 .bottom-banner{
-  // height: 800px;
-  background: $beige;
+
+  .how-it-works{
+    position: relative;
+    display: inline-block;
+    height: 420px;
+  }
+
   img{
-    width: 548px;
-    height: 437px;
+    position: absolute;
+    top: -7%;
+    left: -2%;
+    width: 46%;
   }
   &.guide{
-    width: 58%;
+    width: 45%;
+    font-size: 18px !important;
+    position: absolute;
+    left: 52%;
+    background-color: none;
+
 
     h2{
       font-weight: 700;
@@ -51,7 +118,6 @@
       padding-left: 58px;
     }
     li{
-      font-size: 28px;
       margin-bottom: 14px;
       // font-weight: bol;
     }
