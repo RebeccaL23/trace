@@ -14,10 +14,21 @@ export default class extends Controller {
   }
 
   hello(event) {
+    event.preventDefault()
     // console.log(this.latTarget.value)
     this.latTarget.value = lat
     this.longTarget.value = lng
     // console.log(this.latTarget.value)
+
+    // fetch(this.formTarget.action, {
+    //   method: "POST",
+    //   headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
+    //   body: new FormData(this.formTarget)
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
   }
 
   connect() {
@@ -45,6 +56,17 @@ export default class extends Controller {
         showUserHeading: true
       })
     );
+
+    // // limit search to a specific area
+    // const geocoder = new MapboxGeocoder({
+    //   // Initialize the geocoder
+    //   accessToken: mapboxgl.accessToken, // Set the access token
+    //   mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    //   bbox: [-122.30937, 37.84214, -122.23715, 37.89838],
+    //   types: "country,region,place,postcode,locality,neighborhood,address"
+    // });
+
+    // this.map.addControl(geocoder);
 
     const modalMap = this.map;
 
@@ -91,10 +113,10 @@ export default class extends Controller {
       dragMarker.on('dragend', onDragEnd);
     })
 
-    this.map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    }))
+    // this.map.addControl(new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   mapboxgl: mapboxgl
+    // }))
   }
 
 }
