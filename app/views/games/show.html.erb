@@ -10,12 +10,13 @@
         <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
       </div>
       <div class="right">
-        <button class='button beige' data-action="click->challenge#addChallenge">Add challenge
+        <button class='button beige' data-action="click->challenge#addChallenge click->challenge#showModal">Add challenge
           <%#= link_to "Add challenge", new_game_challenge_path(@game), class: "button beige" %>
         </button>
 
         <!---------- NEW CHALLENGE MODAL ------>
-        <div class="challenge-modal"  data-challenge-target="new">
+        <div class="background-opacity" data-challenge-target="opacity"></div>
+        <div class="challenge-modal"  data-challenge-target="new modal">
           <%#= render "challenges/new", locals: { game: @game, challenge: @challenge } %>
           <div class="modal-container">
             <div class="modal-details">
@@ -34,9 +35,9 @@
             </div>
             <div class="half-modal right">
               <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-              <div style="width: 42vw; height: 84vh;"
+              <div id="modal-map-<%= @challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
               data-controller="map-challenge"
-              data-map-challenge-markers-value="<%= @markers.to_json %>"
+              data-map-challenge-markers-value="<%= @marker.to_json %>"
               data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
               </div>
             </div>
