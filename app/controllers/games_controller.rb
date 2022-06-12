@@ -79,8 +79,10 @@ class GamesController < ApplicationController
       size: 250
     )
 
-    IO.binwrite("./app/assets/images/qr_code#{@game.code}.png", png.to_s)
-
+    # IO.binwrite("./app/assets/images/qr_code#{@game.code}.png", png.to_s)
+    Cloudinary::Uploader.upload("#{png.to_data_url}",
+    :public_id => "qr_code#{@game.code}"
+    )
   end
 
   private
