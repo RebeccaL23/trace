@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 export default class extends Controller {
 
@@ -24,22 +25,17 @@ export default class extends Controller {
     })
 
     // get current user location demo:
-    // this.map.addControl(
-    //   new mapboxgl.GeolocateControl({
-    //     positionOptions: {
-    //       enableHighAccuracy: true
-    //     },
-    //     // When active the map will receive updates to the device's location as it changes.
-    //     trackUserLocation: true,
-    //     // Draw an arrow next to the location dot to indicate which direction the device is heading.
-    //     showUserHeading: true
-    //   })
-    // );
-
-    // this.map = new mapboxgl.Map({
-    //   container: this.element,
-    //   style: "mapbox://styles/mapbox/streets-v10"
-    // })
+    this.map.addControl(
+      new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        // When active the map will receive updates to the device's location as it changes.
+        trackUserLocation: true,
+        // Draw an arrow next to the location dot to indicate which direction the device is heading.
+        showUserHeading: true
+      })
+    );
 
     const modalMap = this.map;
 
@@ -83,5 +79,10 @@ export default class extends Controller {
       dragMarker.on('dragend', onDragEnd);
 
     })
+
+    this.map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }))
   }
 }
