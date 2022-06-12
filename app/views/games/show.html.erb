@@ -79,12 +79,18 @@
                 <!---- EDIT CHALLENGE MODAL --------->
                 <div class="challenge-modal" data-challenge-target="modal" >
                   <%# <%= render "challenges/edit" %>
-                  <div class="modal-container">
+                  <div class="modal-container"
+                  data-controller="map-challenge"
+                  data-map-challenge-marker-value="<%= @marker.to_json %>"
+                  data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+                  >
                     <div class="modal-details">
                       <div class="half-modal left">
                         <h1>Edit challenge</h1>
                         <%= simple_form_for [ @game, challenge ] do |f| %>
                         <%= f.input :location, as: :string %>
+                        <%= f.input :latitude, as: :float, input_html: { :'data-map-challenge-target' => "lat" } %>
+                        <%= f.input :longitude, as: :float, input_html: { :'data-map-challenge-target' => "long" } %>
                         <%= f.input :question, as: :string %>
                         <%= f.input :correct_answer, as: :string %>
                         <%= f.input :answer_1, as: :string %>
@@ -97,9 +103,6 @@
                       <div class="half-modal right">
                         <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
                         <div id="modal-map-<%= challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
-                          data-controller="map-challenge"
-                          data-map-challenge-marker-value="<%= @marker.to_json %>"
-                          data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
                         ></div>
                       </div>
                     </div>
