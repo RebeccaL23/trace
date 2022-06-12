@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+
+  static targets = ["right", "long", "lat"]
+
   static values = {
     apiKey: String,
     marker: Array
@@ -9,22 +12,23 @@ export default class extends Controller {
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
-    // const myMap = document.getElementById('modal-map')
-
-    // this.map = new mapboxgl.Map({
-    //   container: myMap,
-    //   style: "mapbox://styles/mapbox/streets-v10"
-    // })
+    const id = this.rightTarget.id
+    const myMap = document.getElementById(id)
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: myMap,
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
-    const mapo = this.map;
+    // this.map = new mapboxgl.Map({
+    //   container: this.element,
+    //   style: "mapbox://styles/mapbox/streets-v10"
+    // })
+
+    const modalMap = this.map;
 
     function resizeMap() {
-      mapo.resize();
+      modalMap.resize();
     }
 
     setInterval(resizeMap, 1);
@@ -39,7 +43,7 @@ export default class extends Controller {
     // this.map.reload();
 
     const bounds = new mapboxgl.LngLatBounds()
-    this.markerValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markerValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
 
     // TODO: refactor without forEach
@@ -48,20 +52,21 @@ export default class extends Controller {
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
 
-      new mapboxgl.Marker(customMarker, {
+      const dragMarker = new mapboxgl.Marker(customMarker, {
         draggable: true
       })
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
 
-      // function onDragEnd() {
-      //   const lngLat = customMarker.getLngLat();
-      //   // AJAX fetch > post call > append data to form
-      //   console.log(lngLat.lng)
-      //   console.log(lngLat.lat)
-      // }
+      function onDragEnd() {
+        const lngLat = dragMarker.getLngLat();
+        console.log(lngLat.lng);
+        // return lngLat.lng
+      }
 
-      // customMarker.on('dragend', onDragEnd);
+      // AJAX fetch > post call > append data to form
+      dragMarker.on('dragend', onDragEnd);
+
     })
   }
 }
