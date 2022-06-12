@@ -63,8 +63,7 @@ export default class extends Controller {
 
       function onDragEnd() {
         const lngLat = dragMarker.getLngLat();
-        console.log(lngLat.lng);
-        // return lngLat.lng
+        console.log(lngLat)
       }
 
       // AJAX fetch > post call > append data to form

@@ -10,7 +10,7 @@
       <% if !game.cloud_photo.key.nil? %>
         <%= cl_image_tag game.cloud_photo.key, class: "card-img-top " %>
       <% else %>
-        <%= image_tag game.photo, class: "card-img-top " %>
+        <%= image_tag "placeholder.png", class: "card-img-top " %>
       <% end %>
       <div class="card-body">
         <% if game.start.day == time.day %>
