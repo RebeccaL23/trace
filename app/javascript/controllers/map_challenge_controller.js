@@ -4,6 +4,7 @@ export default class extends Controller {
 
   static targets = ["right", "long", "lat"]
 
+
   static values = {
     apiKey: String,
     marker: Array

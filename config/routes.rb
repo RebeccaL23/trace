@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   # games
   resources :games, only: %i[show new create edit update] do
+    get "status", to: "games#status", as: :status
+    get "start", to: "games#start", as: :start
     get "confirmation", to: "games#confirmation", as: :confirmation
     # teams
     resources :teams, only: %i[show new] do

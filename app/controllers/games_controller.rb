@@ -4,22 +4,31 @@ require "chunky_png"
 
 class GamesController < ApplicationController
   before_action :set_game, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[confirmation join]
+  skip_before_action :authenticate_user!, only: %i[confirmation join start]
 
   def show
     @challenge = Challenge.new
   end
 
   def join
+    @games = Game.all
+    if params[:code].present?
+      @game = @games.where(code: params[:code]).first
+      if @game.valid?
+      redirect_to game_status_path(@game)
+      end
+    end
   end
 
   def new
     @game = Game.new
   end
 
-  # not checked!
+  def start
+    @game = Game.find(params[:game_id])
+  end
+
   def create
-    raise
     @game = Game.new(game_params)
     @game.user = current_user
     if @game.save
@@ -29,23 +38,19 @@ class GamesController < ApplicationController
     end
   end
 
-  # not checked!
   def update
     @game.update(game_params)
     redirect_to game_path(@game)
   end
 
-  # not checked!
   def edit
   end
 
-  # not checked! is it simply current_user or current_user.id
   def destroy
     @game.destroy
     redirect_to user_path(current_user.id), status: :see_other
   end
 
-  # not checked!
   def confirmation
     @game = Game.find(params[:game_id])
     games = Game.all
