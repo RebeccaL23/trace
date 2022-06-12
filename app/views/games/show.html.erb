@@ -9,6 +9,7 @@
         <span> <%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %> </span><br>
         <span> <%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %> </span>
       </div>
+
       <div class="right">
         <button class='button beige' data-action="click->challenge#addChallenge click->challenge#showModal">Add challenge
           <%#= link_to "Add challenge", new_game_challenge_path(@game), class: "button beige" %>
@@ -35,7 +36,7 @@
             </div>
             <div class="half-modal right">
               <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-              <div id="modal-map-<%= @challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
+              <div data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
               data-controller="map-challenge"
               data-map-challenge-markers-value="<%= @marker.to_json %>"
               data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -60,7 +61,6 @@
               # image_url: helpers.asset_url("app/assets/images/marker.png")
               } %>
         <% end %>
-
 
         <!--------------- CHALLENGE LIST LOOP --------->
         <% @game.challenges.each_with_index do |challenge, index| %>
@@ -116,8 +116,10 @@
       <% end %>
     </div>
 
+  <!---------- MAP ON GAME OVERVIEW ------>
   <div class="half-block right">
     <div style="width: 100%; height: 100vh;"
+    id="modal-map-" data-map-target="right"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

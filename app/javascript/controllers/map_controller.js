@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+
+  static targets = ["right"]
+
   static values = {
     apiKey: String,
     markers: Array
@@ -20,10 +23,11 @@ export default class extends Controller {
 
   #addMarkersToMap() {
 
-    this.markersValue.forEach((marker) => {
+    this.markersValue.forEach((marker, i) => {
       const customMarker = document.createElement("div")
+      customMarker.setAttribute("id", `${this.rightTarget.id}${'%d: %s', i}`)
       customMarker.style.backgroundSize = "contain"
-      customMarker.classList.add("unfound-marker");
+      customMarker.classList.add("unfound-marker")
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)

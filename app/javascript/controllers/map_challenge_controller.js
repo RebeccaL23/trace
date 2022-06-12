@@ -54,6 +54,7 @@ export default class extends Controller {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
       customMarker.classList.add("unfound-marker");
+      customMarker.setAttribute("id", this.rightTarget.id);
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
         draggable: true
