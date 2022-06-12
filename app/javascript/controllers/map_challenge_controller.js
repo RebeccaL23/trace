@@ -14,9 +14,10 @@ export default class extends Controller {
   }
 
   hello(event) {
-    console.log(this.latTarget.value)
+    // console.log(this.latTarget.value)
     this.latTarget.value = lat
-    console.log(this.latTarget.value)
+    this.longTarget.value = lng
+    // console.log(this.latTarget.value)
   }
 
   connect() {
