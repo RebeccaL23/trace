@@ -1,0 +1,6 @@
+<h1>Create a team</h1>
+<%= simple_form_for [ @game, @team ] do |f| %>
+  <%= f.input :name, as: :string %>
+  <%= f.input :photo, as: :string %>
+  <%= f.button :submit %>
+<% end %>

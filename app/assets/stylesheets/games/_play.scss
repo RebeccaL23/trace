@@ -1,0 +1,24 @@
+// game details / info
+.mobile-game{
+  position: relative;
+  h1{
+    font-size: 16px;
+    font-weight: 800;
+  }
+}
+.mobile-game-header{
+  font-weight: 800;
+  position: fixed;
+  z-index:1000;
+  background-color: $beige;
+  top: 2%;
+  left: 2%;
+  // border-radius: 20px;
+  border: $charcoal 1px solid;
+  padding: 8px 16px;
+}
+.mobile-game-map{
+  width: 100vw;
+  height: 100vh;
+  margin: 0 !important;
+}

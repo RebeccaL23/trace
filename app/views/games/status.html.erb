@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="mobile-header">
+    <h1>Welcome to <%= @game.name %></h1>
+  </div>
+  <% time = Time.now %>
+
+  <!-- if game over -->
+  <% if @game.end < time %>
+    <h2>Game over!</h2>
+    <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
+
+  <!-- if game in progress -->
+  <% elsif @game.start <= time && @game.end >= time%>
+    <h2>Game on!</h2>
+    <p>The game has started.</p>
+    <%= link_to "Let's play!", new_game_team_path(@game) %>
+
+  <!-- if game not started -->
+  <% else %>
+      <h2>Ready, set...</h2>
+      <p>The game has not yet started. Check back closer to the below start time.</p>
+      <% start_time = @game.start %>
+      <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
+      <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
+  <% end %>
+</div>

@@ -111,6 +111,10 @@ export default class extends Controller {
         marker.lat = newLat
         marker.lng = newLng
         console.log(marker.lat)
+
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/51.507,-0.131222.json/`, {method: "GET"}
+          ).then(response => response.text())
+            .then((data) => {console.log(data)})
       }
 
       // AJAX fetch > post call > append data to form
