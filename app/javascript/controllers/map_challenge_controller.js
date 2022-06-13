@@ -23,9 +23,7 @@ export default class extends Controller {
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${newLng},${newLat}.json?types=address&access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
       .then(response => response.json())
       .then(data => this.locationTarget.value = data.features[0].place_name);
-
     // console.log(this.locationTarget.value)
-
   }
 
   connect() {
