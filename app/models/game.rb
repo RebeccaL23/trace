@@ -6,7 +6,6 @@ class Game < ApplicationRecord
   validates :id, uniqueness: true
   has_one_attached :cloud_photo
 
-
   # search on a user's index page
   include PgSearch::Model
   pg_search_scope :search_by_name,

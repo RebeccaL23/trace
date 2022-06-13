@@ -6,29 +6,26 @@ let newLat = 0
 
 export default class extends Controller {
 
-  static targets = ["right", "long", "lat"]
+  static targets = ["right", "long", "lat", "location"]
 
   static values = {
     apiKey: String,
     marker: Array
   }
 
-  hello(event) {
-    event.preventDefault()
+  update(event) {
+    // event.preventDefault()
+    // console.log(this.locationTarget.value)
     // console.log(this.latTarget.value)
     this.latTarget.value = newLat
     this.longTarget.value = newLng
-    // console.log(this.latTarget.value)
 
-    // fetch(this.formTarget.action, {
-    //   method: "PATCH",
-    //   headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
-    //   body: new FormData(this.formTarget)
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${newLng},${newLat}.json?types=address&access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+      .then(response => response.json())
+      .then(data => this.locationTarget.value = data.features[0].place_name);
+
+    // console.log(this.locationTarget.value)
+
   }
 
   connect() {
@@ -93,7 +90,7 @@ export default class extends Controller {
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      customMarker.setAttribute("data-action", `click->map-challenge#hello`)
+      customMarker.setAttribute("data-action", `mouseout->map-challenge#update`)
       customMarker.classList.add("unfound-marker");
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
@@ -107,7 +104,7 @@ export default class extends Controller {
         newLng = lngLat.lng
         newLat = lngLat.lat
 
-        console.log(marker.lat)
+        // console.log(marker.lat)
         marker.lat = newLat
         marker.lng = newLng
         console.log(marker.lat)
@@ -115,6 +112,7 @@ export default class extends Controller {
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/51.507,-0.131222.json/`, {method: "GET"}
           ).then(response => response.text())
             .then((data) => {console.log(data)})
+        // console.log(marker.lat)
       }
 
       // AJAX fetch > post call > append data to form
