@@ -2,10 +2,11 @@
 .mobile-game{
   position: relative;
   h1{
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 800;
   }
 }
+
 .mobile-game-header{
   position: fixed;
   z-index:1000;
@@ -16,16 +17,75 @@
   border: $charcoal 1px solid;
   padding: 8px 16px;
 }
+
 .mobile-game-map{
   width: 100vw;
   height: 100vh;
   margin: 0 !important;
-}
 
-.mapboxgl-popup {
-  max-width: 200px;
-}
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+  .mobile-challenge-details{
+    padding: 60px 20px;
 
-.mapboxgl-popup-content {
-  text-align: center;
+    label{
+      margin-top: 8px;
+      font-size: 22px;
+    }
+  }
+
+  .question-group{
+    width: 100%;
+    display:inline-flex;
+    flex-direction: row;
+    align-items: center;
+
+    input{
+      height: 40px;
+      transform: scale(1.5);
+    }
+    label{
+      margin-left: 8px;
+      line-height: 1.3;
+      font-family: "Epilogue", "Helvetica", "sans-serif";
+    }
+
+    label > input[type="radio"]:checked + * {
+      color: teal;
+    }
+  }
+
+  .mapboxgl-popup{
+    background-color: $off-white;
+    transform: none !important;
+    border-radius: 20px;
+    position: fixed;
+    top: 15%;
+    left: 8vw;
+    width: 84vw;
+    height: 84vh;
+    min-height: 84vh;
+    max-width: 84vw !important;
+    box-shadow: #eee 3px 3px;
+
+    .mapboxgl-popup-content{
+      height: 100%;
+    }
+  }
+  .mapboxgl-popup-close-button{
+    font-size: 32px;
+  }
+
+  .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+  .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
+    display:none !important;
+  }
 }
