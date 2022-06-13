@@ -1,8 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 let newLng = 0
 let newLat = 0
+
+let mapLat = 0
+let mapLng = 0
 
 export default class extends Controller {
 
@@ -13,22 +15,17 @@ export default class extends Controller {
     marker: Array
   }
 
-  update(event) {
-    // event.preventDefault()
-    // console.log(this.locationTarget.value)
-    // console.log(this.latTarget.value)
+  update() {
     this.latTarget.value = newLat
     this.longTarget.value = newLng
 
     fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${newLng},${newLat}.json?types=address&access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
       .then(response => response.json())
       .then(data => this.locationTarget.value = data.features[0].place_name);
-
-    // console.log(this.locationTarget.value)
-
   }
 
   connect() {
+
     mapboxgl.accessToken = this.apiKeyValue
 
     const id = this.rightTarget.id
@@ -40,6 +37,25 @@ export default class extends Controller {
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
+
+    document.getElementById('fit').addEventListener('click', () => {
+
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+      .then(response => response.json())
+      .then(data => mapLng = data.features[0].center[1]);
+
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+      .then(response => response.json())
+      .then(data => mapLat = data.features[0].center[0]);
+
+      setTimeout(() =>
+        this.map.fitBounds([
+          [mapLat + 0.003, mapLng + 0.0003], // northeastern corner of the bounds
+          [mapLat - 0.003, mapLng - 0.0003], // southwestern corner of the bounds
+        ])
+      , 500)
+
+    });
 
     // get current user location demo:
     this.map.addControl(
@@ -54,17 +70,6 @@ export default class extends Controller {
       })
     );
 
-    // // limit search to a specific area
-    // const geocoder = new MapboxGeocoder({
-    //   // Initialize the geocoder
-    //   accessToken: mapboxgl.accessToken, // Set the access token
-    //   mapboxgl: mapboxgl, // Set the mapbox-gl instance
-    //   bbox: [-122.30937, 37.84214, -122.23715, 37.89838],
-    //   types: "country,region,place,postcode,locality,neighborhood,address"
-    // });
-
-    // this.map.addControl(geocoder);
-
     const modalMap = this.map;
 
     function resizeMap() {
@@ -72,15 +77,6 @@ export default class extends Controller {
     }
 
     setInterval(resizeMap, 1);
-
-    // const canvas = document.querySelector('.mapboxgl-canvas');
-    // // canvas.width = '84vw';
-    // // canvas.height = '84vh';
-    // document.querySelector('.mapboxgl-canvas').classList.add('fix-height');
-
-    // document.querySelector('.mapboxgl-canvas').style.width = '42vw';
-    // document.querySelector('.mapboxgl-canvas').style.height = '84vh';
-    // this.map.reload();
 
     const bounds = new mapboxgl.LngLatBounds()
     this.markerValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
@@ -104,25 +100,12 @@ export default class extends Controller {
         newLng = lngLat.lng
         newLat = lngLat.lat
 
-        // console.log(marker.lat)
         marker.lat = newLat
         marker.lng = newLng
-        console.log(marker.lat)
-
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/51.507,-0.131222.json/`, {method: "GET"}
-          ).then(response => response.text())
-            .then((data) => {console.log(data)})
-        // console.log(marker.lat)
       }
-
-      // AJAX fetch > post call > append data to form
       dragMarker.on('dragend', onDragEnd);
+
     })
-
-    // this.map.addControl(new MapboxGeocoder({
-    //   accessToken: mapboxgl.accessToken,
-    //   mapboxgl: mapboxgl
-    // }))
   }
-
 }
+
