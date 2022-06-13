@@ -15,13 +15,16 @@ export default class extends Controller {
 
   update(event) {
     // event.preventDefault()
-    console.log(this.locationTarget.value)
+    // console.log(this.locationTarget.value)
     // console.log(this.latTarget.value)
     this.latTarget.value = newLat
     this.longTarget.value = newLng
 
-    this.locationTarget.value = "Hoxton"
-    console.log(this.locationTarget.value)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${newLng},${newLat}.json?types=address&access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+      .then(response => response.json())
+      .then(data => this.locationTarget.value = data.features[0].place_name);
+
+    // console.log(this.locationTarget.value)
 
   }
 
@@ -87,7 +90,7 @@ export default class extends Controller {
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      customMarker.setAttribute("data-action", `click->map-challenge#update`)
+      customMarker.setAttribute("data-action", `mouseout->map-challenge#update`)
       customMarker.classList.add("unfound-marker");
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
@@ -101,10 +104,10 @@ export default class extends Controller {
         newLng = lngLat.lng
         newLat = lngLat.lat
 
-        console.log(marker.lat)
+        // console.log(marker.lat)
         marker.lat = newLat
         marker.lng = newLng
-        console.log(marker.lat)
+        // console.log(marker.lat)
       }
 
       // AJAX fetch > post call > append data to form
