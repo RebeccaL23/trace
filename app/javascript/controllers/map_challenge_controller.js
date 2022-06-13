@@ -36,7 +36,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: myMap,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/rebeccal23/cl4crwfm7000r14oaysfrxc2a",
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
@@ -107,6 +107,11 @@ export default class extends Controller {
         // console.log(marker.lat)
         marker.lat = newLat
         marker.lng = newLng
+        console.log(marker.lat)
+
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/51.507,-0.131222.json/`, {method: "GET"}
+          ).then(response => response.text())
+            .then((data) => {console.log(data)})
         // console.log(marker.lat)
       }
 

@@ -1,5 +1,29 @@
 class TeamsController < ApplicationController
+  before_action :set_game, only: %i[new create]
+
   def new
+    @team = Team.new
+  end
+
+  def create
+    @team = Team.new(team_params)
+
+    @team.game = @game
+    if @team.save
+      redirect_to game_play_path(@game), notice: 'You just made a team'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def set_game
+    @game = Game.find(params[:game_id])
+  end
+
+  def team_params
+    params.require(:team).permit(:name, :photo)
   end
 end
 
