@@ -7,10 +7,9 @@
   }
 }
 .mobile-game-header{
-  font-weight: 800;
   position: fixed;
   z-index:1000;
-  background-color: $beige;
+  background-color: $off-white;
   top: 2%;
   left: 2%;
   // border-radius: 20px;
@@ -21,4 +20,12 @@
   width: 100vw;
   height: 100vh;
   margin: 0 !important;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
 }

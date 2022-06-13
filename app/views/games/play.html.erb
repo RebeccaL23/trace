@@ -2,10 +2,9 @@
   <div class="mobile-game-header">
     <div class='left'>
       <h1><%= @game.name %></h1>
-      <p></p>
+      <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
       <div class="weather">
         <span>Weather</span><br>
-        <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
       </div>
     </div>
     <div class='right'>

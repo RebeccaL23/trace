@@ -10,7 +10,7 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/rebeccal23/cl4crwfm7000r14oaysfrxc2a",
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
@@ -32,7 +32,6 @@ export default class extends Controller {
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
         .addTo(this.map)
     })
   }

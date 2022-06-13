@@ -30,10 +30,15 @@ export default class extends Controller {
       showUserHeading: true
       })
     );
+
+    // pass through data of each challenge
+    // challenge.name
+
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
       // customMarker.setAttribute("id", `${this.rightTarget.id}${'%d: %s', i}`)
@@ -46,7 +51,7 @@ export default class extends Controller {
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
+        .setPopup(popup)
         .addTo(this.map)
     })
   }
