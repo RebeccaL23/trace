@@ -24,12 +24,23 @@
         <div class="background-opacity" data-challenge-target="opacity"></div>
         <div class="challenge-modal"  data-challenge-target="new modal">
           <%#= render "challenges/new", locals: { game: @game, challenge: @challenge } %>
-          <div class="modal-container">
+          <div class="modal-container"
+            data-controller="map-challenge"
+            data-map-challenge-markers-value="<%= @marker.to_json %>"
+            data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            >
             <div class="modal-details">
             <div class="half-modal left">
               <h1>New challenge</h1>
+              <button id="fit">check location</button>
               <%= simple_form_for [ @game, @challenge ] do |f| %>
-                <%= f.input :location, as: :string %>
+                <%= f.input :location,
+                input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
+                # input_html: {data: {map_challenge_target: "location"}},
+                wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                %>
+                <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
+                <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
                 <%= f.input :question, as: :string %>
                 <%= f.input :answer_1, as: :string %>
                 <%= f.input :answer_2, as: :string %>
@@ -41,10 +52,7 @@
             </div>
             <div class="half-modal right">
               <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
-              <div id="modal-map-<%= @challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"
-              data-controller="map-challenge"
-              data-map-challenge-markers-value="<%= @marker.to_json %>"
-              data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+              <div id="modal-map-<%= @challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"></div>
               </div>
             </div>
           </div>
@@ -98,14 +106,12 @@
                         <%= simple_form_for [ @game, challenge ] do |f| %>
 
                         <%= f.input :location,
-                            input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}},
+                            input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
                             # input_html: {data: {map_challenge_target: "location"}},
                             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
                         %>
-                        <%= f.input :latitude, as: :float, input_html: {data: {map_challenge_target: "lat"}}
-                        %>
-
-                        <%= f.input :longitude, as: :float, input_html: { :'data-map-challenge-target' => "long" } %>
+                        <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
+                        <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
                         <%= f.input :question, as: :string %>
                         <%= f.input :correct_answer, as: :string %>
                         <%= f.input :answer_1, as: :string %>
