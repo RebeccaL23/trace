@@ -39,7 +39,7 @@
     <div class="row justify-content-center">
       <div class="">
         <div class="qr-code">
-          <%= cl_image_tag "qr_code#{@game.code}" %>
+        <img src="<%= cl_image_path "qr_code#{@game.code}.png" %>" alt="qr-code">
         </div>
       </div>
     </div>
