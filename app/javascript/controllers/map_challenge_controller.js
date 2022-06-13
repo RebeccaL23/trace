@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
-let lng = 0
-let lat = 0
+let newLng = 0
+let newLat = 0
 
 export default class extends Controller {
 
@@ -16,12 +16,12 @@ export default class extends Controller {
   hello(event) {
     event.preventDefault()
     // console.log(this.latTarget.value)
-    this.latTarget.value = lat
-    this.longTarget.value = lng
+    this.latTarget.value = newLat
+    this.longTarget.value = newLng
     // console.log(this.latTarget.value)
 
     // fetch(this.formTarget.action, {
-    //   method: "POST",
+    //   method: "PATCH",
     //   headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
     //   body: new FormData(this.formTarget)
     // })
@@ -104,9 +104,13 @@ export default class extends Controller {
 
       function onDragEnd() {
         const lngLat = dragMarker.getLngLat();
-        lng = lngLat.lng
-        lat = lngLat.lat
-        hello()
+        newLng = lngLat.lng
+        newLat = lngLat.lat
+
+        console.log(marker.lat)
+        marker.lat = newLat
+        marker.lng = newLng
+        console.log(marker.lat)
       }
 
       // AJAX fetch > post call > append data to form

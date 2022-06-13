@@ -72,7 +72,7 @@
               <div class="div" >
 
                 <% if !challenge.location.nil? %>
-                  <% @marker = [{ lat: challenge.geocode[0], lng: challenge.geocode[1] }] %>
+                  <% @marker = [{ lat: challenge.latitude, lng: challenge.longitude }] %>
                 <% end %>
                 <p class='challenge-edit'  data-action="click->challenge#showModal" >View/edit details</p>
                 <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
