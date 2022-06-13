@@ -22,17 +22,7 @@ export default class extends Controller {
 
     this.locationTarget.value = "Hoxton"
     console.log(this.locationTarget.value)
-    // console.log(this.latTarget.value)
 
-    // fetch(this.formTarget.action, {
-    //   method: "PATCH",
-    //   headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
-    //   body: new FormData(this.formTarget)
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //   })
   }
 
   connect() {
