@@ -33,7 +33,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: myMap,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/rebeccal23/cl4crwfm7000r14oaysfrxc2a",
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
@@ -109,20 +109,3 @@ export default class extends Controller {
   }
 }
 
-// document.getElementById('fit').addEventListener('click', () => {
-
-//   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
-//     .then(response => response.json())
-//     .then(data => mapLng = data.features[0].center[1]);
-
-//   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
-//     .then(response => response.json())
-//     .then(data => mapLat = data.features[0].center[0]);
-
-//   // console.log(this.map)
-
-//   this.map.fitBounds([
-//     [32.958984, -5.353521], // southwestern corner of the bounds
-//     [43.50585, 5.615985] // northeastern corner of the bounds
-//   ]);
-// });
