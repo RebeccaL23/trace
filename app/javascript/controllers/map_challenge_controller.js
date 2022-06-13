@@ -1,14 +1,34 @@
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
+let newLng = 0
+let newLat = 0
+
 export default class extends Controller {
 
   static targets = ["right", "long", "lat"]
 
-
   static values = {
     apiKey: String,
     marker: Array
+  }
+
+  hello(event) {
+    event.preventDefault()
+    // console.log(this.latTarget.value)
+    this.latTarget.value = newLat
+    this.longTarget.value = newLng
+    // console.log(this.latTarget.value)
+
+    // fetch(this.formTarget.action, {
+    //   method: "PATCH",
+    //   headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
+    //   body: new FormData(this.formTarget)
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
   }
 
   connect() {
@@ -37,6 +57,17 @@ export default class extends Controller {
       })
     );
 
+    // // limit search to a specific area
+    // const geocoder = new MapboxGeocoder({
+    //   // Initialize the geocoder
+    //   accessToken: mapboxgl.accessToken, // Set the access token
+    //   mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    //   bbox: [-122.30937, 37.84214, -122.23715, 37.89838],
+    //   types: "country,region,place,postcode,locality,neighborhood,address"
+    // });
+
+    // this.map.addControl(geocoder);
+
     const modalMap = this.map;
 
     function resizeMap() {
@@ -62,6 +93,7 @@ export default class extends Controller {
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
+      customMarker.setAttribute("data-action", `click->map-challenge#hello`)
       customMarker.classList.add("unfound-marker");
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
@@ -72,17 +104,23 @@ export default class extends Controller {
 
       function onDragEnd() {
         const lngLat = dragMarker.getLngLat();
-        console.log(lngLat)
+        newLng = lngLat.lng
+        newLat = lngLat.lat
+
+        console.log(marker.lat)
+        marker.lat = newLat
+        marker.lng = newLng
+        console.log(marker.lat)
       }
 
       // AJAX fetch > post call > append data to form
       dragMarker.on('dragend', onDragEnd);
-
     })
 
-    this.map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    }))
+    // this.map.addControl(new MapboxGeocoder({
+    //   accessToken: mapboxgl.accessToken,
+    //   mapboxgl: mapboxgl
+    // }))
   }
+
 }

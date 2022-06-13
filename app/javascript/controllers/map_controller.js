@@ -19,7 +19,6 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-
     this.markersValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
