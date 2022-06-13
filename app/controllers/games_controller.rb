@@ -48,6 +48,10 @@ class GamesController < ApplicationController
 
   def play
     @game = Game.find(params[:game_id])
+    @team = Team.find(params[:team_id])
+    @time = (Time.now.to_f - @team.created_at.to_f)
+    @time_hour = ((Time.now.to_i - @team.created_at.to_i) / 3600).round
+    @time_mins = @time.to_s.gsub(/\.\d*/)
   end
 
   def destroy

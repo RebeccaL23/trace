@@ -7,10 +7,9 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-
     @team.game = @game
     if @team.save
-      redirect_to game_play_path(@game), notice: 'You just made a team'
+      redirect_to game_team_play_path(@game, @team), notice: 'You just made a team'
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +22,7 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name, :photo)
+    params.require(:team).permit(:name, :team_photo)
   end
 end
 
