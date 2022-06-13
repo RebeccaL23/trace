@@ -6,18 +6,22 @@ let newLat = 0
 
 export default class extends Controller {
 
-  static targets = ["right", "long", "lat"]
+  static targets = ["right", "long", "lat", "location"]
 
   static values = {
     apiKey: String,
     marker: Array
   }
 
-  hello(event) {
-    event.preventDefault()
+  update(event) {
+    // event.preventDefault()
+    console.log(this.locationTarget.value)
     // console.log(this.latTarget.value)
     this.latTarget.value = newLat
     this.longTarget.value = newLng
+
+    this.locationTarget.value = "Hoxton"
+    console.log(this.locationTarget.value)
     // console.log(this.latTarget.value)
 
     // fetch(this.formTarget.action, {
@@ -93,7 +97,7 @@ export default class extends Controller {
     this.markerValue.forEach((marker) => {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      customMarker.setAttribute("data-action", `click->map-challenge#hello`)
+      customMarker.setAttribute("data-action", `click->map-challenge#update`)
       customMarker.classList.add("unfound-marker");
 
       const dragMarker = new mapboxgl.Marker(customMarker, {
