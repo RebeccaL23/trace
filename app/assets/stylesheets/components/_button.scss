@@ -1,18 +1,52 @@
 .button {
   padding: 8px 24px;
-  width: 188px;
-  height: 37px;
+  font-weight: 600;
   border-radius: 5px;
+  transition: all .2s ease-in-out;
+  position:  relative;
+
+  &:after{
+    content: url(arrow.png);
+    // content: "⇢";
+    position: absolute;
+    opacity: 0;
+    top: 4px;
+    right: 10px;
+    transition: 0.5s;
+  }
 
   &.beige{
     color: $charcoal;
-    font-weight: 600;
     background: $off-white;
     border: solid 1px $charcoal;
+
+    &:hover{
+      background: $charcoal;
+      color: $off-white;
+      border: solid 1px $charcoal;
+      padding-right: 42px;
+
+      &:after {
+        opacity: 1;
+
+      }
+    }
   }
 
   &.green{
     color: $charcoal;
     background: $mint;
+    border: solid 1px $mint;
+
+    &:hover{
+      background: $charcoal;
+      color: $off-white;
+      border: solid 1px $charcoal;
+      padding-right: 42px;
+
+      &:after {
+        opacity: 1;
+      }
+    }
   }
 }

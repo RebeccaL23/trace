@@ -4,56 +4,60 @@
 <div class="hero-banner">
   <div class="container">
     <%= image_tag "Logo.png" %>
-    <h1>Merging the digital and real-world experience through scavenger hunt games.</h1>
+    <h1>Merging the digital and real-world experience through scavenger hunt games</h1>
     <div>
       <%= link_to "Create a game", new_user_session_path, class: "button beige" %>
       <%= link_to "Join a game", new_user_session_path, class: "button green" %>
     </div>
   </div>
 </div>
-<div class="description-banner">
-  <div class="container">
-    <p>Planning a bachelorette night for your girlfriends?
-    Looking for an engaging and interactive school field trip activity? How about a team-building activity for work?
-    Tour of the town? Manage it all on <strong>trace</strong>.</p>
+<div class="description-banner vertical-center">
+  <div class="container vertical-center">
+    <h3>Plan and manage <br>it all on trace</h3>
+    <div class="use-cases"><p>Team-building work activities</span><hr></div>
+    <div class="use-cases"><p>School trips and excursions</span><hr></div>
+    <div class="use-cases"><p>Educational city tours</span><hr></div>
+    <div class="use-cases"><p>Group social <br>events</span><hr></div>
   </div>
 </div>
 <div class="bottom-banner">
   <div>
-    <div class="container d-flex">
+    <div class="container d-flex how-it-works">
         <%= image_tag "placeholder.png" %>
         <div class="bottom-banner guide">
           <h2>How it works</h2>
           <ul>
-            <li><i class="fa-solid fa-circle-notch"></i> Create a game</li>
-            <li><i class="fa-solid fa-circle-notch"></i> Plot out different challenges and locations</li>
-            <li><i class="fa-solid fa-circle-notch"></i> Players join a game with a unique game code</li>
-            <li><i class="fa-solid fa-circle-notch"></i>
-              Players complete challenges by answering questions, submitting photos and QR codes</li>
-            <li><i class="fa-solid fa-circle-notch"></i> Best time wins</li>
+            <li><div class='home-marker'>1</div><div>Create a game</div></li>
+            <li><div class='home-marker'>2</div><div>Plot out the challenges, points and locations across the map</div></li>
+            <li><div class='home-marker'>3</div><div>Share the unique game code with players</div></li>
+            <li><div class='home-marker'>4</div>
+              <div>Players complete challenges by visiting each location and answering questions</div></li>
+            <li><div class='home-marker'>5</div><div>Highest score and best time wins!</div></li>
+
           </ul>
         </div>
     </div>
-  </div>
-   <div class="buttons d-flex justify-content-center ">
+    <div class="buttons">
       <%= link_to "Create a game", new_user_session_path, class: "button beige" %>
       <%= link_to "Join a game", new_user_session_path, class: "button green" %>
     </div>
+  </div>
+
   <div class="container w-70">
     <div class="newsletter">
       <div class="newsletter content">
         <div class="info">
-          <div>
+          <div id='newsletter-info'>
             <h2>Keep in the loop</h2>
-            <p>Be the first to hear about a scavenger hunt happening near you.</p>
+            <p>Be the first to hear about a scavenger hunt happening near you.</span>
           </div>
         </div>
         <div class="subscribe">
           <div class="subscribe form">
             <h3>Subscribe</h3>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="button-addon2">
-              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+              <input id='email-input' type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
             </div>
           </div>
         </div>
@@ -61,30 +65,33 @@
     </div>
   </div>
 </div>
+
 <div class="footer">
-  <div class="footer-copyright">
-    <%= link_to root_path do %>
-      <%= image_tag "Logo.png" %>
-    <% end %>
-  </div>
-  <div class="footer-items" >
-    <ul>
-      <li>
-        <%= link_to "Terms", "#"%>
-      </li>
-      <li>
-        <%= link_to "Privacy", "#"%>
-      </li>
-      <li>
-        <%= link_to "Cookies", "#"%>
-      </li>
-    </ul>
-  </div>
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
+  <div class="container">
+    <div class="footer-copyright">
+      <%= link_to root_path do %>
+        <%= image_tag "Logo.png" %>
+      <% end %>
+    </div>
+    <div class="footer-items" >
+      <!--<ul>
+        <li>
+          <%= link_to "Terms", "#"%>
+        </li>
+        <li>
+          <%= link_to "Privacy", "#"%>
+        </li>
+        <li>
+          <%= link_to "Cookies", "#"%>
+        </li>
+      </ul>-->
+    </div>
+    <div class="footer-links">
+      <%# <a href="#"><i class="fab fa-github"></i></a> %>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <%# <a href="#"><i class="fab fa-twitter"></i></a> %>
+      <%# <a href="#"><i class="fab fa-linkedin"></i></a> %>
+    </div>
   </div>
 </div>
