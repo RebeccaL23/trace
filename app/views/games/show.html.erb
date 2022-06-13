@@ -7,6 +7,7 @@
           <div class='edit-header'>
             <h3><%= @game.name %></h3>
             <span class='edit' data-challenge-target="edit"><%= link_to image_tag('edit.png'), edit_game_path(@game), class: "edit-icon" %></span>
+            <span class='edit' data-challenge-target="delete"><%= link_to image_tag('delete.png'), game_path(@game), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "edit-icon" %></span>
           </div>
           <br>
           <span><%= @game.city %></span><br>
