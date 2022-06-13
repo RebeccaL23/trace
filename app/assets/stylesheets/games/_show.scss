@@ -142,3 +142,14 @@
     }
   }
 }
+
+.challenge-edit{
+//  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+
+  img{
+      height: 28px !important;
+  }
+}

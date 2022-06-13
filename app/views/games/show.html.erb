@@ -6,7 +6,9 @@
         <div class="edit-game" data-action="mouseover->challenge#editHover mouseout->challenge#editNone">
           <div class='edit-header'>
             <h3><%= @game.name %></h3>
+            <!---------- EDIT, DELETE FUNCTIONS ------>
             <span class='edit' data-challenge-target="edit"><%= link_to image_tag('edit.png'), edit_game_path(@game), class: "edit-icon" %></span>
+            <span class='edit' data-challenge-target="delete"><%= link_to image_tag('delete.png'), game_path(@game), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "edit-icon" %></span>
           </div>
           <br>
           <span><%= @game.city %></span><br>
@@ -70,7 +72,7 @@
 
         <!--------------- CHALLENGE LIST LOOP --------->
         <% @game.challenges.each_with_index do |challenge, index| %>
-          <div class="challenge-list-item" data-controller="challenge" data-challenge-number-value="<%= challenge.id %>">
+          <div class="challenge-list-item" data-controller="challenge" data-challenge-number-value="<%= challenge.id %> " data-action="mouseover->challenge#editHover mouseout->challenge#editNone">
             <div class="background-opacity" data-challenge-target="opacity"></div>
             <div class="challenge-number"><h2><%= index + 1%></h2></div>
             <div class="challenge-card">
@@ -81,8 +83,11 @@
                   <% @marker = [{ lat: challenge.geocode[0], lng: challenge.geocode[1] }] %>
                 <% end %>
 
-                <p class='challenge-edit'  data-action="click->challenge#showModal" >View/edit details</p>
-                <%# <%= link_to "View/edit details", edit_game_challenge_path(challenge) %>
+                  <div class='challenge-edit'>
+                    <!---------- EDIT, DELETE FUNCTIONS ------>
+                    <span class='edit' data-challenge-target="edit" data-action="click->challenge#showModal"><a style="cursor: pointer" class="challenge-edit edit-icon"><%= image_tag('edit.png') %></a></span>
+                    <span class='edit' data-challenge-target="delete"><%= link_to image_tag('delete.png'), challenge_path(challenge), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "edit-icon" %></span>
+                  </div>
 
                 <!---- EDIT CHALLENGE MODAL --------->
                 <div class="challenge-modal" data-challenge-target="modal" >
