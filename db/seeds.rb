@@ -33,8 +33,8 @@ puts "Creating 9 games..."
 Game.create(
   name: "Rebecca's Tots",
   city: "London",
-  start: "10-06-2022 21:00",
-  end: "10-06-2022 23:00",
+  start: "14-06-2022 10:00",
+  end: "14-06-2022 23:00",
   photo: 'nkids.jpg',
   user: user1
 )

@@ -2,25 +2,30 @@
   <div class="mobile-header">
     <h1>Welcome to <%= @game.name %></h1>
   </div>
-  <% time = Time.now %>
+
+  <% time = Time.zone.now + 1*60*60 %>
 
   <!-- if game over -->
-  <% if @game.end < time %>
+  <% if @game.end <= time %>
     <h2>Game over!</h2>
     <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
 
   <!-- if game in progress -->
-  <% elsif @game.start <= time && @game.end >= time%>
+  <% elsif @game.start < time && @game.end > time %>
     <h2>Game on!</h2>
     <p>The game has started.</p>
-    <%= link_to "Let's play!", new_game_team_path(@game) %>
+    <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
 
   <!-- if game not started -->
-  <% else %>
+  <% elsif @game.start > time %>
       <h2>Ready, set...</h2>
+      <h1><%= time %> <%=@game.start %> <%=@game.end%> </h1>
       <p>The game has not yet started. Check back closer to the below start time.</p>
       <% start_time = @game.start %>
       <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
       <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
+
 </div>
+
+<button><i></i></button>
