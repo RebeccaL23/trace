@@ -3,15 +3,15 @@
     <h1>Welcome to <%= @game.name %></h1>
   </div>
 
-  <% time = Time.zone.now + 1*60*60 %>
-
   <!-- if game over -->
-  <% if @game.end <= time %>
+  <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
+
     <h2>Game over!</h2>
     <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
 
   <!-- if game in progress -->
-  <% elsif @game.start < time && @game.end > time %>
+
+  <% elsif (Time.zone.now + 1*60*60) > @game.start %>
     <h2>Game on!</h2>
     <p>The game has started.</p>
     <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
@@ -22,10 +22,71 @@
       <h1><%= time %> <%=@game.start %> <%=@game.end%> </h1>
       <p>The game has not yet started. Check back closer to the below start time.</p>
       <% start_time = @game.start %>
+
+      <%# show time until start %>
       <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
+      <% if @game.start - (Time.zone.now + 1*60*60) < (60*60) %>
+        <div id="clockdiv"><div>
+        <p> game begins in:
+        <span class="minutes"></span> :
+        <span class="seconds"></span>
+      <% end %>
+      </p>
       <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
 
 </div>
 
-<button><i></i></button>
+<p hidden id="timer"> <%= @game.start - (Time.zone.now + 1*60*60) %> </p>
+
+<script>
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  return {
+    'total': t,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var timeTo = parseInt(document.getElementById("timer").innerHTML)
+var timeInSeconds = timeTo
+var currentTime = Date.parse(new Date());
+var deadline = new Date(currentTime + timeInSeconds*1000);
+initializeClock('clockdiv', deadline);
+
+function refresh() {
+  location.reload();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  setInterval(refresh, 5000);
+});
+
+</script>
+
