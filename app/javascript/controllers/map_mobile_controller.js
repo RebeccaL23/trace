@@ -33,10 +33,10 @@ export default class extends Controller {
   }
 
   // currently applies to the first marker
-  editModal (event) {
-    console.log(event.currentTarget)
+  editMarker (event) {
     event.currentTarget.classList.remove("unfound-marker")
     event.currentTarget.classList.add("completed-marker")
+    this.opacityTarget.classList.add("opacity");
   }
 
   #addMarkersToMap() {
@@ -44,7 +44,7 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      customMarker.setAttribute("data-action", `click->map-mobile#editModal`)
+      customMarker.setAttribute("data-action", `click->map-mobile#editMarker`)
       customMarker.setAttribute("data-map-mobile-target", `marker`)
       customMarker.classList.add("unfound-marker");
 
