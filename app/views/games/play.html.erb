@@ -16,7 +16,6 @@
       <span>
       <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
       <% end  %>
-
       <h2>Score: <%= @team.score %></h2>
       <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
 
