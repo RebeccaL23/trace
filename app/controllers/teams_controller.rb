@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_game, only: %i[new create]
+  skip_before_action :authenticate_user!, only: %i[new create]
 
   def new
     @team = Team.new
@@ -16,7 +17,7 @@ class TeamsController < ApplicationController
       )
     end
     if @team.save
-      redirect_to game_team_play_path(@game, @team), notice: 'You just made a team'
+      redirect_to game_team_play_path(@game, @team)
     else
       render :new, status: :unprocessable_entity
     end
