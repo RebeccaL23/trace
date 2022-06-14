@@ -15,8 +15,9 @@ Rails.application.routes.draw do
       get "play", to: "games#play", as: :play
       get "leader", to: "teams#leaderboard", as: :leaderboard
       get "expired", to: "teams#expired", as: :expired
-
+      # completion
       post "completion/:id/choice", to: "completions#choice", as: :completion
+      post "completion/:id/choice/correct", to: "completions#correct", as: :correct
     end
     # challenges
     resources :challenges, only: %i[new create edit update]
