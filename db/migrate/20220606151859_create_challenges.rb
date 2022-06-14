@@ -5,7 +5,7 @@ class CreateChallenges < ActiveRecord::Migration[7.0]
       t.string :answer_1
       t.string :answer_2
       t.string :answer_3
-      t.string :correct_answer
+      t.string :answer_correct
       t.integer :points
       t.string :location
       t.references :game, null: false, foreign_key: true

@@ -42,6 +42,6 @@ class ChallengesController < ApplicationController
   end
 
   def challenge_params
-    params.require(:challenge).permit(:question, :answer_1, :answer_2, :answer_3, :correct_answer, :points, :location)
+    params.require(:challenge).permit(:question, :answer_1, :answer_2, :answer_3, :answer_correct, :points, :location)
   end
 end

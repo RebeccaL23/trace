@@ -5,7 +5,7 @@ class CompletionsController < ApplicationController
     @completion.update(completed: true)
     # gets completions param
     # completion.completed = true
-    # if input  == completion.chall.correct_answer
+    # if input  == completion.chall.answer_correct
     #   team.score += completion.chall.points
     # end
   end

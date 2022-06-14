@@ -46,7 +46,7 @@
 
     <div class="question-group" >
       <%= form.radio_button :challenge, 'correct', data: {action: "change->completions#check"} %>
-      <%= form.label :challenge_correct, challenge.correct_answer , data: {completions_target: "correct"}%>
+      <%= form.label :challenge_correct, challenge.answer_correct , data: {completions_target: "correct"}%>
     </div>
 
     <%= form.submit data: {action: "click->completions#choice"} %>

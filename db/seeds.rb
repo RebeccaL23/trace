@@ -117,7 +117,7 @@ puts "Creating  6 challenges..."
     answer_1: "3",
     answer_2: "1",
     answer_3: "8",
-    correct_answer: "4",
+    answer_correct: "4",
     points: 10,
     location: "Trafalgar Square",
     game: Game.first
@@ -128,7 +128,7 @@ puts "Creating  6 challenges..."
     answer_1: "18",
     answer_2: "42",
     answer_3: "69",
-    correct_answer: "32",
+    answer_correct: "32",
     points: 10,
     location: "London Eye",
     game: Game.first
@@ -139,7 +139,7 @@ puts "Creating  6 challenges..."
     answer_1: "Elizabeth's Naughty List",
     answer_2: "The Loyal Courts of Justice",
     answer_3: "The Loyal Courts of Justyce",
-    correct_answer: "The Law Courts",
+    answer_correct: "The Law Courts",
     points: 10,
     location: "The Royal Courts of Justice",
     game: Game.first
@@ -149,7 +149,7 @@ puts "Creating  6 challenges..."
     answer_1: "Between 300 and 500",
     answer_2: "Over 1000",
     answer_3: "Less than 700",
-    correct_answer: "Over 700",
+    answer_correct: "Over 700",
     points: 10,
     location: "Buckingham Palace",
     game: Game.first
@@ -159,7 +159,7 @@ puts "Creating  6 challenges..."
     answer_1: "River Island",
     answer_2: "Amazon River",
     answer_3: "Lake Toba",
-    correct_answer: "River Thames",
+    answer_correct: "River Thames",
     points: 10,
     location: "Palace of Westminster",
     game: Game.first
