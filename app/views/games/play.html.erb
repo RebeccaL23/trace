@@ -4,12 +4,18 @@
 
       <h1><%= @game.name %></h1>
       <h2>Team: <%= @team.name %></h2>
+      <% if ((Time.zone.now + 1*60*60) > @game.end) %>
       <span id="clockdiv">
-      <span class="minutes"></span> :
+      <span class="minutes"></span> Times up!
       <span class="seconds"></span>
       <span>
-      <p hidden id="timer"> <%= (Time.zone.now + 1*60*60) - @game.end %> </p>
-
+      <% else %>
+      <span id="clockdiv">
+      <span class="minutes"></span>
+      <span class="seconds"></span>
+      <span>
+      <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
+      <% end  %>
       <h2>Score: <%= @team.score %></h2>
       <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
 
@@ -22,8 +28,6 @@
       <div class="help"></div>
     </div>
   </div>
-
-
 
   <!-- marker for each challenge -->
     <% @markers = @game.challenges.geocoded.map do |challenge| %>
