@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("MOBILE MAP");
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -18,6 +18,7 @@ export default class extends Controller {
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
