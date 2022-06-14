@@ -3,6 +3,7 @@
     <h1>Welcome to <%= @game.name %></h1>
   </div>
 
+  <% time = (Time.zone.now + 1*60*60)  %>
   <!-- if game over -->
   <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
 
@@ -10,7 +11,6 @@
     <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
 
   <!-- if game in progress -->
-
   <% elsif (Time.zone.now + 1*60*60) > @game.start %>
     <h2>Game on!</h2>
     <p>The game has started.</p>
@@ -19,7 +19,6 @@
   <!-- if game not started -->
   <% elsif @game.start > time %>
       <h2>Ready, set...</h2>
-      <h1><%= time %> <%=@game.start %> <%=@game.end%> </h1>
       <p>The game has not yet started. Check back closer to the below start time.</p>
       <% start_time = @game.start %>
 
@@ -88,4 +87,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-
