@@ -24,12 +24,11 @@
 
       <%# show time until start %>
       <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
-      <% if @game.start - (Time.zone.now + 1*60*60) < (60*60) %>
         <div id="clockdiv"><div>
         <p> game begins in:
+        <span class="hours"></span> :
         <span class="minutes"></span> :
         <span class="seconds"></span>
-      <% end %>
       </p>
       <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
@@ -54,12 +53,14 @@ function getTimeRemaining(endtime) {
 
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
