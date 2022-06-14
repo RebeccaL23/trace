@@ -3,22 +3,22 @@
   <h2><%= challenge.question %></h2>
   <%= form_with do |form| %>
     <div class="question-group" >
-      <%= form.radio_button :challenge, 1, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, 1 %>
       <%= form.label :challenge_1, challenge.answer_1 %>
     </div>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, 2, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, 2 %>
+      <%= form.label :challenge_2, challenge.answer_2 %>
+    </div>
+
+    <div class="question-group" >
+      <%= form.radio_button :challenge, 3%>
       <%= form.label :challenge_3, challenge.answer_3 %>
     </div>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, 3, data: {action: "change->completions#check"}%>
-      <%= form.label :challenge_3, challenge.answer_3 %>
-    </div>
-
-    <div class="question-group" >
-      <%= form.radio_button :challenge, 'correct', data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, 'correct' %>
       <%= form.label :challenge_correct, challenge.correct_answer , data: {completions_target: "correct"}%>
     </div>
 
