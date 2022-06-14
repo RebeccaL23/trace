@@ -17,7 +17,7 @@
       <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
       <% full = @game.end - @team.created_at %>
       <% left = full - lost %>
-      <p id="timer"> <%= left %> </p>
+      <p hidden id="timer"> <%= left %> </p>
       <div class='right'>
         <div class="timer">
           <% if ((Time.zone.now + 1*60*60) > @game.end) %>
