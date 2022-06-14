@@ -66,6 +66,14 @@
     }
   }
 
+  .correct {
+    background-color: green;
+  }
+
+  .wrong {
+    background-color: red;
+  }
+
   .mapboxgl-popup{
     background-color: $off-white;
     transform: none !important;

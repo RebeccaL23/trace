@@ -1,7 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="map-mobile"
 export default class extends Controller {
+
+  static targets = ["marker"]
+
   static values = {
     apiKey: String,
     markers: Array
@@ -24,16 +26,16 @@ export default class extends Controller {
       positionOptions: {
       enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
       })
     );
+  }
 
-    // pass through data of each challenge
-    // challenge.name
-
+  editModal () {
+    console.log(this.markerTarget)
+    this.markerTarget.classList.remove("unfound-marker")
+    this.markerTarget.classList.add("completed-marker")
   }
 
   #addMarkersToMap() {
@@ -41,11 +43,8 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      // customMarker.setAttribute("id", `${this.rightTarget.id}${'%d: %s', i}`)
-
-      // can't get the following to show edit
-
-      customMarker.setAttribute("data-action", `click->challenge#showModal`)
+      customMarker.setAttribute("data-action", `click->map-mobile#editModal`)
+      customMarker.setAttribute("data-map-mobile-target", `marker`)
       customMarker.classList.add("unfound-marker");
 
       // Pass the element as an argument to the new marker

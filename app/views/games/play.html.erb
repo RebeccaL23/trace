@@ -15,17 +15,21 @@
       </div>
       <div class='right'>
         <div class="timer">
-          <% if ((Time.zone.now + 1*60*60) > @game.end) %>
+          <% if (@team.created_at > @game.end) %>
           <span id="clockdiv">
+          <span class="hours"></span>
           <span class="minutes"></span> Times up!
           <span class="seconds"></span>
           <span>
           <% else %>
           <span id="clockdiv">
+          <span class="hours"></span>
           <span class="minutes"></span>
           <span class="seconds"></span>
           <span>
-          <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
+          <p hidden id="timer"> <%= @game.end - @team.created_at %> </p>
+          <p id="timer"> <%= @team.created_at %> </p>
+          <p id="timer"> <%= @game.end %> </p>
           <% end  %>
         </div>
         <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
@@ -36,7 +40,6 @@
     </div>
   </div>
 
-  <!-- marker for each challenge -->
     <% @markers = @game.challenges.geocoded.map do |challenge| %>
       <% {
           lat: challenge.latitude,

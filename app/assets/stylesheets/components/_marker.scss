@@ -6,3 +6,12 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.completed-marker {
+  width: 50px;
+  background-size: cover;
+  background-image: url("completed-marker.png");
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
