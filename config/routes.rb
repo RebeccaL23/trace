@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :games, only: %i[show new create edit update] do
     get "status", to: "games#status", as: :status
     get "confirmation", to: "games#confirmation", as: :confirmation
-    get "leader", to: "games#leaderboard", as: :leaderboard
+    get "leaderboard", to: "games#leaderboard", as: :leaderboard
     # teams
     resources :teams, only: %i[show new create] do
       get "play", to: "games#play", as: :play
