@@ -27,5 +27,6 @@ export default class extends Controller {
 
   check(event) {
     console.log(event.currentTarget.nextElementSibling.innerText === this.correctTarget.innerText)
+    console.log(this.element)
     }
 }
