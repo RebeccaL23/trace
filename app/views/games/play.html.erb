@@ -9,8 +9,9 @@
         <h2>Score: <%= @team.score %></h2>
         <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
 
-        <div class="weather">
-          <span>Weather</span><br>
+        <div class="weather" data-controller="weather">
+          <img src="" alt="Weather Icon" data-weather-target="icon">
+          <h2 data-weather-target="temperature"></h2>
         </div>
       </div>
       <div class='right'>
