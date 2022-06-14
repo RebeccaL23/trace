@@ -2,19 +2,46 @@
   data-game-id="<%= challenge.game_id %>"  data-team-id="<%= @team.id %>" data-completion-id="<%= Completion.find_by(team: @team, challenge: challenge).id %>">
   <h2><%= challenge.question %></h2>
   <%= form_with do |form| %>
-    <div class="question-group" >
-      <%= form.radio_button :challenge, 1 %>
-      <%= form.label :challenge_1, challenge.answer_1 %>
-    </div>
+
+    <% numArr =[1,2,3]  %>
+    <% chalArr = [:challenge_1, :challenge_2, :challenge_3] %>
+    <% chalAnsArr = [challenge.answer_1, challenge.answer_2, challenge.answer_3] %>
+    <% num = numArr.sample  %>
+    <% index = numArr.index(num) %>
+    <% chal = chalArr[index] %>
+    <% chalAns = chalAnsArr[index] %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, 2 %>
-      <%= form.label :challenge_2, challenge.answer_2 %>
+      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.label chal, chalAns %>
     </div>
 
+    <% numArr.delete(index) %>
+    <% chalArr.delete(index) %>
+    <% chalAnsArr.delete(index) %>
+
+    <% num = numArr.sample %>
+    <% index = numArr.index(num) %>
+    <% chal = chalArr[index] %>
+    <% chalAns = chalAnsArr[index] %>
+
     <div class="question-group" >
-      <%= form.radio_button :challenge, 3%>
-      <%= form.label :challenge_3, challenge.answer_3 %>
+      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.label chal, chalAns %>
+    </div>
+
+    <% numArr.delete(index) %>
+    <% chalArr.delete(index) %>
+    <% chalAnsArr.delete(index) %>
+
+    <% num = numArr.sample %>
+    <% index = numArr.index(num) %>
+    <% chal = chalArr[index] %>
+    <% chalAns = chalAnsArr[index] %>
+
+    <div class="question-group" >
+      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.label chal, chalAns %>
     </div>
 
     <div class="question-group" >
