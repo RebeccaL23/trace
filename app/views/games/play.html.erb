@@ -4,9 +4,6 @@
       <h1><%= @game.name %></h1>
       <h2>Team: <%= @team.name %></h2>
       <h2>Score: <%= @team.score %></h2>
-      <div data-controller="timer">
-        <h2 data-timer-target="time">Time: <% @time_hour %>:<% @time_mins %>:<% @time_secs %></h2>
-      </div>
       <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
       <div class="weather">
         <span>Weather</span><br>

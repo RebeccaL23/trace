@@ -24,6 +24,3 @@ application.register("map", MapController)
 
 import MapMobileController from "./map_mobile_controller.js"
 application.register("map-mobile", MapMobileController)
-
-import TimerController from "./timer_controller.js"
-application.register("timer", TimerController)
