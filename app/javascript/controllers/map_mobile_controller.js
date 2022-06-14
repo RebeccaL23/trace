@@ -32,10 +32,11 @@ export default class extends Controller {
     );
   }
 
-  editModal () {
-    console.log(this.markerTarget)
-    this.markerTarget.classList.remove("unfound-marker")
-    this.markerTarget.classList.add("completed-marker")
+  // currently applies to the first marker
+  editModal (event) {
+    console.log(event.currentTarget)
+    event.currentTarget.classList.remove("unfound-marker")
+    event.currentTarget.classList.add("completed-marker")
   }
 
   #addMarkersToMap() {
