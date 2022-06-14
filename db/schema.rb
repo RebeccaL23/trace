@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_10_111803) do
     t.string "answer_1"
     t.string "answer_2"
     t.string "answer_3"
-    t.string "correct_answer"
+    t.string "answer_correct"
     t.integer "points"
     t.string "location"
     t.bigint "game_id", null: false

@@ -3,50 +3,87 @@
   <h2><%= challenge.question %></h2>
   <%= form_with do |form| %>
 
-    <% numArr =[1,2,3]  %>
-    <% chalArr = [:challenge_1, :challenge_2, :challenge_3] %>
-    <% chalAnsArr = [challenge.answer_1, challenge.answer_2, challenge.answer_3] %>
+    <% numArr =[1,2,3,'correct']  %>
+    <% chalArr = [:challenge_1, :challenge_2, :challenge_3, :challenge_correct] %>
+    <% chalAnsArr = [challenge.answer_1, challenge.answer_2, challenge.answer_3, challenge.answer_correct] %>
+    <% correctTarget = {data: {completions_target: "correct"}} %>
+    <% emptyTarget = {:id => 'form_id'} %>
+    <% target = nil %>
+
     <% num = numArr.sample  %>
     <% index = numArr.index(num) %>
     <% chal = chalArr[index] %>
     <% chalAns = chalAnsArr[index] %>
 
+    <% if num == 'correct' %>
+    <% target = correctTarget  %>
+    <% else %>
+    <% target = emptyTarget  %>
+    <% end  %>
+
     <div class="question-group" >
       <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
-      <%= form.label chal, chalAns %>
+      <%= form.label chal, chalAns, target %>
     </div>
 
-    <% numArr.delete(index) %>
-    <% chalArr.delete(index) %>
-    <% chalAnsArr.delete(index) %>
+    <% numArr.delete_at(index) %>
+    <% chalArr.delete_at(index) %>
+    <% chalAnsArr.delete_at(index) %>
 
     <% num = numArr.sample %>
     <% index = numArr.index(num) %>
     <% chal = chalArr[index] %>
     <% chalAns = chalAnsArr[index] %>
 
+    <% if num == 'correct' %>
+    <% target = correctTarget  %>
+    <% else %>
+    <% target = emptyTarget  %>
+    <% end %>
+
     <div class="question-group" >
       <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
-      <%= form.label chal, chalAns %>
+      <%= form.label chal, chalAns, target %>
     </div>
 
-    <% numArr.delete(index) %>
-    <% chalArr.delete(index) %>
-    <% chalAnsArr.delete(index) %>
+    <% numArr.delete_at(index) %>
+    <% chalArr.delete_at(index) %>
+    <% chalAnsArr.delete_at(index) %>
 
     <% num = numArr.sample %>
     <% index = numArr.index(num) %>
     <% chal = chalArr[index] %>
     <% chalAns = chalAnsArr[index] %>
 
-    <div class="question-group" >
-      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
-      <%= form.label chal, chalAns %>
-    </div>
+    <% if num == 'correct' %>
+    <% target = correctTarget  %>
+    <% else %>
+    <% target = emptyTarget  %>
+    <% end %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, 'correct' %>
-      <%= form.label :challenge_correct, challenge.correct_answer , data: {completions_target: "correct"}%>
+      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.label chal, chalAns, target %>
+    </div>
+
+    <% numArr.delete_at(index) %>
+    <% chalArr.delete_at(index) %>
+    <% chalAnsArr.delete_at(index) %>
+
+    <% num = numArr.sample %>
+    <% index = numArr.index(num) %>
+    <% chal = chalArr[index] %>
+    <% chalAns = chalAnsArr[index] %>
+
+    <% if num == 'correct' %>
+    <% target = correctTarget  %>
+    <% else %>
+    <% target = emptyTarget  %>
+    <% end %>
+
+    <div class="question-group" >
+      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.label chal, chalAns, target %>
     </div>
 
     <%= form.submit data: {action: "click->completions#choice"} %>
