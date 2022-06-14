@@ -10,9 +10,10 @@
     // content: "⇢";
     position: absolute;
     opacity: 0;
-    top: 4px;
-    right: 10px;
+    top: -19px;
+    right: -45px;
     transition: 0.5s;
+    transform: scale(.2);
   }
 
   &.beige{

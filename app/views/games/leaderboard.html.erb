@@ -1,0 +1,16 @@
+<h1><%= @game.name %></h1>
+<table>
+  <tr>
+    <th></th>
+    <th>Team</th>
+    <th>Score</th>
+    <th>Time</th>
+  </tr>
+<% @game.teams.each do |team| %>
+  <tr>
+    <td><%= team.photo %></td>
+    <td><%= team.name %></td>
+    <td><%= team.finish %></td>
+  <tr>
+  <% end %>
+</table>
