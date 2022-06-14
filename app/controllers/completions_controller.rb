@@ -9,4 +9,11 @@ class CompletionsController < ApplicationController
     #   team.score += completion.chall.points
     # end
   end
+
+  def correct
+    @completion = Completion.find(params[:id])
+    @team = Team.find(params[:team_id])
+    @team.score += @completion.challenge.points
+    @team.save
+  end
 end

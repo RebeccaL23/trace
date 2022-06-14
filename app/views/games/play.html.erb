@@ -1,31 +1,38 @@
 <div class="mobile-game">
   <div class="mobile-game-header">
-    <div class='left'>
+    <div class="mobile-header">
+      <div class='left'>
 
-      <h1><%= @game.name %></h1>
-      <h2>Team: <%= @team.name %></h2>
-      <% if ((Time.zone.now + 1*60*60) > @game.end) %>
-      <span id="clockdiv">
-      <span class="minutes"></span> Times up!
-      <span class="seconds"></span>
-      <span>
-      <% else %>
-      <span id="clockdiv">
-      <span class="minutes"></span>
-      <span class="seconds"></span>
-      <span>
-      <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
-      <% end  %>
-      <h2>Score: <%= @team.score %></h2>
-      <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
+        <h1><%= @game.name %></h1>
+        <h2>Team: <%= @team.name %></h2>
 
-      <div class="weather">
-        <span>Weather</span><br>
+        <h2>Score: <%= @team.score %></h2>
+        <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
+
+        <div class="weather">
+          <span>Weather</span><br>
+        </div>
       </div>
-    </div>
-    <div class='right'>
-      <div class="timer"></div>
-      <div class="help"></div>
+      <div class='right'>
+        <div class="timer">
+          <% if ((Time.zone.now + 1*60*60) > @game.end) %>
+          <span id="clockdiv">
+          <span class="minutes"></span> Times up!
+          <span class="seconds"></span>
+          <span>
+          <% else %>
+          <span id="clockdiv">
+          <span class="minutes"></span>
+          <span class="seconds"></span>
+          <span>
+          <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
+          <% end  %>
+        </div>
+        <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
+        <div class="help">
+
+        </div>
+      </div>
     </div>
   </div>
 
