@@ -1,26 +1,27 @@
-<div class="mobile-challenge-details">
+<div class="mobile-challenge-details" data-controller="completions" data-challenge-id="<%= challenge.id %>"
+  data-game-id="<%= challenge.game_id %>"  data-team-id="<%= @team.id %>" data-completion-id="<%= Completion.find_by(team: @team, challenge: challenge).id %>">
   <h2><%= challenge.question %></h2>
   <%= form_with do |form| %>
-    <div class="question-group">
+    <div class="question-group" data-completions-target="checked">
       <%= form.radio_button :challenge, 1 %>
       <%= form.label :challenge_1, challenge.answer_1 %>
     </div>
 
-    <div class="question-group">
+    <div class="question-group" data-completions-target="checked">
       <%= form.radio_button :challenge, 2 %>
       <%= form.label :challenge_3, challenge.answer_3 %>
     </div>
 
-    <div class="question-group">
-      <%= form.radio_button :challenge, 4 %>
+    <div class="question-group" data-completions-target="checked">
+      <%= form.radio_button :challenge, 3 %>
       <%= form.label :challenge_3, challenge.answer_3 %>
     </div>
 
-    <div class="question-group">
+    <div class="question-group" data-completions-target="checked">
       <%= form.radio_button :challenge, 'correct' %>
       <%= form.label :challenge_correct, challenge.correct_answer %>
     </div>
 
-    <%= form.submit %>
+    <%= form.submit data: {action: "click->completions#choice"} %>
   <% end %>
 </div>

@@ -13,6 +13,9 @@ application.register("challenge", ChallengeController)
 import ClipboardController from "./clipboard_controller.js"
 application.register("clipboard", ClipboardController)
 
+import CompletionsController from "./completions_controller.js"
+application.register("completions", CompletionsController)
+
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 

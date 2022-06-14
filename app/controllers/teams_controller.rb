@@ -8,6 +8,13 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.game = @game
+    @game.challenges.each do |challenge|
+      Completion.create(
+        challenge: challenge,
+        team: @team,
+        completed: false
+      )
+    end
     if @team.save
       redirect_to game_team_play_path(@game, @team), notice: 'You just made a team'
     else
