@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["temperature", "icon"]
 
   initialize() {
-    this.apiKey = "f512ca20c896c42bcebf34d601190723"
+    this.apiKey = ENV['OPEN_WEATHER_MAP_API_KEY']
   }
 
   connect(event) {
