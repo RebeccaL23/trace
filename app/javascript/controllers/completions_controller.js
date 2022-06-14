@@ -3,15 +3,15 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="completions"
 export default class extends Controller {
 
-  static targets = ["checked"]
+  static targets = ["checked", "correct"]
   connect() {
       // [...]
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+    // console.log(this.correctTarget.innerText)
   }
   choice(event) {
     event.preventDefault()
-    // console.log(event)
-    console.log(this.checkedTarget)
+    // console.log(this.checkedTarget)
     // console.log(this.element.dataset.challengeId)
     // console.log(this.element.dataset.gameId)
     // console.log(this.element.dataset.teamId)
@@ -20,8 +20,12 @@ export default class extends Controller {
     {
       method: "POST",
       headers: { "Accept": "application/json", "X-CSRF-Token": this.csrfToken },
-    }
-    ).then(response => response.text())
-      .then((data) => {console.log(data)})
+    })
+    // ).then(response => response.text())
+    //   .then((data) => {console.log(data)})
   }
+
+  check(event) {
+    console.log(event.currentTarget.nextElementSibling.innerText === this.correctTarget.innerText)
+    }
 }
