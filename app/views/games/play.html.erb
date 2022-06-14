@@ -2,6 +2,8 @@
   <div class="mobile-game-header">
     <div class='left'>
       <h1><%= @game.name %></h1>
+      <h2>Team: <%= @team.name %></h2>
+      <h2>Score: <%= @team.score %></h2>
       <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
       <div class="weather">
         <span>Weather</span><br>
@@ -12,6 +14,8 @@
       <div class="help"></div>
     </div>
   </div>
+
+
 
   <!-- marker for each challenge -->
     <% @markers = @game.challenges.geocoded.map do |challenge| %>
