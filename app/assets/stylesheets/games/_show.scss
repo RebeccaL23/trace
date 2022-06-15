@@ -84,6 +84,13 @@
   left: 8vw;
   border: none;
 
+  form{
+    margin-bottom: 20px;
+  }
+}
+
+.edit-challenge-submit{
+  float: right;
 }
 
 #fit {
@@ -140,7 +147,7 @@
 
 
     &.left{
-      padding: 30px 30px;
+      padding: 30px 30px 80px 30px;
       background: $beige;
       overflow-y:auto;
     }

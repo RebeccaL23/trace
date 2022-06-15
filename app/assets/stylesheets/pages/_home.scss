@@ -113,20 +113,22 @@
   }
 
   img{
-    width: 50%;
-    height: 110%;
+    width: 54%;
+    height: 116%;
     margin-right: 16px;
+    box-shadow: $charcoal 6px 6px;
+    border: $charcoal 1px solid;
   }
 
   &.guide{
     width: 45%;
-    font-size: 20px !important;
+    font-size: 18px !important;
     background-color: none;
     margin-bottom: 40px;
 
     h2{
       font-weight: 700;
-      font-size: 46px;
+      font-size: 38px;
       padding: 16px 48px 16px;
     }
     ul{
@@ -209,7 +211,14 @@
 
 .footer{
   background: $off-white;
-  margin: 60px;
+  .logo-footer{
+    height: 20px;
+  }
+  #footer-tagline{
+    font-size: 20px;
+    color: $charcoal;
+    margin-right: 4px;
+  }
 }
 
 .footer .container{
@@ -228,10 +237,11 @@
   vertical-align: top;
 
   img{
-    height: 60px;
+    height: 20px;
     width: auto;
-
+    margin-top: -8px;
   }
+
   hr{
     border: $beige 1px solid;
     padding-top: 8px;
