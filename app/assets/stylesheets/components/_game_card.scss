@@ -7,8 +7,9 @@ a:hover{
 
 }
 .game-col  {
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding: 12px !important;
 }
 .card-body{
   h3{
@@ -69,15 +70,15 @@ a:hover{
     width: 101px;
     height: 46px;
     background-color: $mint;
-    left: 222px;
-    top: 10px;
+    left: 62%;
+    top: 14px;
   }
 
   &.upcoming{
     width: 137px;
     height: 46px;
     background-color: $beige;
-    left: 188px;
+    left: 50%;
     top: 14px;
   }
 }

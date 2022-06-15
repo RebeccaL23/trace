@@ -9,6 +9,7 @@
   display: inline-flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 .dashboard-header-right{
   margin-top: 10px;
@@ -22,7 +23,6 @@
 #dashboard-header{
   font-weight: 700;
   font-size: 60px;
-  padding-right: 400px;
 
 }
 .card-row{

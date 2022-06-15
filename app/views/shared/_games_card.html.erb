@@ -1,5 +1,5 @@
 
-<div class="col-3 game-col d-flex justify-content-center">
+<div class="col-3 game-col justify-content-center">
   <%= link_to game_path(game) do %>
     <% unless game.end.strftime("%m-%e-%y %H:%M") <= Time.now.strftime("%m-%e-%y %H:%M") %>
       <div class="card">
