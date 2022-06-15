@@ -30,10 +30,22 @@ a:hover{
   width: 338px;
   height: 402px;
   border: none;
+  position: relative;
+
+  &:hover{
+    box-shadow: #9f9f9f 2px 2px 6px;
+    transition: ease-in-out;
+  }
 }
+
 .completed{
-  opacity: 0.6;
-  background: rgba(106, 106, 106, 0.65);
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  border-radius: 20px;
+  width: 100%;
+  opacity: 0.2;
+  background: rgb(0, 0, 0);
 }
 
 .card img{

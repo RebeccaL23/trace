@@ -4,12 +4,12 @@
     <h1>New challenge</h1>
     <%= simple_form_for @challenge  do |f| %>
       <%= f.input :question, as: :string %>
-      <%= f.input :answer_1, as: :string %>
+      <%= f.input :answer_correct, as: :string, label: 'Correct answer' %>
+      <%= f.input :answer_1, as: :string, label: 'Other wrong answer options' %>
       <%= f.input :answer_2, as: :string %>
       <%= f.input :answer_3, as: :string %>
-      <%= f.input :answer_correct, as: :string %>
       <%= f.input :points, as: :integer %>
-      <%= f.button :submit %>
+      <%= f.submit :submit, input_html: { class: 'button' } %>
     <% end %>
   </div>
   <div class="half-modal right">

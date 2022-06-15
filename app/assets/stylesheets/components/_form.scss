@@ -19,3 +19,15 @@
     margin-bottom: 20px
   }
 }
+
+.form-input, .form-control, .form-select{
+  border: none;
+  background-color: $off-white;
+  border-radius: 2px;
+
+  &:focus{
+    border: $mint 1px solid !important;
+    background: white !important;
+    box-shadow: #eee 2px 2px !important;
+  }
+}
