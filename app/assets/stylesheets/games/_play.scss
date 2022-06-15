@@ -10,9 +10,50 @@
     font-weight: 600;
 
   }
+
+  .right{
+    position: absolute;
+    top: 6%;
+    left: 90%;
+    z-index: 10000;
+  }
 }
 
+.timer{
+  position: fixed;
+  top: 94%;
+  left: 2%;
+  font-size: 26px;
+  color: $charcoal;
+  z-index: 1000000;
+  background-color: $mint;
+  height: 40px;
+  padding: 4px 6px;
+  border-radius: 4px;
+
+  #timer-icon{
+    height: 16px;
+    margin-top: -6px;
+  }
+}
+
+.height{
+  height: 40px !important;
+}
+.mobile-play-hide{
+  display:none;
+}
+
+#mobile-play-header{
+  height: auto;
+  h1{
+    padding: 0 !important;
+    font-size: 18px;
+  }
+}
 .mobile-game-header{
+  width: 75%;
+  height: auto;
   position: fixed;
   z-index:1000;
   background-color: $off-white;
@@ -26,6 +67,45 @@
     display: inline-flex;
     flex-direction: row;
   }
+  .weather{
+    display: inline-flex;
+    align-items: center;
+  }
+  .mobile-header h1{
+    padding: 10px 0px !important;
+    font-size: 16px;
+    text-align: left;
+    color: $charcoal;
+  }
+}
+
+// toggle
+.mobile-play-heading{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  p{
+    font-size: 16px !important;
+  }
+
+}
+
+#how-to-play{
+  font-style: italic;
+}
+
+#toggle-icon{
+  height: 16px;
+  position: absolute;
+  top: 10px;
+  left: 250px;
+}
+
+//icons
+.play-icons{
+  height: 20px;
+
 }
 
 .mobile-game-map{

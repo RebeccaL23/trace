@@ -28,5 +28,8 @@ application.register("map", MapController)
 import MapMobileController from "./map_mobile_controller.js"
 application.register("map-mobile", MapMobileController)
 
+import MobilePlayController from "./mobile_play_controller.js"
+application.register("mobile-play", MobilePlayController)
+
 import WeatherController from "./weather_controller.js"
 application.register("weather", WeatherController)
