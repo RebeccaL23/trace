@@ -95,13 +95,13 @@ class GamesController < ApplicationController
     @game = Game.find(params[:game_id])
     @teams = @game.teams
     @teams.each do |team|
-      completed_counter = 0
-      team.completions.each do |comp|
-        completed_counter += 1 if comp.completed == true
-      end
-      if completed_counter == team.completions.count
-        team.finish = Time.now
-        team.save
+      # Check if team doesn't have a finish time
+      if team.finish.nil?
+        # If all completions are completed, set team finish time to now
+        if team.completions.all? { |comp| comp.completed == true}
+          team.finish = Time.now
+          team.save
+        end
       end
     end
   end
