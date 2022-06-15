@@ -157,7 +157,16 @@
   <div class='step-two'></div>
 </div>
 
+<p id="refresh" hidden > false </p>
+
 <script type="text/javascript">
+    refresh = document.getElementById("refresh").innerHTML
+
+    if (refresh === false) {
+      document.getElementById("false").innerHTML = 'true'
+      window.location.reload();
+    }
+
     window.onload = function() { // this will be run when the whole page is loaded
         setInterval(reveal, 1000);
           function reveal () {
