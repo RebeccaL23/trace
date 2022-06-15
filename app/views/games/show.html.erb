@@ -31,10 +31,10 @@
             data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             <div class="modal-details">
             <div class="half-modal left">
-              <h1>New challenge</h1>
+              <h2><strong>Add a new challenge!</strong></h2>
 
               <%= simple_form_for [ @game, @challenge ] do |f| %>
-                <%= f.input :location,
+                <%= f.input :location, label: false, placeholder: 'address',
                 input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
                 # input_html: {data: {map_challenge_target: "location"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
@@ -42,13 +42,13 @@
                 <em><p id="fit"><%=image_tag 'location.png'%>Check location on map</p></em>
                 <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                 <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
-                <%= f.input :question, as: :string %>
+                <%= f.input :question, label: false, placeholder: 'enter your question here!', as: :string %>
                 <%= f.input :answer_correct, as: :string, label: false, placeholder: 'correct answer' %>
                 <%= f.input :answer_1, as: :string, label: false, placeholder: 'first wrong answer' %>
                 <%= f.input :answer_2, as: :string, label: false, placeholder: 'second wrong answer' %>
                 <%= f.input :answer_3, as: :string, label: false, placeholder: 'third wrong answer' %>
 
-                <%= f.input :points, as: :integer %>
+                <%= f.input :points, label: false, placeholder: 'how many points is this question worth?', as: :integer %>
                 <%= f.button :submit, class: "button green" %>
               <% end %>
             </div>
