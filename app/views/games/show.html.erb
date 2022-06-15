@@ -144,7 +144,7 @@
   <div class="half-block right is-loading">
   </div>
 
-  <div id="overview-map" class="half-block right hidden-map">
+  <div id="overview-map" class="hidden-map half-block right">
     <div style="width: 100%; height: 100vh;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
@@ -157,21 +157,33 @@
   <div class='step-two'></div>
 </div>
 
-<p id="refresh" hidden > false </p>
-
 <script type="text/javascript">
-    refresh = document.getElementById("refresh").innerHTML
+    // let refresh = document.getElementById("refresh").innerHTML
 
-    if (refresh === false) {
-      document.getElementById("false").innerHTML = 'true'
-      window.location.reload();
-    }
+    // if (refresh === 'false') {
+    //   console.log("inside")
+    //   console.log("before", document.getElementById("refresh").innerHTML)
+    //   window.location.reload();
+    //   document.getElementById("refresh").innerHTML = 'true'
+    //   console.log("after", document.getElementById("refresh").innerHTML)
+    // }
 
     window.onload = function() { // this will be run when the whole page is loaded
-        setInterval(reveal, 1000);
-          function reveal () {
-          map = document.getElementById("overview-map");
-          map.classList.remove("hidden-map");
-        }
+      // map = document.getElementById("overview-map");
+
+      // if (!map.classList.contains("hidden-map")) {
+      //   map.classList.add("hidden-map");
+      // }
+
+      if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+      }
+
+      setInterval(reveal, 2000);
+        function reveal () {
+        map = document.getElementById("overview-map");
+        map.classList.remove("hidden-map");
+      }
     };
+
 </script>

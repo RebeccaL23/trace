@@ -7,8 +7,8 @@ export default class extends Controller {
     this.apiKey = ENV['OPEN_WEATHER_MAP_API_KEY']
   }
 
-  connect(event) {
-    console.log("hello")
+  connect() {
+    console.log("connected to weather controller")
     this.#fetchWeather()
   }
 
