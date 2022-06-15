@@ -21,6 +21,7 @@
       <p hidden id="timer"> <%= left %> </p>
       <div class='right'>
         <div class="timer">
+          <div hidden id="end-time"><%= @game.end %></div>
           <% if ((Time.zone.now + 1*60*60) > @game.end) %>
           <span id="clockdiv">
           <span class="minutes"></span> Times up!
@@ -71,6 +72,7 @@
 
 <script>
 function getTimeRemaining(endtime) {
+  var endtime = document.getElementById("end-time").innerHTML
   var t = Date.parse(endtime) - Date.parse(new Date());
   var seconds = Math.floor((t / 1000) % 60);
   var minutes = Math.floor((t / 1000 / 60) % 60);
