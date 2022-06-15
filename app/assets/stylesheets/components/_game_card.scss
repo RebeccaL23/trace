@@ -30,10 +30,17 @@ a:hover{
   width: 338px;
   height: 402px;
   border: none;
+  position: relative;
 }
+
 .completed{
-  opacity: 0.6;
-  background: rgba(106, 106, 106, 0.65);
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  border-radius: 20px;
+  width: 100%;
+  opacity: 0.2;
+  background: rgb(0, 0, 0);
 }
 
 .card img{
