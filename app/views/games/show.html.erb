@@ -159,12 +159,7 @@
 
 <script type="text/javascript">
 
-    window.onload = function() { // this will be run when the whole page is loaded
-
-      if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-      }
+    function run () { // this will be run when the whole page is loaded
 
       setInterval(reveal, 2000);
         function reveal () {
@@ -172,5 +167,7 @@
         map.classList.remove("hidden-map");
       }
     };
+
+  window.onload = run
 
 </script>

@@ -3,18 +3,21 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["temperature", "icon"]
 
-  initialize() {
-    this.apiKey = ENV['OPEN_WEATHER_MAP_API_KEY']
+  static values = {
+    api: String
   }
 
+  // initialize() {
+  //   api = this.apiValue
+  // }
+
   connect() {
-    console.log("connected to weather controller")
     this.#fetchWeather()
   }
 
   #fetchWeather() {
     const city = 'London'
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiValue}&units=metric`)
       .then(response => response.json())
       .then(data => this.#updateCard(data))
   }
