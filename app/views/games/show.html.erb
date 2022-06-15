@@ -18,9 +18,7 @@
         </div>
       </div>
       <div class="right">
-        <button class='button beige' data-action="click->challenge#addChallenge click->challenge#showModal">Add challenge
-          <%#= link_to "Add challenge", new_game_challenge_path(@game), class: "button beige" %>
-        </button>
+        <button class='button beige' data-action="click->challenge#addChallenge click->challenge#showModal">Add challenge</button>
 
         <!---------- NEW CHALLENGE MODAL ------>
         <div class="background-opacity" data-challenge-target="opacity"></div>
@@ -30,17 +28,17 @@
             data-controller="map-challenge"
             data-map-challenge-markers-value="<%= @marker.to_json %>"
             data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            >
             <div class="modal-details">
             <div class="half-modal left">
               <h1>New challenge</h1>
-              <button id="fit">check location</button>
+
               <%= simple_form_for [ @game, @challenge ] do |f| %>
                 <%= f.input :location,
                 input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
                 # input_html: {data: {map_challenge_target: "location"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
                 %>
+                <p id="fit"><%=image_tag 'location.png'%>Check location on map</p>
                 <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                 <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
                 <%= f.input :question, as: :string %>
@@ -53,7 +51,7 @@
               <% end %>
             </div>
             <div class="half-modal right">
-              <button id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></button>
+              <p id='modal-close' data-action="click->challenge#closeModal"><%= image_tag 'close.png', class: "close-icon" %></p>
               <div id="modal-map-<%= @challenge.id %>" data-map-challenge-target="right" style="width: 42vw; height: 84vh;"></div>
               </div>
             </div>

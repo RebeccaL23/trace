@@ -62,6 +62,9 @@ SimpleForm.setup do |config|
     # use the component :full_error, like:
     #
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
+
+    # add default classes for simple form submit buttons
+    config.button_class = 'button green'
   end
 
   # The default wrapper to be used by the FormBuilder.

@@ -9,7 +9,7 @@
       <%= f.input :answer_3, as: :string %>
       <%= f.input :answer_correct, as: :string %>
       <%= f.input :points, as: :integer %>
-      <%= f.button :submit %>
+      <%= f.submit :submit, input_html: { class: 'button' } %>
     <% end %>
   </div>
   <div class="half-modal right">
