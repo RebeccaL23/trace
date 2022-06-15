@@ -62,6 +62,8 @@ SimpleForm.setup do |config|
     # use the component :full_error, like:
     #
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
+
+    # add default classes for simple form submit buttons
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -74,7 +76,7 @@ SimpleForm.setup do |config|
   config.boolean_style = :nested
 
   # Default class for buttons
-  config.button_class = 'btn'
+  config.button_class = 'button'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.

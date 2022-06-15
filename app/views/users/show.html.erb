@@ -1,12 +1,12 @@
   <%= render "shared/navbar/navbar-dashboard" %>
   <div class="container user-show">
-      <div class="d-flex py-3">
-        <h1 id="dashboard-header">Dashboard</h1>
-          <%= render "shared/search" %>
-          <div class="d-flex text-center pt-2" >
-            <%= link_to "Create a game", new_game_path, class: "button beige" %>
-          </div>
-      </div>
+  <div class="dashboard-heading">
+    <h1 id="dashboard-header">Dashboard</h1>
+    <div class="dashboard-header-right">
+      <%= render "shared/search" %>
+      <%= link_to "Create a game", new_game_path, class: "button green" %>
+    </div>
+  </div>
       <div class="row card-row">
 
       <% time = Time.now %>
