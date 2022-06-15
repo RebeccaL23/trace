@@ -1,14 +1,14 @@
 <% if !@game.cloud_photo.key.nil? %>
-  <div class="mobile-header mb-5"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @game.cloud_photo.key %>')">
+  <div class="mobile-header mb-4"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @game.cloud_photo.key %>')">
 <% else %>
-  <div class="mobile-header mb-5"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
+  <div class="mobile-header mb-4"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
 <% end %>
     <h1>Welcome to <%= @game.name %></h1>
   </div>
 
-<div class="container pt-5">
+<div class="container pt-2">
   <%= simple_form_for [ @game, @team ] do |f| %>
-    <%= f.input :name, as: :string, label: "Enter your team name", class: "team-input" %>
+    <%= f.input :name, as: :string, label: "Enter your team name", class: "team-input mb-4" %>
     <%= f.input :team_photo, as: :file, label: "Upload a team photo" %>
     <%= f.button :submit, class: "button beige", style:"margin-top:2rem; margin-left:11rem" %>
   <% end %>
