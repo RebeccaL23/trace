@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   connect() {
-
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -34,10 +33,9 @@ export default class extends Controller {
   }
 
   // currently applies to the first marker
-  editMarker (event) {
+  editMarker(event) {
     event.currentTarget.classList.remove("unfound-marker")
     event.currentTarget.classList.add("completed-marker")
-    this.opacityTarget.classList.add("opacity");
   }
 
   #addMarkersToMap() {
