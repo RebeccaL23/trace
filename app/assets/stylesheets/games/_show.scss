@@ -8,6 +8,10 @@
 
   .button{
     float: right;
+    height: 3rem;
+    width: 12rem;
+    text-align: center;
+    padding: 13px 24px;
 
     &.beige{
       margin-bottom: 4px;
@@ -53,7 +57,7 @@
   h2{
     position:absolute;
     top: 33%;
-    left: 20%;
+    left: 27%;
     margin-bottom: 0px !important;
   }
 }
@@ -61,7 +65,7 @@
 .challenge-card{
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding: 20px;
   justify-content: space-between;
   width: 100%;
   .question{
