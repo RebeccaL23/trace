@@ -1,52 +1,58 @@
-<div class="mobile-game">
-  <div class="mobile-game-header">
-    <div class="mobile-header">
-      <div class='left'>
-
-        <h1><%= @game.name %></h1>
-        <h2>Team: <%= @team.name %></h2>
-
-        <h2>Score: <%= @team.score %></h2>
-        <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
-
-        <div class="weather" data-controller="weather" data-weather-api-value="<%= ENV['OPEN_WEATHER_MAP_API_KEY'] %>">
-          <img src="" alt="Weather Icon" data-weather-target="icon" >
-          <h2 data-weather-target="temperature"></h2>
+<div class="mobile-game" data-controller="mobile-play">
+  <div class="mobile-game-header" data-mobile-play-target="height">
+    <div class="mobile-header" id='mobile-play-header'>
+      <div class='left' >
+        <div class="mobile-play-heading" data-action="click->mobile-play#gameDetails">
+          <h1 id='mobile-game-name'><%= @game.name %></h1>
+          <p id='details-toggle'><%= image_tag 'toggle.png', id: 'toggle-icon'%></p>
         </div>
 
-        <div class="crosshairs">
-          <span>click <i class="fa-solid fa-location-crosshairs"></i> for current location </span><br>
-        </div>
-      </div>
+        <p data-mobile-play-target="show1"><%= @team.name %></p>
+        <p data-mobile-play-target="show2">Start <%= @game.start.strftime("%R %P") %> <br>End <%= @game.end.strftime("%R %P") %></p>
 
-      <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
-      <% full = @game.end - @team.created_at %>
-      <% left = full - lost %>
-      <p hidden id="timer"> <%= left %> </p>
-      <div class='right'>
-        <div class="timer">
-          <% if ((Time.zone.now + 1*60*60) > @game.end) %>
-          <span id="clockdiv">
-          <span class="hours"></span>
-          <span class="minutes"></span> Times up!
-          <span class="seconds"></span>
-          <span>
-          <% else %>
-          <br>
-          <span id="clockdiv">
-          <span class="hours"></span>
-          <span class="minutes"></span>
-          <span class="seconds"></span>
-          <span>
-          <% end  %>
+        <div class="weather" data-controller="weather" data-mobile-play-target="show3" data-mobile-play-target="show" data-weather-api-value="<%= ENV['OPEN_WEATHER_MAP_API_KEY'] %>">
+          <img data-mobile-play-target="show4" src="" alt="Weather Icon" data-weather-target="icon" >
+          <p data-mobile-play-target="show5" data-weather-target="temperature"></p>
         </div>
-        <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
-        <div class="help">
 
+        <div class="crosshairs" data-mobile-play-target="show6">
+          <hr>
+          <p id='how-to-play'>How to play</p>
+          <p>1. Click the <i class="fa-solid fa-location-crosshairs"></i> icon to show your current location </p>
+          <p>2. Visit each orange marker and answer correctly to solve the challenge</p>
+          <p>3. Complete all challenges the fastest! Best time wins. </p>
         </div>
       </div>
     </div>
   </div>
+
+
+  <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
+  <% full = @game.end - @team.created_at %>
+  <% left = full - lost %>
+  <p hidden id="timer"> <%= left %> </p>
+  <div class='right'>
+    <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
+  </div>
+
+  <div class="timer">
+      <%= image_tag 'timer.png', id:'timer-icon'%>
+      <% if ((Time.zone.now + 1*60*60) > @game.end) %>
+      <span id="clockdiv">
+      <span class="hours"></span>:
+      <span class="minutes"></span>: Times up!
+      <span class="seconds"></span>
+      <span>
+      <% else %>
+      <span id="clockdiv">
+      <span class="hours"></span>:
+      <span class="minutes"></span>:
+      <span class="seconds"></span>
+      <span>
+      <% end  %>
+    </div>
+
+
 
   <!-- marker for each challenge -->
     <% @markers = @game.challenges.geocoded.map do |challenge| %>
