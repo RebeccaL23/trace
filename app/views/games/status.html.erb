@@ -10,18 +10,20 @@
   <% time = (Time.zone.now + 1*60*60)  %>
   <!-- if game over -->
   <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
-
-    <h2>Game over!</h2>
-    <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
+    <div class="game-status over">
+      <h2>Game over!</h2>
+      <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
 
   <!-- if game in progress -->
   <% elsif (Time.zone.now + 1*60*60) > @game.start %>
-    <h2>Game on!</h2>
-    <p>The game has started.</p>
-    <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
+    <div class="game-status started">
+      <h2>Game on!</h2>
+      <p>The game has started.</p>
+      <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
 
   <!-- if game not started -->
   <% elsif @game.start > time %>
+    <div class="game-status upcoming">
       <h2>Ready, set...</h2>
       <p>The game has not yet started. Check back closer to the below start time.</p>
       <% start_time = @game.start %>
@@ -29,14 +31,14 @@
       <%# show time until start %>
       <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
         <div id="clockdiv"><div>
-        <p> game begins in:
+        <p> Game begins in:
         <span class="hours"></span> :
         <span class="minutes"></span> :
         <span class="seconds"></span>
       </p>
       <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
-
+  </div>
 </div>
 
 <p hidden id="timer"> <%= @game.start - (Time.zone.now + 1*60*60) %> </p>
@@ -88,7 +90,7 @@ function refresh() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  setInterval(refresh, 5000);
+  // setInterval(refresh, 5000);
 });
 
 </script>
