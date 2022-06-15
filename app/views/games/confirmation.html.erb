@@ -32,12 +32,9 @@
                 <div class="qr-code">
                   <% str = cl_image_path "qr_code#{@game.code}.png" %>
                   <% newPath = str.sub /\/v\d*\/production/, '' %>
-
-                   <img src="https://res.cloudinary.com/borhan-cloud/image/upload/v1655223171/production/qr_codeMSX93Y.png" alt="qr-code">
+                  <img src="<%= newPath %>" alt="qr-code">
                 </div>
-
               </div>
-
           </div>
       </div>
     </div>
