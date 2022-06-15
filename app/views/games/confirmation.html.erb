@@ -39,9 +39,9 @@
     <div class="row justify-content-center">
       <div class="">
         <div class="qr-code">
-        <% str = cl_image_path "qr_code#{@game.code}.png" %>
-        <% newPath = str.sub /\/v\d*\/production/, '' %>
-        <img src="<%= newPath %>" alt="qr-code">
+          <% str = cl_image_path "qr_code#{@game.code}.png" %>
+          <% newPath = str.sub /\/v\d*\/production/, '' %>
+          <img src="<%= newPath %>" alt="qr-code">
         </div>
       </div>
     </div>

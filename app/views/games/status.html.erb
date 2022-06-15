@@ -1,7 +1,11 @@
-<div class="container">
-  <div class="mobile-header">
+<% if !@game.cloud_photo.key.nil? %>
+  <div class="mobile-header"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @game.cloud_photo.key %>')">
+<% else %>
+  <div class="mobile-header"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
+<% end %>
     <h1>Welcome to <%= @game.name %></h1>
   </div>
+<div class="container">
 
   <% time = (Time.zone.now + 1*60*60)  %>
   <!-- if game over -->

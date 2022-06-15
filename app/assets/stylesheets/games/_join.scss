@@ -11,6 +11,29 @@
   }
   &.form{
     padding-left: 5rem;
+
+    $char-w: 1ch;
+    $gap: .5*$char-w;
+    $n-char: 6;
+    $in-w: $n-char*($char-w + $gap);
+
+    input {
+      display: block;
+      border: none;
+      padding: 0;
+      width: $in-w;
+      background: repeating-linear-gradient(90deg,
+        dimgrey 0, dimgrey $char-w,
+        transparent 0, transparent $char-w + $gap)
+        0 100%/ #{$in-w - $gap} 2px no-repeat;
+      font: 5ch droid sans mono, consolas, monospace;
+      letter-spacing: $gap;
+
+      &:focus {
+        outline: none;
+        color: $green;
+      }
+    }
   }
   button{
     margin-top: 2rem;
@@ -31,27 +54,4 @@
       margin-left: -8px;
     }
   }
-}
-
-$char-w: 1ch;
-$gap: .5*$char-w;
-$n-char: 6;
-$in-w: $n-char*($char-w + $gap);
-
-input {
-	display: block;
-	border: none;
-	padding: 0;
-	width: $in-w;
-	background: repeating-linear-gradient(90deg,
-		dimgrey 0, dimgrey $char-w,
-		transparent 0, transparent $char-w + $gap)
-		0 100%/ #{$in-w - $gap} 2px no-repeat;
-	font: 5ch droid sans mono, consolas, monospace;
-	letter-spacing: $gap;
-
-	&:focus {
-		outline: none;
-		color: $green;
-	}
 }
