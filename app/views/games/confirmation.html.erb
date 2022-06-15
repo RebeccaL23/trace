@@ -20,10 +20,8 @@
               <div class="d-flex justify-content-around align-items-center">
                 <div class="d-inline align-items-start">
                   <h4>Copy code</h4>
-                  <div id="code-box">
-                    <h3>
-                      <input data-clipboard-target="source" value="<% @game.code %>" style="display: none"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i>
-                    </h3>
+                  <div id="code-box" data-controller="clipboard">
+                    <h3> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i> </h3>
                   </div>
                 </div>
 
