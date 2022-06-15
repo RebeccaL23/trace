@@ -32,7 +32,7 @@
   <% left = full - lost %>
   <p hidden id="timer"> <%= left %> </p>
   <div class='right'>
-    <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
+    <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game), id: 'leaderboard-icon' %>
   </div>
 
   <div class="timer">
