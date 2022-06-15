@@ -1,48 +1,42 @@
-<div class="background"></div>
-<div class="container confirmation-box">
-  <div class="row justify-content-center">
-    <div class="col-10">
-      <div class="title justify-content-start">
-        <h2><%=@game.name%></h2>
+<%# <div class="background"></div> %>
+<div class="container" style="padding: 4rem 3rem 4rem 3rem;">
+  <h1 id="confirmation-title"><%=@game.name%></h1>
+  <div class="confirmation-box d-flex">
+    <% if !@game.cloud_photo.key.nil? %>
+      <div class="confirmation-box left"  style="background-image: url('<%= cl_image_path @game.cloud_photo.key %>')">
+    <% else %>
+      <div class="confirmation-box left"  style="background-image: url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
+    <% end %>
+      </div>
+    <div class="confirmation-box right">
+      <div class="d-inline">
+          <h3>Details</h3>
+          <h5><%=@game.city%>, United Kingdom</h5>
+          <p><strong>Time: </strong><%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %></p>
+          <p><strong>Date: </strong><%= Time.now.strftime("%A, %B #{Time.now.day.ordinalize} %Y ") %></p>
+          <h2>Join game</h2>
+          <div class="d-inline">
+
+              <div class="d-flex justify-content-around align-items-center">
+                <div class="d-inline align-items-start">
+                  <h4>Copy code</h4>
+                  <div id="code-box">
+                    <h3>
+                      <input data-clipboard-target="source" value="<% @game.code %>" style="display: none"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i>
+                    </h3>
+                  </div>
+                </div>
+
+                <h4>or</h4>
+
+                <div class="qr-code">
+                  <% str = cl_image_path "qr_code#{@game.code}.png" %>
+                  <% newPath = str.sub /\/v\d*\/production/, '' %>
+                  <img src="<%= newPath %>" alt="qr-code">
+                </div>
+              </div>
+          </div>
       </div>
     </div>
   </div>
-    <div class="row justify-content-center">
-      <div class="col-10">
-        <div class="location justify-content-start">
-          <h5><%=@game.city%>, United Kingdom</h5>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-10">
-        <div class="time justify-content-start">
-          <p><strong>Time: </strong><%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %></p>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-10">
-        <div class="date justify-content-start">
-          <% time = @game.start %>
-          <p><strong>Date: </strong><%= time.strftime("%A, %B #{time.day.ordinalize} %Y ") %></p>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center" data-controller="clipboard">
-      <div class="col-sm-6">
-        <div class="code display-inline">
-          <h3> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i> </h3>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="">
-        <div class="qr-code">
-          <% str = cl_image_path "qr_code#{@game.code}.png" %>
-          <% newPath = str.sub /\/v\d*\/production/, '' %>
-          <img src="<%= newPath %>" alt="qr-code">
-        </div>
-      </div>
-    </div>
 </div>
