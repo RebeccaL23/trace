@@ -158,25 +158,12 @@
 </div>
 
 <script type="text/javascript">
-    // let refresh = document.getElementById("refresh").innerHTML
-
-    // if (refresh === 'false') {
-    //   console.log("inside")
-    //   console.log("before", document.getElementById("refresh").innerHTML)
-    //   window.location.reload();
-    //   document.getElementById("refresh").innerHTML = 'true'
-    //   console.log("after", document.getElementById("refresh").innerHTML)
-    // }
 
     window.onload = function() { // this will be run when the whole page is loaded
-      // map = document.getElementById("overview-map");
-
-      // if (!map.classList.contains("hidden-map")) {
-      //   map.classList.add("hidden-map");
-      // }
 
       if(!window.location.hash) {
         window.location = window.location + '#loaded';
+        window.location.reload();
       }
 
       setInterval(reveal, 2000);
