@@ -1,6 +1,6 @@
-<h1><%= @game.name %></h1>
+<h1 id="leaderboard-header"><%= @game.name %></h1>
 <div class="container">
-  <table>
+  <table id="leaderboard-table">
     <tr>
       <th></th>
       <th>Team</th>
@@ -10,14 +10,13 @@
   <% @game.teams.each do |team| %>
     <tr>
       <% if !team.team_photo.key.nil? %>
-        <td><%= cl_image_tag team.team_photo.key, width: 40% , border-radius: 50% ></td>
+        <td><%= cl_image_tag team.team_photo.key, id: "team-avatar" %> </td>
       <% else %>
-        <td><img src="https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png" alt=""></td>
+        <td ><img src="https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png" alt="team avatar" id="team-avatar"></td>
       <% end %>
-
       <td><%= team.name %></td>
-      <td><%= team.score %></td>
-      <td><%= team.finish %></td>
+      <td class="leaderboard score py-2"><%= team.score %></td>
+      <td><%= team.finish.nil? ? "Still playing!" : team.finish.strftime("%H:%M:%S") %></td>
     <tr>
     <% end %>
   </table>

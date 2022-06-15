@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   choice(event) {
-
     event.preventDefault()
     const tick = document.querySelector('input[name="challenge"]:checked')
 

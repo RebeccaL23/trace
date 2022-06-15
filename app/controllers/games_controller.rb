@@ -49,11 +49,6 @@ class GamesController < ApplicationController
   def play
     @game = Game.find(params[:game_id])
     @team = Team.find(params[:team_id])
-    # Timer -- NOT USED --
-    # @time = (Time.now.to_f - @team.created_at.to_f)
-    # @time_hour = ((Time.now.to_i - @team.created_at.to_i) / 3600).round
-    # @time_mins = (".#{@time.to_s.sub(/\d*\D/, "")}".to_f * 60).round
-    # @time_secs = (".#{@time_mins.to_s.sub(/\d*\D/, "")}".to_f * 60).round
   end
 
   def destroy
@@ -98,9 +93,18 @@ class GamesController < ApplicationController
 
   def leaderboard
     @game = Game.find(params[:game_id])
-
+    @teams = @game.teams
+    @teams.each do |team|
+      completed_counter = 0
+      team.completions.each do |comp|
+        completed_counter += 1 if comp.completed == true
+      end
+      if completed_counter == team.completions.count
+        team.finish = Time.now
+        team.save
+      end
+    end
   end
-
 
   private
 
