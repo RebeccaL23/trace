@@ -42,10 +42,11 @@
                 <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                 <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
                 <%= f.input :question, as: :string %>
-                <%= f.input :answer_1, as: :string %>
-                <%= f.input :answer_2, as: :string %>
-                <%= f.input :answer_3, as: :string %>
-                <%= f.input :answer_correct, as: :string %>
+                <%= f.input :answer_correct, as: :string, label: false, placeholder: 'correct answer' %>
+                <%= f.input :answer_1, as: :string, label: false, placeholder: 'first wrong answer' %>
+                <%= f.input :answer_2, as: :string, label: false, placeholder: 'second wrong answer' %>
+                <%= f.input :answer_3, as: :string, label: false, placeholder: 'third wrong answer' %>
+
                 <%= f.input :points, as: :integer %>
                 <%= f.button :submit, class: "button green" %>
               <% end %>

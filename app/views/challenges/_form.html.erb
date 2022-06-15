@@ -1,11 +1,11 @@
 <%= simple_form_for [ @game, @challenge ] do |f| %>
   <%# <% raise %>
   <%= f.input :location, as: :string %>
-  <%= f.input :question, as: :string %>
-  <%= f.input :answer_correct, as: :string %>
-  <%= f.input :answer_1, as: :string %>
-  <%= f.input :answer_2, as: :string %>
-  <%= f.input :answer_3, as: :string %>
-  <%= f.input :points, as: :integer %>
+  <%= f.input :question, as: :string, legend_tag: false %>
+  <%= f.input :answer_correct, as: :string, legend_tag: false %>
+  <%= f.input :answer_1, as: :string, legend_tag: false %>
+  <%= f.input :answer_2, as: :string, legend_tag: false %>
+  <%= f.input :answer_3, as: :string, legend_tag: false %>
+  <%= f.input :points, as: :integer, legend_tag: false %>
   <%= f.submit :submit, input_html: { class: "button" } %>
 <% end %>
