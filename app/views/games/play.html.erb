@@ -9,9 +9,10 @@
         <h2>Score: <%= @team.score %></h2>
         <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
 
-        <div class="weather">
+        <div class="weather" data-controller="weather">
+          <img src="" alt="Weather Icon" data-weather-target="icon">
+          <h2 data-weather-target="temperature"></h2>
           <span>click <i class="fa-solid fa-location-crosshairs"></i> for current location </span><br>
-        </div>
       </div>
 
       <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
