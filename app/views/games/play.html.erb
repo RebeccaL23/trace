@@ -38,10 +38,8 @@
   <div class="timer">
       <%= image_tag 'timer.png', id:'timer-icon'%>
       <% if ((Time.zone.now + 1*60*60) > @game.end) %>
-      <span id="clockdiv">
-      <span class="hours"></span>:
-      <span class="minutes"></span>: Times up!
-      <span class="seconds"></span>
+      <span>
+      Times up!
       <span>
       <% else %>
       <span id="clockdiv">
