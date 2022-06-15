@@ -23,9 +23,6 @@ export default class extends Controller {
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
       // customMarker.setAttribute("id", `${this.rightTarget.id}${'%d: %s', i}`)
-
-      // can't get the following to show edit
-
       customMarker.setAttribute("data-action", `click->challenge#showModal`)
       customMarker.classList.add("unfound-marker");
 

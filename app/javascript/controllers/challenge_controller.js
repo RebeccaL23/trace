@@ -20,6 +20,12 @@ export default class extends Controller {
     this.opacityTarget.classList.remove("opacity");
   }
 
+  changeModal() {
+    this.modalTarget.classList.remove("unfound-marker");
+    // this.modalTarget.classList.add("unfound-marker");
+    this.opacityTarget.classList.remove("opacity");
+  }
+
   addChallenge(){
     this.newTarget.classList.add("show");
     this.opacityTarget.classList.add("opacity");

@@ -9,7 +9,15 @@ export default class extends Controller {
   }
 
   choice(event) {
+
     event.preventDefault()
+    const tick = document.querySelector('input[name="challenge"]:checked')
+
+    if (tick.nextElementSibling.innerText != this.correctTarget.innerText) {
+      tick.parentElement.classList.add("wrong")
+    } else {
+      this.correctTarget.parentElement.classList.add("correct")
+    }
 
     this.#check()
     //If answer is correct, adds challenge points to team score

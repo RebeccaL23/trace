@@ -10,9 +10,14 @@
         <span><%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %></span>
 
         <div class="weather">
-          <span>Weather</span><br>
+          <span>click <i class="fa-solid fa-location-crosshairs"></i> for current location </span><br>
         </div>
       </div>
+
+      <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
+      <% full = @game.end - @team.created_at %>
+      <% left = full - lost %>
+      <p hidden id="timer"> <%= left %> </p>
       <div class='right'>
         <div class="timer">
           <% if ((Time.zone.now + 1*60*60) > @game.end) %>
@@ -21,11 +26,12 @@
           <span class="seconds"></span>
           <span>
           <% else %>
+          <br>
           <span id="clockdiv">
+          <span class="hours"></span>
           <span class="minutes"></span>
           <span class="seconds"></span>
           <span>
-          <p hidden id="timer"> <%= @game.end - ((Time.zone.now + 1*60*60) - @game.start) %> </p>
           <% end  %>
         </div>
         <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
@@ -78,12 +84,14 @@ function getTimeRemaining(endtime) {
 
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 

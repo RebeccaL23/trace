@@ -22,7 +22,7 @@
     <% end  %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, num %>
       <%= form.label chal, chalAns, target %>
     </div>
 
@@ -42,7 +42,7 @@
     <% end %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, num %>
       <%= form.label chal, chalAns, target %>
     </div>
 
@@ -62,7 +62,7 @@
     <% end %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, num  %>
       <%= form.label chal, chalAns, target %>
     </div>
 
@@ -82,10 +82,13 @@
     <% end %>
 
     <div class="question-group" >
-      <%= form.radio_button :challenge, num, data: {action: "change->completions#check"} %>
+      <%= form.radio_button :challenge, num  %>
       <%= form.label chal, chalAns, target %>
     </div>
 
+    <% completion = @completion = Completion.find_by(team: @team, challenge: challenge) %>
+    <% if completion.completed == false %>
     <%= form.submit data: {action: "click->completions#choice"} %>
+    <% end  %>
   <% end %>
 </div>

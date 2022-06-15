@@ -1,14 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="map-mobile"
 export default class extends Controller {
+
+  static targets = ["marker"]
+
   static values = {
     apiKey: String,
     markers: Array
   }
 
   connect() {
-    console.log("MOBILE MAP");
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -16,6 +18,7 @@ export default class extends Controller {
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -24,16 +27,17 @@ export default class extends Controller {
       positionOptions: {
       enableHighAccuracy: true
       },
-      // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
-      // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
       })
     );
+  }
 
-    // pass through data of each challenge
-    // challenge.name
-
+  // currently applies to the first marker
+  editMarker (event) {
+    event.currentTarget.classList.remove("unfound-marker")
+    event.currentTarget.classList.add("completed-marker")
+    this.opacityTarget.classList.add("opacity");
   }
 
   #addMarkersToMap() {
@@ -41,11 +45,8 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      // customMarker.setAttribute("id", `${this.rightTarget.id}${'%d: %s', i}`)
-
-      // can't get the following to show edit
-
-      customMarker.setAttribute("data-action", `click->challenge#showModal`)
+      customMarker.setAttribute("data-action", `click->map-mobile#editMarker`)
+      customMarker.setAttribute("data-map-mobile-target", `marker`)
       customMarker.classList.add("unfound-marker");
 
       // Pass the element as an argument to the new marker
