@@ -1,19 +1,25 @@
-<div class="background"></div>
 
-<div class="container confirmation-box">
-<br>
-<br>
-<h1 class="title" >Welcome to Trace!</h1>
-<h3 class="title" >Join a Game</h3>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <div class="title justify-content-center">
-        <input class="code" type="text" placeholder="enter game code here">
+<div class="container">
+  <%= image_tag "logo.png", class: "join logo" %>
+  <div class="join form">
+    <h3 class="join header">Enter game code</h3>
+    <form action="/join" accept-charset="UTF-8" method="get">
+      <input type="text" class="form__field"  name="code" id='code' required />
+       <button name="join" type="submit" class="button beige">Join Game</button>
+    </form>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="join info d-flex">
+      <%= image_tag "info.png" %>
+      <div>
+        <p><i>What is a game code?</i></p>
+        <span>
+          <p>
+            The game organiser should have shared a unique game code with you.
+            Get in contact with them if you need it!
+          </p>
+        </span>
       </div>
     </div>
   </div>
 </div>
-
-  <%= form_with(method: "get") do %>
-    <%= text_field_tag(:code) %>
-  <% end %>
