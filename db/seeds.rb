@@ -22,10 +22,10 @@ games = Game.all
 puts "Creating users..."
 
 user1 = User.create(email: "rebecca@gmail.com", password: "123456")
-user2 = User.create(email: "adrian@gmail.com", password: "123456")
-user3 = User.create(email: "padre@gmail.com", password: "123456")
+# user2 = User.create(email: "adrian@gmail.com", password: "123456")
+# user3 = User.create(email: "padre@gmail.com", password: "123456")
 
-puts "Created 3 users!"
+puts "Created #{User.count} user!"
 
 puts "Creating 9 games..."
 
@@ -109,7 +109,7 @@ puts "Created #{Game.count} games!"
 
 # puts "Created 2 teams per game!"
 
-puts "Creating  6 challenges..."
+puts "Creating 6 challenges..."
 
 # 16.times do
   Challenge.create(
