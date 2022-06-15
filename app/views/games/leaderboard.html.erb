@@ -1,17 +1,24 @@
 <h1><%= @game.name %></h1>
-<table>
-  <tr>
-    <th></th>
-    <th>Team</th>
-    <th>Score</th>
-    <th>Time</th>
-  </tr>
-<% @game.teams.each do |team| %>
-  <tr>
-    <td><%= team.photo %></td>
-    <td><%= team.name %></td>
-    <td><%= team.score %></td>
-    <td><%= team.finish %></td>
-  <tr>
-  <% end %>
-</table>
+<div class="container">
+  <table>
+    <tr>
+      <th></th>
+      <th>Team</th>
+      <th>Score</th>
+      <th>Time</th>
+    </tr>
+  <% @game.teams.each do |team| %>
+    <tr>
+      <% if !team.team_photo.key.nil? %>
+        <td><%= cl_image_tag team.team_photo.key, width: 40% , border-radius: 50% ></td>
+      <% else %>
+        <td><img src="https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png" alt=""></td>
+      <% end %>
+
+      <td><%= team.name %></td>
+      <td><%= team.score %></td>
+      <td><%= team.finish %></td>
+    <tr>
+    <% end %>
+  </table>
+</div>
