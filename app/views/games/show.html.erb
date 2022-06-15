@@ -159,7 +159,6 @@
 <script type="text/javascript">
 
     function run () { // this will be run when the whole page is loaded
-
       setInterval(reveal, 2500);
         function reveal () {
         map = document.getElementById("overview-map");
@@ -167,6 +166,14 @@
       }
     };
 
-  window.onload = run
+if (document.readyState !== 'loading') {
+    console.log('document is already ready, just execute code here');
+    run();
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('document was not ready, place code here');
+        run();
+    });
+}
 
 </script>

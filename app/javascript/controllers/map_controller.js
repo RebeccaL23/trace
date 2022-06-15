@@ -7,6 +7,8 @@ export default class extends Controller {
   }
 
   connect() {
+    // await new Promise(r => setTimeout(r, 3000));
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
