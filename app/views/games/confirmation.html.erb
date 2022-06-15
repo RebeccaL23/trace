@@ -1,6 +1,7 @@
 <%# <div class="background"></div> %>
 <div class="container" style="padding: 4rem 3rem 4rem 3rem;">
-  <h1 id="confirmation-title"><%=@game.name%></h1>
+  <h1 id="confirmation-title">On your marks, get set...</h1>
+  <h3 id='confirmation-game-name'>Prepare to join the <%=@game.name%> game</h3>
   <div class="confirmation-box d-flex">
     <% if !@game.cloud_photo.key.nil? %>
       <div class="confirmation-box left"  style="background-image: url('<%= cl_image_path @game.cloud_photo.key %>')">
@@ -10,24 +11,26 @@
       </div>
     <div class="confirmation-box right">
       <div class="d-inline">
-          <h3>Details</h3>
+          <h4>Game details</h4>
           <h5><%=@game.city%>, United Kingdom</h5>
           <p><strong>Time: </strong><%= @game.start.strftime("%R %P") %> to <%= @game.end.strftime("%R %P") %></p>
           <p><strong>Date: </strong><%= Time.now.strftime("%A, %B #{Time.now.day.ordinalize} %Y ") %></p>
-          <h2>Join game</h2>
+          <hr>
+          <h4>How to join the game</h4>
           <div class="d-inline">
 
-              <div class="d-flex justify-content-around align-items-center">
-                <div class="d-inline align-items-start">
-                  <h4>Copy code</h4>
+              <div class="d-flex">
+                <div class="d-inline align-items-start copy-code">
+                  <p>Copy code</p>
                   <div id="code-box" data-controller="clipboard">
-                    <h3> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <i data-action="click->clipboard#copy" class="fas fa-copy copy"></i> </h3>
+                    <h3 id='code-digits'> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <p data-action="click->clipboard#copy"><%= image_tag 'copy.png' %></p></h3>
                   </div>
                 </div>
 
-                <h4>or</h4>
+                <p id='confirmation-spacing'>or</p>
 
                 <div class="qr-code">
+                  <p>Scan QR code</p>
                   <% str = cl_image_path "qr_code#{@game.code}.png" %>
                   <% newPath = str.sub /\/v\d*\/production/, '' %>
                   <img src="<%= newPath %>" alt="qr-code">
@@ -35,6 +38,23 @@
               </div>
           </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer-copyright">
+      <span id='footer-tagline'> Find games and play on </span> <%= link_to root_path do %>
+        <%= image_tag "trace-logo.gif", class: 'logo-footer' %>
+      <% end %>
+    </div>
+    <div class="footer-links">
+      <%# <a href="#"><i class="fab fa-github"></i></a> %>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <%# <a href="#"><i class="fab fa-twitter"></i></a> %>
+      <%# <a href="#"><i class="fab fa-linkedin"></i></a> %>
     </div>
   </div>
 </div>
