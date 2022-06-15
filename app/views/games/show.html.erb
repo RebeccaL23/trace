@@ -141,7 +141,10 @@
       <% end %>
     </div>
 
-  <div class="half-block right">
+  <div class="half-block right is-loading">
+  </div>
+
+  <div id="overview-map" class="half-block right hidden-map">
     <div style="width: 100%; height: 100vh;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
@@ -153,3 +156,13 @@
 <div class="progress-bottom">
   <div class='step-two'></div>
 </div>
+
+<script type="text/javascript">
+    window.onload = function() { // this will be run when the whole page is loaded
+        setInterval(reveal, 1000);
+          function reveal () {
+          map = document.getElementById("overview-map");
+          map.classList.remove("hidden-map");
+        }
+    };
+</script>
