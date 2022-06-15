@@ -12,25 +12,27 @@
         <div class="weather" data-controller="weather">
           <img src="" alt="Weather Icon" data-weather-target="icon">
           <h2 data-weather-target="temperature"></h2>
-        </div>
+          <span>click <i class="fa-solid fa-location-crosshairs"></i> for current location </span><br>
       </div>
+
+      <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
+      <% full = @game.end - @team.created_at %>
+      <% left = full - lost %>
+      <p hidden id="timer"> <%= left %> </p>
       <div class='right'>
         <div class="timer">
-          <% if (@team.created_at > @game.end) %>
+          <% if ((Time.zone.now + 1*60*60) > @game.end) %>
           <span id="clockdiv">
-          <span class="hours"></span>
           <span class="minutes"></span> Times up!
           <span class="seconds"></span>
           <span>
           <% else %>
+          <br>
           <span id="clockdiv">
           <span class="hours"></span>
           <span class="minutes"></span>
           <span class="seconds"></span>
           <span>
-          <p hidden id="timer"> <%= @game.end - @team.created_at %> </p>
-          <p id="timer"> <%= @team.created_at %> </p>
-          <p id="timer"> <%= @game.end %> </p>
           <% end  %>
         </div>
         <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
@@ -41,6 +43,7 @@
     </div>
   </div>
 
+  <!-- marker for each challenge -->
     <% @markers = @game.challenges.geocoded.map do |challenge| %>
       <% {
           lat: challenge.latitude,
@@ -82,12 +85,14 @@ function getTimeRemaining(endtime) {
 
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 

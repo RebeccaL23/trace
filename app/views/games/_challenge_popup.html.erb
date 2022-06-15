@@ -87,6 +87,8 @@
     </div>
 
     <% completion = @completion = Completion.find_by(team: @team, challenge: challenge) %>
+    <% if completion.completed == false %>
     <%= form.submit data: {action: "click->completions#choice"} %>
+    <% end  %>
   <% end %>
 </div>

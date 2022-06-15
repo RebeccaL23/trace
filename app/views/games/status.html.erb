@@ -3,6 +3,7 @@
     <h1>Welcome to <%= @game.name %></h1>
   </div>
 
+  <% time = (Time.zone.now + 1*60*60)  %>
   <!-- if game over -->
   <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
 
@@ -10,7 +11,6 @@
     <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
 
   <!-- if game in progress -->
-
   <% elsif (Time.zone.now + 1*60*60) > @game.start %>
     <h2>Game on!</h2>
     <p>The game has started.</p>
@@ -19,18 +19,16 @@
   <!-- if game not started -->
   <% elsif @game.start > time %>
       <h2>Ready, set...</h2>
-      <h1><%= time %> <%=@game.start %> <%=@game.end%> </h1>
       <p>The game has not yet started. Check back closer to the below start time.</p>
       <% start_time = @game.start %>
 
       <%# show time until start %>
       <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
-      <% if @game.start - (Time.zone.now + 1*60*60) < (60*60) %>
         <div id="clockdiv"><div>
         <p> game begins in:
+        <span class="hours"></span> :
         <span class="minutes"></span> :
         <span class="seconds"></span>
-      <% end %>
       </p>
       <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
@@ -55,12 +53,14 @@ function getTimeRemaining(endtime) {
 
 function initializeClock(id, endtime) {
   var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
@@ -88,4 +88,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
-

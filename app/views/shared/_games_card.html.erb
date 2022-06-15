@@ -1,8 +1,7 @@
 
 <div class="col-4 game-col d-flex justify-content-center">
   <%= link_to game_path(game) do %>
-    <% time = Time.now %>
-    <% unless game.start < time %>
+    <% unless game.end.strftime("%m-%e-%y %H:%M") <= Time.now.strftime("%m-%e-%y %H:%M") %>
       <div class="card">
     <% else %>
       <div class="card completed">
@@ -13,10 +12,10 @@
         <%= image_tag "placeholder.png", class: "card-img-top " %>
       <% end %>
       <div class="card-body">
-        <% if game.start.day == time.day %>
-          <p class="status today">Today</p>
-        <% elsif game.start < time  %>
+        <% if game.end.strftime("%m-%e-%y %H:%M") < Time.now.strftime("%m-%e-%y %H:%M")  %>
           <p class="status upcoming">Completed</p>
+        <% elsif game.start.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y") %>
+          <p class="status today">Today</p>
         <% else %>
           <p class="status upcoming">Upcoming</p>
         <% end %>

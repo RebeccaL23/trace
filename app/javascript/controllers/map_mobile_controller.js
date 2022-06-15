@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("MOBILE MAP");
+
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
@@ -18,6 +18,7 @@ export default class extends Controller {
       center: [-0.131, 51.501], // Starting position [lng, lat]
       zoom: 12,
     })
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
 
@@ -32,10 +33,11 @@ export default class extends Controller {
     );
   }
 
-  editModal () {
-    console.log(this.markerTarget)
-    this.markerTarget.classList.remove("unfound-marker")
-    this.markerTarget.classList.add("completed-marker")
+  // currently applies to the first marker
+  editMarker (event) {
+    event.currentTarget.classList.remove("unfound-marker")
+    event.currentTarget.classList.add("completed-marker")
+    this.opacityTarget.classList.add("opacity");
   }
 
   #addMarkersToMap() {
@@ -43,7 +45,7 @@ export default class extends Controller {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const customMarker = document.createElement("div")
       customMarker.style.backgroundSize = "contain"
-      customMarker.setAttribute("data-action", `click->map-mobile#editModal`)
+      customMarker.setAttribute("data-action", `click->map-mobile#editMarker`)
       customMarker.setAttribute("data-map-mobile-target", `marker`)
       customMarker.classList.add("unfound-marker");
 
