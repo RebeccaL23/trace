@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="completions"
 export default class extends Controller {
 
-  static targets = ["checked", "correct"]
+  static targets = ["correct"]
   connect() {
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
   }
