@@ -30,10 +30,16 @@
           <%=  time_hour.round %> : <%= time_mins.round %> : <%= time_secs.round %>
         <% end %>
       </td>
-
     <tr>
 
     <% end %>
   </table>
 </div>
-y
+
+<script>
+    window.setInterval('refresh()', 5000); 	// Call a function every 10000 milliseconds (OR 10 seconds).
+    // Refresh or reload page.
+    function refresh() {
+        window .location.reload();
+    }
+</script>

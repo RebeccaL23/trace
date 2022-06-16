@@ -25,7 +25,6 @@
       </div>
     </div>
   </div>
-
   <% lost = (Time.zone.now + 1*60*60) - @team.created_at %>
   <% full = @game.end - @team.created_at %>
   <% left = full - lost %>

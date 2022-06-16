@@ -49,6 +49,10 @@ class GamesController < ApplicationController
   def play
     @game = Game.find(params[:game_id])
     @team = Team.find(params[:team_id])
+    @finished = false
+    if @team.completions.all? { |comp| comp.completed == true}
+      @finished = true
+    end
   end
 
   def destroy
