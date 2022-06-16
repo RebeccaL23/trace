@@ -26,7 +26,7 @@
 }
 
 .edit{
-  display:none;
+  opacity:30%;
 
   .edit-icon{
     margin-left: 3px;
@@ -36,6 +36,10 @@
       width: auto;
     }
   }
+}
+
+.edit:hover {
+  opacity: 100%;
 }
 
 #challenge_answer_correct {
