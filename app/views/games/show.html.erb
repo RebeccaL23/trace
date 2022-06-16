@@ -65,7 +65,7 @@
     </div>
 
       <% if @game.challenges.count == 0 %>
-        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge" >Add a challenge</p>
+        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge" style='text-decoration: underline; cursor: pointer;'>Add a challenge</p>
       <% else %>
 
         <!--------- Iterate through challenges coordinates and create markers ------->

@@ -34,7 +34,6 @@
     img{
       height: 25px !important;
       width: auto;
-      margin-top: 18px;
     }
   }
 }
@@ -47,6 +46,13 @@
   margin-bottom: 10px;
   overflow: hidden;
   border-radius: 20px;
+  h3{
+    margin-bottom: 0px;
+  }
+  .edit-icon img{
+    margin-top: 18px;
+    margin-left: -4px;
+  }
 }
 
 .challenge-number{
@@ -73,14 +79,14 @@
   }
 
   .question{
-    width: 90%;
+    width: 88%;
     line-height: 32px;
-    padding: 15px;
+    padding: 10px;
 
   }
   .div{
-    width: 10%;
-    padding-right: 5px;
+    width: 12%;
+    padding-right: 10px;
   }
 }
 
