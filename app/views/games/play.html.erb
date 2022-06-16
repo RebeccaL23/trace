@@ -11,7 +11,7 @@
 
         <div class="play-team" data-mobile-play-target="show1">
           <% if !@team.team_photo.key.nil? %>
-            <td><div id="team-avatar" style="background-image: url(<%= cl_image_path team.team_photo.key %>)"></div></td>
+            <td><div id="team-avatar" style="background-image: url(<%= cl_image_path @team.team_photo.key %>)"></div></td>
           <% else %>
             <td><div id="team-avatar" style="background-image: url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png)"></div></td>
           <% end %>
