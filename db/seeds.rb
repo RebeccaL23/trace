@@ -32,9 +32,27 @@ puts "Creating 9 games..."
 Game.create(
   name: "Rebecca's Tots",
   city: "London",
-  start: "14-06-2022 10:00",
-  end: "14-06-2022 23:00",
-  photo: 'nkids.jpg',
+  start: "16-06-2022 11:00",
+  end: "16-06-2022 14:00",
+  photo: 'lions.png',
+  user: user1
+)
+
+Game.create(
+  name: "Jack the Ripper",
+  city: "London",
+  start: "18-06-2022 10:00",
+  end: "18-06-2022 13:00",
+  photo: 'placeholder.png',
+  user: user1
+)
+
+Game.create(
+  name: "Ancient Aliens",
+  city: "London",
+  start: "12-06-2022 10:00",
+  end: "12-06-2022 13:00",
+  photo: 'placeholder.png',
   user: user1
 )
 
@@ -50,8 +68,8 @@ Game.create(
 Game.create(
   name: "Ancient Aliens",
   city: "London",
-  start: "14-06-2022 10:00",
-  end: "14-06-2022 13:00",
+  start: "16-06-2022 14:00",
+  end: "16-06-2022 16:00",
   photo: 'placeholder.png',
   user: user1
 )
