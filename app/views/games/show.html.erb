@@ -5,7 +5,8 @@
       <div class="left">
         <div class="edit-game" data-action="mouseover->challenge#editHover mouseout->challenge#editNone">
           <div class='edit-header'>
-            <h3><%= @game.name %></h3>
+
+            <h3><strong> <%= @game.name %> </strong></h3>
             <!---------- EDIT, DELETE FUNCTIONS ------>
             <span class='edit' data-challenge-target="edit"><%= link_to image_tag('edit.png'), edit_game_path(@game), class: "edit-icon" %></span>
             <span class='edit' data-challenge-target="delete"><%= link_to image_tag('delete.png'), game_path(@game), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "edit-icon" %></span>
@@ -30,23 +31,24 @@
             data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             <div class="modal-details">
             <div class="half-modal left">
-              <h1>New challenge</h1>
+              <h2><strong>Add a new challenge!</strong></h2>
 
               <%= simple_form_for [ @game, @challenge ] do |f| %>
-                <%= f.input :location,
+                <%= f.input :location, label: false, placeholder: 'address',
                 input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
                 # input_html: {data: {map_challenge_target: "location"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
                 %>
-                <em><p id="fit"><%=image_tag 'location.png'%>Check location on map</p></em>
+                <p id="fit"><%=image_tag 'location.png'%>Check location on map</p>
                 <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                 <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
-                <%= f.input :question, as: :string %>
-                <%= f.input :answer_1, as: :string %>
-                <%= f.input :answer_2, as: :string %>
-                <%= f.input :answer_3, as: :string %>
-                <%= f.input :answer_correct, as: :string %>
-                <%= f.input :points, as: :integer %>
+                <%= f.input :question, label: false, placeholder: 'enter your question here!', as: :string %>
+                <%= f.input :answer_correct, as: :string, label: false, placeholder: 'correct answer' %>
+                <%= f.input :answer_1, as: :string, label: false, placeholder: 'first wrong answer' %>
+                <%= f.input :answer_2, as: :string, label: false, placeholder: 'second wrong answer' %>
+                <%= f.input :answer_3, as: :string, label: false, placeholder: 'third wrong answer' %>
+
+                <%= f.input :points, label: false, placeholder: 'how many points is this question worth?', as: :integer %>
                 <%= f.button :submit, class: "button green" %>
               <% end %>
             </div>
@@ -115,7 +117,7 @@
                         %>
                         <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                         <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
-                        <%= f.input :question, as: :string %>
+                        <%= f.input :question, label: "question for this challenge?", as: :string %>
                         <%= f.input :answer_correct, as: :string %>
                         <%= f.input :answer_1, as: :string %>
                         <%= f.input :answer_2, as: :string %>
@@ -158,14 +160,21 @@
 <script type="text/javascript">
 
     function run () { // this will be run when the whole page is loaded
-
-      setInterval(reveal, 2000);
+      setInterval(reveal, 2500);
         function reveal () {
         map = document.getElementById("overview-map");
         map.classList.remove("hidden-map");
       }
     };
 
-  window.onload = run
+if (document.readyState !== 'loading') {
+    console.log('document is already ready, just execute code here');
+    run();
+} else {
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('document was not ready, place code here');
+        run();
+    });
+}
 
 </script>
