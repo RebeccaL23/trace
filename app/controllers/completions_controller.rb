@@ -1,4 +1,5 @@
 class CompletionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[choice correct]
 
   def choice
     @completion = Completion.find(params[:id])

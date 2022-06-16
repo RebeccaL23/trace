@@ -1,0 +1,24 @@
+#team-avatar{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+#leaderboard-header{
+  margin: 2rem 1rem 2rem 1rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $green;
+}
+
+#leaderboard-table{
+  width: 100%;
+}
+.leaderboard{
+
+  &.score{
+    font-size: 22px;
+    padding-left: 14px;
+    font-weight: 600;
+  }
+}
