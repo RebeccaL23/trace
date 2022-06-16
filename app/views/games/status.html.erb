@@ -1,47 +1,50 @@
-<% if !@game.cloud_photo.key.nil? %>
-  <div class="mobile-header"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @game.cloud_photo.key %>')">
-<% else %>
-  <div class="mobile-header"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
-<% end %>
-    <h1>Welcome to <%= @game.name %></h1>
-  </div>
-<div class="container">
+<% content_for :title, "Status" %>
 
-  <% time = (Time.zone.now + 1*60*60)  %>
-  <!-- if game over -->
-  <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
-    <div class="game-status over">
-      <h2>Game over!</h2>
-      <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
-
-  <!-- if game in progress -->
-  <% elsif (Time.zone.now + 1*60*60) > @game.start %>
-    <div class="game-status started">
-      <h2>Game on!</h2>
-      <p>The game has started.</p>
-      <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
-
-  <!-- if game not started -->
-  <% elsif @game.start > time %>
-    <div class="game-status upcoming">
-      <h2>Ready, set...</h2>
-      <p>The game has not yet started. Check back closer to the below start time.</p>
-      <% start_time = @game.start %>
-
-      <%# show time until start %>
-      <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
-        <div id="clockdiv"><div>
-        <p> Game begins in:
-        <span class="hours"></span> :
-        <span class="minutes"></span> :
-        <span class="seconds"></span>
-      </p>
-      <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
+<div class="fullscreen-height">
+  <% if !@game.cloud_photo.key.nil? %>
+    <div class="mobile-header"  style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url('<%= cl_image_path @game.cloud_photo.key %>')">
+  <% else %>
+    <div class="mobile-header"  style="background-image: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655289517/development/placeholder.png)">
   <% end %>
+      <h1>Welcome to the <%= @game.name %> game</h1>
+    </div>
+  <div>
+
+    <% time = (Time.zone.now + 1*60*60)  %>
+    <!-- if game over -->
+    <% if @game.end < (Time.zone.now + 1*60*60) && (Time.zone.now + 1*60*60) > @game.start %>
+      <div class="game-status over">
+        <h4 class='game-status-heading'>Game over!</h4>
+        <p>The game ended at <%= @game.end.strftime("%R %P") %></p>
+
+    <!-- if game in progress -->
+    <% elsif (Time.zone.now + 1*60*60) > @game.start %>
+      <div class="game-status started">
+        <h4 class='game-status-heading'>Game on!</h4>
+        <button class="button mobile-join-flow-btn"><%= link_to "Set up my team", new_game_team_path(@game) %></button>
+
+    <!-- if game not started -->
+    <% elsif @game.start > time %>
+      <div class="game-status upcoming">
+        <h4 class='game-status-heading'>Ready, set...</h4>
+        <%# show time until start %>
+        <% start_time = @game.start %>
+          <p> The game starts in </p>
+          <div id="clockdiv">
+            <span class="hours"></span> :
+            <span class="minutes"></span> :
+            <span class="seconds"></span>
+          </div>
+        <h3 id='mobile-game-time'> <%= @game.start.strftime("%R %P") %> – <%= @game.end.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
+    <% end %>
+    </div>
   </div>
 </div>
 
 <p hidden id="timer"> <%= @game.start - (Time.zone.now + 1*60*60) %> </p>
+
+<%= render "shared/footer" %>
+
 
 <script>
 function getTimeRemaining(endtime) {

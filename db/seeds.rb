@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -29,50 +30,59 @@ puts "Created #{User.count} user!"
 
 puts "Creating 9 games..."
 
-Game.create(
-  name: "Rebecca's Tots",
+game1 = Game.new(
+  name: "Best of London",
   city: "London",
-  start: "16-06-2022 11:00",
-  end: "16-06-2022 14:00",
-  photo: 'lions.png',
+  start: "17-06-2022 14:30",
+  end: "17-06-2022 19:00",
   user: user1
 )
+game1.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655392123/article-2006892-0CAE44C200000578-609_1024x615_large_qoycul.jpg"), filename: "#{game1.name}", content_type: "image/png")
+game1.save
 
-Game.create(
-  name: "Jack the Ripper",
+game2 = Game.new(
+  name: "Jurassic Park",
   city: "London",
   start: "18-06-2022 10:00",
   end: "18-06-2022 13:00",
   photo: 'placeholder.png',
   user: user1
 )
+game2.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655303678/9nldf77qdz15mmu2fxz1a1nedgkr.webp"), filename: "#{game2.name}", content_type: "image/png")
+game2.save
 
-Game.create(
-  name: "Ancient Aliens",
+game3 = Game.new(
+  name: "Harry Potter",
   city: "London",
   start: "12-06-2022 10:00",
   end: "12-06-2022 13:00",
   photo: 'placeholder.png',
   user: user1
 )
+game3.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655304990/e0tzavf07g8nwukpnfp0o8lbnagn.jpg"), filename: "#{game3.name}", content_type: "image/png")
+game3.save
 
-Game.create(
-  name: "Jack the Ripper",
+game4 = Game.new(
+  name: "Staff pub crawl",
   city: "London",
   start: "12-06-2022 10:00",
   end: "12-06-2022 13:00",
   photo: 'placeholder.png',
   user: user1
 )
+game4.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655391779/DQoRhQSVAAA2_h2_a3wvxq.jpg"), filename: "#{game4.name}", content_type: "image/png")
+game4.save
 
-Game.create(
-  name: "Ancient Aliens",
+game5 = Game.new(
+  name: "Hen party",
   city: "London",
   start: "16-06-2022 14:00",
   end: "16-06-2022 16:00",
   photo: 'placeholder.png',
   user: user1
 )
+game5.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655392009/blackpool_carlas_hen_weekend_book_koye3t.jpg"), filename: "#{game5.name}", content_type: "image/png")
+game5.save
 
 puts "Created #{Game.count} games!"
 

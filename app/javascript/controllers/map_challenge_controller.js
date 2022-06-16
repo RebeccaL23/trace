@@ -42,11 +42,11 @@ export default class extends Controller {
 
     document.getElementById('fit').addEventListener('click', () => {
 
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${'Trafalgar Square'}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
       .then(response => response.json())
       .then(data => mapLng = data.features[0].center[1]);
-
-    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${this.locationTarget.value}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
+    // trafalgar square was this.locationTarget.value but not working so we hard coded it
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${'Trafalgar Square'}.json?access_token=pk.eyJ1IjoicmViZWNjYWwyMyIsImEiOiJjbDN3dm05MDExZGNiM2dueWVma3hnZjhoIn0.XEl6gzD4IoiYom5Fs0wxag`)
       .then(response => response.json())
       .then(data => mapLat = data.features[0].center[0]);
 

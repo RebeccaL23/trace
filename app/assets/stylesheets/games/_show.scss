@@ -26,7 +26,7 @@
 }
 
 .edit{
-  display:none;
+  opacity:30%;
 
   .edit-icon{
     margin-left: 3px;
@@ -34,10 +34,34 @@
     img{
       height: 25px !important;
       width: auto;
-      margin-top: 18px;
     }
   }
 }
+
+.edit:hover {
+  opacity: 100%;
+}
+
+#challenge_answer_correct {
+  background: #70FFA0;
+  opacity: 30%;
+}
+
+#challenge_answer_1 {
+  background: #FFC671;
+  opacity: 30%;
+}
+
+#challenge_answer_2 {
+  background: #FFC671;
+  opacity: 30%;
+}
+
+#challenge_answer_3 {
+  background: #FFC671;
+  opacity: 30%;
+}
+
 
 // challenge list item on game show page
 .challenge-list-item{
@@ -47,6 +71,13 @@
   margin-bottom: 10px;
   overflow: hidden;
   border-radius: 20px;
+  h3{
+    margin-bottom: 0px;
+  }
+  .edit-icon img{
+    margin-top: 18px;
+    margin-left: -4px;
+  }
 }
 
 .challenge-number{
@@ -73,14 +104,14 @@
   }
 
   .question{
-    width: 90%;
+    width: 88%;
     line-height: 32px;
-    padding: 15px;
+    padding: 10px;
 
   }
   .div{
-    width: 10%;
-    padding-right: 5px;
+    width: 12%;
+    padding-right: 10px;
   }
 }
 
@@ -178,8 +209,8 @@
   #modal-close{
     position: absolute;
     z-index: 100000000;
-    left: 88%;
-    top: 1.5%;
+    left: 92%;
+    top: 2%;
 
     img{
       width: 30px;

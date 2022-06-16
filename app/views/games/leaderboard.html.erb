@@ -1,3 +1,5 @@
+<% content_for :title, "Leaderboard" %>
+
 <h1 id="leaderboard-header"><%= @game.name %></h1>
 <div class="container">
   <table id="leaderboard-table">
@@ -5,7 +7,7 @@
       <th></th>
       <th>Team</th>
       <th>Score</th>
-      <th>Finish Time</th>
+      <th>Time taken</th>
     </tr>
   <% @game.teams.sort_by{ |team| -team.score }.each do |team| %>
 
@@ -17,9 +19,38 @@
       <% end %>
       <td><%= team.name %></td>
       <td class="leaderboard score py-2"><%= team.score %></td>
-      <td><%= team.finish.nil? ? "Still playing!" : team.finish.strftime("%H:%M:%S") %></td>
+      <td>
+        <% if team.finish.nil?%>
+<div class="running">
+    <div class="outer">
+        <div class="body" style="margin-left: 25%" >
+            <div class="arm behind"></div>
+            <div class="arm front"></div>
+            <div class="leg behind"></div>
+            <div class="leg front"></div>
+        </div>
+    </div>
+</div>
+        <% else %>
+          <% converted_finish_time = (team.finish + 1 * 60 * 60)
+            time = (converted_finish_time.to_f - @game.start.to_f)
+            time_hour = (time / 3600)
+            time_mins = (time_hour.to_s.sub(/^\d*/, "").to_f * 60)
+            time_secs = (".#{time_mins.to_s.sub(/\d*\D/, "")}".to_f * 60)
+          %>
+          <%=  time_hour.round %> : <%= time_mins.round %> : <%= time_secs.round %>
+        <% end %>
+      </td>
     <tr>
 
     <% end %>
   </table>
 </div>
+
+<script>
+    window.setInterval('refresh()', 5000); 	// Call a function every 10000 milliseconds (OR 10 seconds).
+    // Refresh or reload page.
+    function refresh() {
+        window .location.reload();
+    }
+</script>

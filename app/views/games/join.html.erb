@@ -1,7 +1,9 @@
+<% content_for :title, "Join a game" %>
 
-<div class="container">
+<div class="mobile-container">
   <%= image_tag "logo.png", class: "join logo" %>
   <div class="join form">
+    <h1 class="join header">Get ready to play!</h1>
     <h3 class="join header">Enter game code</h3>
     <form action="/join" accept-charset="UTF-8" method="get">
       <input type="text" class="form__field"  name="code" id='code' required />
@@ -23,3 +25,5 @@
     </div>
   </div>
 </div>
+
+ <%= render "shared/footer" %>

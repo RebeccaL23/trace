@@ -1,3 +1,5 @@
+<% content_for :title, @game.name %>
+
 <%= render "shared/navbar/navbar-home" %>
 <div class="container page-container" data-controller="challenge" >
   <div class="half-block left">
@@ -31,7 +33,7 @@
             data-map-challenge-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             <div class="modal-details">
             <div class="half-modal left">
-              <h2><strong>Add a new challenge!</strong></h2>
+              <h2>Add a new challenge!</h2>
 
               <%= simple_form_for [ @game, @challenge ] do |f| %>
                 <%= f.input :location, label: false, placeholder: 'address',
@@ -65,7 +67,7 @@
     </div>
 
       <% if @game.challenges.count == 0 %>
-        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge" >Add a challenge</p>
+        <p>You have not added any challenges. <p id='new-challenge-link' data-action="click->challenge#addChallenge" style='text-decoration: underline; cursor: pointer;'>Add a challenge</p>
       <% else %>
 
         <!--------- Iterate through challenges coordinates and create markers ------->
@@ -110,19 +112,19 @@
                         <h1>Edit challenge</h1>
                         <%= simple_form_for [ @game, challenge ] do |f| %>
 
-                        <%= f.input :location,
+                        <%= f.input :location, label: false,
                             input_html: {data: {address_autocomplete_target: "address", map_challenge_target: "location"}, class: "d-none"},
                             # input_html: {data: {map_challenge_target: "location"}},
                             wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
                         %>
                         <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                         <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
-                        <%= f.input :question, label: "question for this challenge?", as: :string %>
-                        <%= f.input :answer_correct, as: :string %>
-                        <%= f.input :answer_1, as: :string %>
-                        <%= f.input :answer_2, as: :string %>
-                        <%= f.input :answer_3, as: :string %>
-                        <%= f.input :points, as: :integer %>
+                        <%= f.input :question, label: false, as: :string %>
+                        <%= f.input :answer_correct, label: false, as: :string %>
+                        <%= f.input :answer_1, label: false, as: :string %>
+                        <%= f.input :answer_2, label: false, as: :string %>
+                        <%= f.input :answer_3, label: false, as: :string %>
+                        <%= f.input :points, label: false, as: :integer %>
                         <%= f.button :submit, class: "button green edit-challenge-submit" %>
                       <% end %>
                       </div>

@@ -4,17 +4,24 @@
   background-size: cover;
 
   h1{
-    text-align: center;
-    padding: 6rem 2rem 0rem 2rem;
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 800;
-    color: $mint;
+    color: $charcoal;
+    padding: 60px 30px 0px 30px;
   }
+
+}
+.game-status-heading{
+  border-bottom: 12px RGBA(110, 255, 161, 0.6) solid;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  color: $charcoal;
+
 }
 
 .game-status{
-  padding-left: 12px;
-  padding-top: 3rem;
+  padding: 30px 30px;
+  padding-top: 60px;
 
   &.started{
 
@@ -26,13 +33,11 @@
 
     p{
       font-size: 24px;
-      margin-bottom: 2rem;
-      padding-left: 1rem;
     }
 
     .button.beige{
       font-size: 24px;
-      margin-left: 11rem;
+
     }
   }
 
@@ -46,7 +51,7 @@
     p{
       font-size: 24px;
       margin-bottom: 2rem;
-      padding-left: 1rem;
+      margin-top: 20px;
     }
   }
 
@@ -60,19 +65,26 @@
     p{
       font-size: 18px;
       margin-bottom: 2rem;
-      padding-left: 1rem;
+
     }
     h3{
       font-size: 16px;
-      text-align: center;
       font-weight: 600;
       margin-bottom: 2rem;
     }
 
     #clockdiv{
-      p{
-        margin-bottom: 2rem;
+      span{
+        font-size: 26px;
+        font-weight: 600;
       }
+      background-color: $off-white;
+      padding: 6px 18px;
+      text-align: center;
+      box-shadow: $mint 3px 3px;
     }
   }
+}
+#mobile-game-time{
+  margin-top: 16px;
 }

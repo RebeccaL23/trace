@@ -9,3 +9,16 @@ body{
 h4{
   text-transform: uppercase;
 }
+
+//mobile sizing
+@media only screen and (max-width: 600px) {
+  .mobile-container {
+    min-height: 100vh;
+    margin-top: 60px;
+    padding: 0px 30px;
+  }
+
+  .fullscreen-height {
+    min-height: 100vh !important;
+  }
+}
