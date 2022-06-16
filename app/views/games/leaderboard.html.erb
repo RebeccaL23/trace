@@ -33,12 +33,12 @@
           </div>
         <% else %>
           <% converted_finish_time = (team.finish + 1 * 60 * 60)
-            time = (converted_finish_time.to_f - @game.start.to_f)
+            time = (converted_finish_time.to_f - team.created_at.to_f)
             time_hour = (time / 3600)
             time_mins = (time_hour.to_s.sub(/^\d*/, "").to_f * 60)
             time_secs = (".#{time_mins.to_s.sub(/\d*\D/, "")}".to_f * 60)
           %>
-          <%=  time_hour.round %> : <%= time_mins.round %> : <%= time_secs.round %>
+          <%= time_mins.round %> : <%= time_secs.round %>
         <% end %>
       </td>
     <tr>
