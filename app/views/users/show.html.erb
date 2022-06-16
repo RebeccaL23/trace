@@ -9,13 +9,13 @@
   </div>
       <div class="row card-row">
 
-      <% time = Time.now %>
+      <% time = Time.now.strftime("%m/%d/%Y") %>
 
       <% upcoming = @games.where('start >= ?', time) %>
       <% upcoming.sort_by { |el| el[:start] }.each do |game| %>
         <%= render "shared/games_card", { game: game } %>
       <% end %>
-      <% time = Time.now %>
+      <% time = Time.now.strftime("%m/%d/%Y") %>
       <% completed = @games.where('start < ?', time) %>
       <% completed.sort_by { |el| el[:start] }.each do |game| %>
         <%= render "shared/games_card", { game: game } %>
