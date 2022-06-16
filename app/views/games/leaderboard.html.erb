@@ -7,7 +7,8 @@
       <th>Score</th>
       <th>Time</th>
     </tr>
-  <% @game.teams.each do |team| %>
+  <% @game.teams.sort_by{ |team| -team.score }.each do |team| %>
+
     <tr>
       <% if !team.team_photo.key.nil? %>
         <td><%= cl_image_tag team.team_photo.key, id: "team-avatar" %> </td>
@@ -18,6 +19,7 @@
       <td class="leaderboard score py-2"><%= team.score %></td>
       <td><%= team.finish.nil? ? "Still playing!" : team.finish.strftime("%H:%M:%S") %></td>
     <tr>
+
     <% end %>
   </table>
 </div>
