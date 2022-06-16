@@ -16,6 +16,12 @@
     left: 89%;
     z-index: 10000;
   }
+  hr{
+    border: 2px $mint solid;
+  }
+  p{
+    margin-bottom: 0px;
+  }
 }
 
 .timer{
@@ -51,7 +57,8 @@
   }
 }
 .mobile-game-header{
-  width: 65%;
+  width: 76%;
+  border-radius: 4px;
   height: auto;
   position: fixed;
   z-index:1000;
@@ -89,6 +96,9 @@
   }
 
 }
+.play-team #team-avatar{
+  margin-right: 8px;
+}
 
 #how-to-play{
   font-style: italic;
@@ -97,8 +107,8 @@
 #toggle-icon{
   height: 16px;
   position: absolute;
-  top: 14px;
-  left: 218px;
+  top: 10px;
+  left: 255px;
 }
 
 //icons
@@ -106,10 +116,14 @@
   height: 20px;
 }
 
-#leaderboard-icon img{
-  height: 30px;
-}
+#leaderboard-icon {
+  text-decoration: underline;
 
+  img{
+  height: 24px;
+  margin-right: 4px;
+  }
+}
 // challenge pop up
 .mobile-game-map{
   width: 100vw;
@@ -147,6 +161,9 @@
     label > input[type="radio"]:checked + * {
       color: teal;
     }
+    .radio-input{
+      color: $mint;
+    }
   }
   #challenge-popup-submit{
     font-size: 18px;
@@ -154,6 +171,9 @@
     padding: 8px 20px;
     border-radius: 4px;
     border: $charcoal 1px solid;
+    background-color: $off-white;
+    width: 100%;
+    margin: 6px 0px;
   }
   .correct {
     background-color: $mint;
@@ -181,10 +201,11 @@
     background-color: $off-white;
     transform: none !important;
     width: 84vw;
-    height: 84vh;
+    height: 74vh;
     top: 15%;
     left: 8vw;
     min-height: 84vh !important;
+    border-radius: 4px;
     box-shadow: rgb(158, 158, 158) 1px 1px 6px;
     }
 
