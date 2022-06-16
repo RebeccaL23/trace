@@ -5,15 +5,15 @@
       <th></th>
       <th>Team</th>
       <th>Score</th>
-      <th>Time</th>
+      <th>Finish Time</th>
     </tr>
   <% @game.teams.sort_by{ |team| -team.score }.each do |team| %>
 
     <tr>
       <% if !team.team_photo.key.nil? %>
-        <td><%= cl_image_tag team.team_photo.key, id: "team-avatar" %> </td>
+        <td><div id="team-avatar" style="background-image: url(<%= cl_image_path team.team_photo.key %>)"></div></td>
       <% else %>
-        <td ><img src="https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png" alt="team avatar" id="team-avatar"></td>
+        <td><div id="team-avatar" style="background-image: url(https://res.cloudinary.com/borhan-cloud/image/upload/v1655313095/development/avatar.png)"></div></td>
       <% end %>
       <td><%= team.name %></td>
       <td class="leaderboard score py-2"><%= team.score %></td>

@@ -1,14 +1,19 @@
 #team-avatar{
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background-clip: padding-box;
+  margin: 7px 0 0 5px;
+  float: left;
+  background-size: cover;
+  background-position: center center;
 }
 
 #leaderboard-header{
   margin: 2rem 1rem 2rem 1rem;
   font-weight: 600;
   padding-bottom: 1rem;
-  border-bottom: 2px solid $green;
+  border-bottom: 2px solid $orange;
 }
 
 #leaderboard-table{
@@ -18,7 +23,7 @@
 
   &.score{
     font-size: 22px;
-    padding-left: 14px;
+    // padding-left: 14px;
     font-weight: 600;
   }
 }
