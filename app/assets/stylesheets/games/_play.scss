@@ -6,15 +6,14 @@
     font-weight: 800;
   }
   h2{
-    font-size: 15px;
+    font-size: 26px;
     font-weight: 600;
-
   }
 
   .right{
     position: absolute;
     top: 6%;
-    left: 90%;
+    left: 89%;
     z-index: 10000;
   }
 }
@@ -105,9 +104,13 @@
 //icons
 .play-icons{
   height: 20px;
-
 }
 
+#leaderboard-icon img{
+  height: 34px;
+}
+
+// challenge pop up
 .mobile-game-map{
   width: 100vw;
   height: 100vh;
@@ -145,27 +148,45 @@
       color: teal;
     }
   }
-
+  #challenge-popup-submit{
+    font-size: 18px;
+    font-family: "Epilogue", "Helvetica", "sans-serif";
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: $charcoal 1px solid;
+  }
   .correct {
-    background-color: green;
+    background-color: $mint;
+    border-radius: 4px;
+
   }
 
   .wrong {
-    background-color: red;
+    background-color: $orange;
+    border-radius: 4px;
   }
 
   .mapboxgl-popup{
+    background-color: rgba(109, 109, 109, 0.278);;
+    transform: none !important;
+    border-radius: 4px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    min-height:100vh !important;
+    max-width: 100vw !important;
+
+
+    .mapboxgl-popup-content{
     background-color: $off-white;
     transform: none !important;
-    border-radius: 20px;
-    position: fixed;
-    top: 15%;
-    left: 8vw;
     width: 84vw;
     height: 84vh;
-    min-height: 84vh;
-    max-width: 84vw !important;
-    box-shadow: #eee 3px 3px;
+    top: 15%;
+    left: 8vw;
+    min-height: 84vh !important;
+    box-shadow: rgb(158, 158, 158) 1px 1px 6px;
+    }
 
     .mapboxgl-popup-content{
       height: 100%;
