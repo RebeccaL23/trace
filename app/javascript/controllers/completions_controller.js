@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="completions"
 export default class extends Controller {
 
-  static targets = ["correct"]
+  static targets = ["checked", "correct"]
   connect() {
     this.csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content")
   }
@@ -11,9 +11,11 @@ export default class extends Controller {
   choice(event) {
     event.preventDefault()
     const tick = document.querySelector('input[name="challenge"]:checked')
+    const correct = this.correctTarget.parentElement
 
     if (tick.nextElementSibling.innerText != this.correctTarget.innerText) {
-      tick.parentElement.classList.add("wrong")
+      tick.parentElement.classList.add("wrong");
+      correct.classList.add("correct");
     } else {
       this.correctTarget.parentElement.classList.add("correct")
     }
