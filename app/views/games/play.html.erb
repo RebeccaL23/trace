@@ -3,7 +3,7 @@
     <div class="mobile-header" id='mobile-play-header'>
       <div class='left' >
         <div class="mobile-play-heading" data-action="click->mobile-play#gameDetails">
-          <h1 id='mobile-game-name'><%= @game.name %></h1>
+          <h1 id='mobile-game-name'><%= @game.name %>  <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %></h1>
           <p id='details-toggle'><%= image_tag 'toggle.png', id: 'toggle-icon'%></p>
         </div>
 
@@ -30,9 +30,6 @@
   <% full = @game.end - @team.created_at %>
   <% left = full - lost %>
   <p hidden id="timer"> <%= left %> </p>
-  <div class='right'>
-    <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
-  </div>
 
   <div class="timer">
       <%= image_tag 'timer.png', id:'timer-icon'%>
