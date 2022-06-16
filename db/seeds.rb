@@ -129,16 +129,6 @@ puts "Created #{Game.count} games!"
 puts "Creating challenges..."
 
 # 16.times do
-  Challenge.create(
-    question: "How many lions are there in Trafalgar Square?",
-    answer_1: "3",
-    answer_2: "1",
-    answer_3: "8",
-    answer_correct: "4",
-    points: 10,
-    location: "Trafalgar Square",
-    game: Game.first
-  )
 
   Challenge.create(
     question: "How many capsules does the London Eye have?",
