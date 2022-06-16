@@ -3,7 +3,7 @@
     <div class="mobile-header" id='mobile-play-header'>
       <div class='left' >
         <div class="mobile-play-heading" data-action="click->mobile-play#gameDetails">
-          <h1 id='mobile-game-name'><%= @game.name %></h1>
+          <h1 id='mobile-game-name'><%= @game.name %>  <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %></h1>
           <p id='details-toggle'><%= image_tag 'toggle.png', id: 'toggle-icon'%></p>
         </div>
 
@@ -11,7 +11,7 @@
         <p data-mobile-play-target="show2">Start <%= @game.start.strftime("%R %P") %> <br>End <%= @game.end.strftime("%R %P") %></p>
 
         <div class="weather" data-controller="weather" data-mobile-play-target="show3" data-mobile-play-target="show" data-weather-api-value="<%= ENV['OPEN_WEATHER_MAP_API_KEY'] %>">
-          <img data-mobile-play-target="show4" src="" alt="Weather Icon" data-weather-target="icon" >
+          <img data-mobile-play-target="show4" src="" alt="weather icon" data-weather-target="icon" >
           <p data-mobile-play-target="show5" data-weather-target="temperature"></p>
         </div>
 
@@ -30,9 +30,6 @@
   <% full = @game.end - @team.created_at %>
   <% left = full - lost %>
   <p hidden id="timer"> <%= left %> </p>
-  <div class='right'>
-    <%= link_to image_tag("leaderboard.png"), game_leaderboard_path(@game) %>
-  </div>
 
   <div class="timer">
       <%= image_tag 'timer.png', id:'timer-icon'%>
