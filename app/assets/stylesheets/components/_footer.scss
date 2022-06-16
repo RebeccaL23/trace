@@ -1,0 +1,12 @@
+.footer{
+  border-bottom: 6px $charcoal solid;
+}
+
+@media only screen and (max-width: 600px) {
+  .footer{
+    padding: 0px 30px;
+  }
+  .footer-links{
+    margin-left: 30px !important;
+  }
+}
