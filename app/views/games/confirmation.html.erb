@@ -23,7 +23,7 @@
                 <div class="d-inline align-items-start copy-code">
                   <p>Copy code</p>
                   <div id="code-box" data-controller="clipboard">
-                    <h3 id='code-digits'> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <p data-action="click->clipboard#copy"><%= image_tag 'copy.png' %></p></h3>
+                    <h3 id='code-digits'> <input data-clipboard-target="source" value="<%= @game.code %>" class="hidden"> <%= @game.code %> <p id="copy-btn" data-action="click->clipboard#copy"><%= image_tag 'copy.png' %></p></h3>
                   </div>
                 </div>
 
