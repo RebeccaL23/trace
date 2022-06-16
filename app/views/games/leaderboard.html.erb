@@ -7,7 +7,7 @@
       <th></th>
       <th>Team</th>
       <th>Score</th>
-      <th>Finish Time</th>
+      <th>Time taken</th>
     </tr>
   <% @game.teams.sort_by{ |team| -team.score }.each do |team| %>
 
@@ -21,7 +21,16 @@
       <td class="leaderboard score py-2"><%= team.score %></td>
       <td>
         <% if team.finish.nil?%>
-          Still playing!
+<div class="running">
+    <div class="outer">
+        <div class="body" style="margin-left: 25%" >
+            <div class="arm behind"></div>
+            <div class="arm front"></div>
+            <div class="leg behind"></div>
+            <div class="leg front"></div>
+        </div>
+    </div>
+</div>
         <% else %>
           <% converted_finish_time = (team.finish + 1 * 60 * 60)
             time = (converted_finish_time.to_f - @game.start.to_f)
