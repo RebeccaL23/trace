@@ -17,10 +17,23 @@
       <% end %>
       <td><%= team.name %></td>
       <td class="leaderboard score py-2"><%= team.score %></td>
-      <td><%= team.finish.nil? ? "Still playing!" : team.finish.strftime("%H:%M:%S") %></td>
+      <td>
+        <% if team.finish.nil?%>
+          Still playing!
+        <% else %>
+          <% converted_finish_time = (team.finish + 1 * 60 * 60)
+            time = (converted_finish_time.to_f - @game.start.to_f)
+            time_hour = (time / 3600)
+            time_mins = (time_hour.to_s.sub(/^\d*/, "").to_f * 60)
+            time_secs = (".#{time_mins.to_s.sub(/\d*\D/, "")}".to_f * 60)
+          %>
+          <%=  time_hour.round %> : <%= time_mins.round %> : <%= time_secs.round %>
+        <% end %>
+      </td>
 
     <tr>
 
     <% end %>
   </table>
 </div>
+y
