@@ -15,15 +15,21 @@
         <% if game.end.strftime("%m-%e-%y %H:%M") < Time.now.strftime("%m-%e-%y %H:%M")  %>
           <p class="status upcoming">Completed</p>
         <% elsif game.start.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y") %>
-          <p class="status today">
 
-          <span hidden id="timer"><%= game.start - (Time.zone.now + 1*60*60) %> </span>
+          <p class="status">
+            <% if game.name == "Hen party" %>
 
-          <span id="clockdiv"> <strong>Today</strong>
-            <span class="hours"></span>:
-            <span class="minutes"></span>:
-            <span class="seconds"></span>
-          </span>
+              <p id="timer" hidden ><%= game.start - (Time.zone.now + 1*60*60) %></p>
+              <p class="status today-timer">
+
+              <span id="clockdiv"> <strong>Today</strong>
+                <span class="hours"></span>:
+                <span class="minutes"></span>:
+                <span class="seconds"></span>
+              </span>
+          <% else  %>
+              <p class="status today"> <strong>Ready!</strong> </p>
+          <% end  %>
 
           </p>
         <% else %>
