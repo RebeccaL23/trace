@@ -34,7 +34,7 @@ game1 = Game.new(
   name: "Best of London",
   city: "London",
   start: "17-06-2022 14:30",
-  end: "17-06-2022 19:00",
+  end: "17-06-2022 15:30",
   user: user1
 )
 game1.cloud_photo.attach(io: URI.open("https://res.cloudinary.com/borhan-cloud/image/upload/v1655392123/article-2006892-0CAE44C200000578-609_1024x615_large_qoycul.jpg"), filename: "#{game1.name}", content_type: "image/png")
@@ -76,8 +76,8 @@ game4.save
 game5 = Game.new(
   name: "Hen party",
   city: "London",
-  start: "16-06-2022 14:00",
-  end: "16-06-2022 16:00",
+  start: "17-06-2022 21:00",
+  end: "17-06-2022 23:00",
   photo: 'placeholder.png',
   user: user1
 )
