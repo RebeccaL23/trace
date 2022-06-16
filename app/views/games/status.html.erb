@@ -21,8 +21,7 @@
     <% elsif (Time.zone.now + 1*60*60) > @game.start %>
       <div class="game-status started">
         <h4 class='game-status-heading'>Game on!</h4>
-        <p>The game has started.</p>
-        <%= link_to "Let's play!", new_game_team_path(@game), class: "button beige" %>
+        <button class="button mobile-join-flow-btn"><%= link_to "Set up my team", new_game_team_path(@game) %></button>
 
     <!-- if game not started -->
     <% elsif @game.start > time %>
