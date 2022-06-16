@@ -24,19 +24,19 @@
   <!-- if game not started -->
   <% elsif @game.start > time %>
     <div class="game-status upcoming">
-      <h2>Ready, set...</h2>
-      <p>The game has not yet started. Check back closer to the below start time.</p>
+      <strong><p style="font-size: 40px">Ready, set...</p></strong>
+      <p>This game has not yet started!</p>
       <% start_time = @game.start %>
 
-      <%# show time until start %>
-      <h3> <%= @game.start.strftime("%R %P") %> on <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ") %> </h3>
+      <p>Come back at <strong><%= @game.start.strftime("%R %P")%>,</strong> <%= start_time.strftime("%A, %B #{start_time.day.ordinalize} %Y ")%></p>
+
         <div id="clockdiv"><div>
-        <p> Game begins in:
+        <p> Game begins in: <strong>
         <span class="hours"></span> :
         <span class="minutes"></span> :
         <span class="seconds"></span>
+        </strong>
       </p>
-      <p>The game will finish at <%= @game.end.strftime("%R %P") %>  </p>
   <% end %>
   </div>
 </div>
