@@ -39,7 +39,7 @@
                 # input_html: {data: {map_challenge_target: "location"}},
                 wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
                 %>
-                <em><p id="fit"><%=image_tag 'location.png'%>Check location on map</p></em>
+                <p id="fit"><%=image_tag 'location.png'%>Check location on map</p>
                 <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                 <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
                 <%= f.input :question, label: false, placeholder: 'enter your question here!', as: :string %>
@@ -117,7 +117,7 @@
                         %>
                         <%= f.input :latitude, :as => :hidden, input_html: {data: {map_challenge_target: "lat"}} %>
                         <%= f.input :longitude, :as => :hidden, input_html: {data: {map_challenge_target: "long"}} %>
-                        <%= f.input :question, as: :string %>
+                        <%= f.input :question, label: "question for this challenge?", as: :string %>
                         <%= f.input :answer_correct, as: :string %>
                         <%= f.input :answer_1, as: :string %>
                         <%= f.input :answer_2, as: :string %>
