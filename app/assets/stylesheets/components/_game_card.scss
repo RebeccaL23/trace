@@ -66,11 +66,19 @@ a:hover{
   color: $charcoal;
 
   &.today{
-    padding: 8px 24px;
-    width: 101px;
+    width: 137px;
     height: 46px;
     background-color: $mint;
-    left: 62%;
+    left: 50%;
+    top: 14px;
+  }
+
+  &.today-timer {
+    padding: 8px 24px;
+    width: 180px;
+    height: 46px;
+    background-color: $mint;
+    left: 36%;
     top: 14px;
   }
 

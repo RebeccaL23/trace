@@ -15,7 +15,23 @@
         <% if game.end.strftime("%m-%e-%y %H:%M") < Time.now.strftime("%m-%e-%y %H:%M")  %>
           <p class="status upcoming">Completed</p>
         <% elsif game.start.strftime("%m/%d/%Y") == Time.now.strftime("%m/%d/%Y") %>
-          <p class="status today">Today</p>
+
+          <p class="status">
+            <% if game.name == "Hen party" %>
+
+              <p id="timer" hidden ><%= game.start - (Time.zone.now + 1*60*60) %></p>
+              <p class="status today-timer">
+
+              <span id="clockdiv"> <strong>Today</strong>
+                <span class="hours"></span>:
+                <span class="minutes"></span>:
+                <span class="seconds"></span>
+              </span>
+          <% else  %>
+              <p class="status today"> <strong>Ready!</strong> </p>
+          <% end  %>
+
+          </p>
         <% else %>
           <p class="status upcoming">Upcoming</p>
         <% end %>
@@ -37,3 +53,55 @@
       </div>
   <% end %>
 </div>
+
+<script>
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  return {
+    'total': t,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var timeTo = parseInt(document.getElementById("timer").innerHTML)
+var timeInSeconds = timeTo
+var currentTime = Date.parse(new Date());
+var deadline = new Date(currentTime + timeInSeconds*1000);
+initializeClock('clockdiv', deadline);
+
+// function refresh() {
+//   location.reload();
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   setInterval(refresh, 5000);
+// });
+
+</script>

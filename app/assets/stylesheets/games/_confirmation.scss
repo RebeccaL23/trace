@@ -51,6 +51,14 @@
 //   margin-left: 50px;
 // }
 
+#copy-btn {
+  opacity:50%;
+}
+
+#copy-btn:hover {
+  opacity: 100%;
+}
+
 .copy:hover {
   opacity: 70%;
 }
@@ -86,6 +94,11 @@
 }
 
 .qr-code img{
+  height: 160px;
+  width: 160px;
+}
+
+.qr-code img {
   height: 160px;
   width: 160px;
 }
