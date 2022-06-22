@@ -131,7 +131,7 @@ Created as part of the Le Wagon Fullstack Web Development program. Feel free to 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Acknowledgments & contact
 
 Made with love by: 
 * Adrian Hards
