@@ -26,12 +26,13 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About the project</a></li>
-    <li><a href="#tech-stack">Tech stack</a></li>
+    <li><a href="#about-the-project">About the Project</a></li>
+    <li><a href="#tech-stack">Tech Stack</a></li>
+    <li><a href="#installation">Installation</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#acknowledgments">Acknowledgments & contact</a></li>
+    <li><a href="#acknowledgments-and-contact">Acknowledgments & Contact</a></li>
   </ol>
 </details>
 
@@ -85,6 +86,56 @@ Version control & deployment
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Installation
+
+#### Setup
+
+0. In order to run our app locally, you will need to have already installed Yarn and Rails. Check them with:
+  
+
+```
+$ yarn -v
+$ rails --version
+```
+
+If no version number is returned, please install [Yarn](https://classic.yarnpkg.com/en/docs/install) and/or [Rails](https://guides.rubyonrails.org/v5.0/getting_started.html) before continuing.
+
+#### Dependencies
+
+1. You'll also need to install all dependencies of the project with:
+```
+$ bundle install && yarn install
+```
+
+The `bundle` command installs all Ruby Gems specified in our Gemfile. The `yarn install` command retrieves all dependencies from the project’s package.json file.
+<br> 
+<br>
+
+2. Run the following command to create a database, load the schema, and initialize it with our seed data.
+```
+$ rails db:create db:migrate db:seed
+```
+
+#### API Keys
+
+3. Lastly, our API keys are hidden. You will need to `touch` a `.env` file and populate it with your own [Mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/), [Open Weather](https://openweathermap.org/api) and [Cloudinary](https://cloudinary.com/documentation/image_upload_api_reference) API keys.
+ 
+#### Launch 🚀
+
+Finally! Lets launch the app by running:
+
+```
+$ rails s
+```
+
+```
+$ yarn build --watch
+```
+
+Then go to [localhost:3000](http://localhost:3000/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -125,8 +176,8 @@ Created as part of the Le Wagon Fullstack Web Development program. Feel free to 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments & contact
+<!-- ACKNOWLEDGMENTS & CONTACT -->
+## Acknowledgments and Contact
 
 Made with love by: 
 * Adrian Hards
