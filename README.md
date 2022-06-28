@@ -14,7 +14,7 @@
     <a href="https://github.com/RebeccaL23/trace"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View the Le Wagon demonstration/presentation</a>
+    <a href="https://www.youtube.com/watch?v=X2IFL4Ev69c&list=PLkbmdtbypn7TaaSLn0twxAxZ1FIiu6PIS&index=4">View the Le Wagon demonstration/presentation</a>
     ·
     <a href="https://github.com/RebeccaL23/trace/issues">Report Bug</a>
     ·
