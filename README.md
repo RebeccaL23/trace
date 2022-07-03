@@ -190,3 +190,8 @@ Made with love by:
 <img width="400" alt="Screen Shot 2022-06-22 at 11 44 54 am" src="https://user-images.githubusercontent.com/17685311/175012728-96535632-f308-45f7-a7a7-8c16407d90c2.png">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<p align="center">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=RebeccaL23/trace" id="counter">
+</p>
+
